@@ -7,7 +7,7 @@
 //
 
 #import "KJSliderVC.h"
-
+#import "KJColorSlider.h"
 @interface KJSliderVC ()
 
 @end

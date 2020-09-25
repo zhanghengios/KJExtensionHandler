@@ -4,6 +4,8 @@
 <img src="https://img.zcool.cn/community/0161da5541af81000001a64bc753a4.jpg@1280w_1l_2o_100sh.jpg" width="666" hspace="1px">
 </p>
 
+##### 上传到Cocoapods `pod trunk push KJExtensionHandler.podspec --allow-warnings`
+
 * 这个工程提供开发中用到的类目，方便开发
 * 这里有我经常用到的扩展，方便好用开发
 * 整理好用的自定义控件，部分数据来源于网络 
@@ -52,17 +54,16 @@
 *
 *⭐️⭐️⭐️ ----- 本人其他库 ----- ⭐️⭐️⭐️
 *
-粒子效果、自定义控件Switch、自定义选中控件
+粒子效果、自定义控件、自定义选中控件
 pod 'KJEmitterView'
 pod 'KJEmitterView/Control' # 自定义控件
- 
-Kit扩展属性
-Button图文混排、点击事件封装、扩大点击域、点赞粒子效果，
+
+扩展库 - Button图文混排、点击事件封装、扩大点击域、点赞粒子效果，
 手势封装、圆角渐变、倒影、投影、内阴影、内外发光、渐变色滑块等，
 图片加工处理、滤镜渲染、泛洪算法、识别网址超链接等等
 pod 'KJExtensionHandler'
 pod 'KJExtensionHandler/Foundation'
-
+ 
 基类库 - 封装整理常用，采用链式处理，提炼独立工具
 pod 'KJBaseHandler'
 pod 'KJBaseHandler/Tool' # 工具相关
@@ -97,7 +98,7 @@ pod 'KJWorkbox/CommonBox'
 #### <a id="Cocoapods安装"></a>Cocoapods安装
 ```
 pod 'KJExtensionHandler'
-pod 'KJExtensionHandler/Function'
+pod 'KJExtensionHandler/Foundation'
 ```
 
 #### <a id="更新日志"></a>更新日志
