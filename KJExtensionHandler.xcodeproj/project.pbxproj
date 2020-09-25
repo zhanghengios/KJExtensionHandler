@@ -114,6 +114,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		688C92AD251DCC170095D734 /* KJExtensionHandler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KJExtensionHandler.entitlements; sourceTree = "<group>"; };
 		68AD71B7251D9705000C89C5 /* KJExtensionHandler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KJExtensionHandler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68AD71BA251D9705000C89C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		68AD71BB251D9705000C89C5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -330,6 +331,7 @@
 		68AD71B9251D9705000C89C5 /* KJExtensionHandler */ = {
 			isa = PBXGroup;
 			children = (
+				688C92AD251DCC170095D734 /* KJExtensionHandler.entitlements */,
 				68AD724A251D99CF000C89C5 /* KJExtensionHeader.h */,
 				68AD7275251D9BB8000C89C5 /* Kit */,
 				68AD725E251D9BB8000C89C5 /* Foundation */,
@@ -1117,6 +1119,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KJExtensionHandler/KJExtensionHandler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6E658L6H38;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KJExtensionHandler/PrefixHeader.pch";
@@ -1127,6 +1130,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.KJExtensionHandler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1136,6 +1140,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KJExtensionHandler/KJExtensionHandler.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6E658L6H38;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/KJExtensionHandler/PrefixHeader.pch";
@@ -1146,6 +1151,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.KJExtensionHandler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
