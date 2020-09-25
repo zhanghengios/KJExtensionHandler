@@ -2,7 +2,8 @@
 //  KJExtensionHeader.h
 //  KJExtensionHandler
 //
-//  Created by 杨科军 on 2020/9/25.
+//  Created by 杨科军 on 2018/11/26.
+//  Copyright © 2018 杨科军. All rights reserved.
 //  从原先的KJEmitterView库当中分离出来的扩展工具库
 /*
 *********************************************************************************

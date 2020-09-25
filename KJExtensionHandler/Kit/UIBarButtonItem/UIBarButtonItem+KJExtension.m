@@ -11,7 +11,7 @@
 
 @implementation UIBarButtonItem (KJExtension)
 
-+ (instancetype)kj_ItemWithImage:(NSString *)image HighImage:(NSString *)highImage Title:(NSString *)title TitleColor:(UIColor *)titleColor Target:(id)target Action:(SEL)action{
++ (instancetype)kj_ItemWithImage:(NSString*)image HighImage:(NSString*)highImage Title:(NSString*)title TitleColor:(UIColor*)titleColor Target:(id)target Action:(SEL)action{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setBackgroundImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
     [button setBackgroundImage:[UIImage imageNamed:highImage] forState:UIControlStateHighlighted];
@@ -31,13 +31,8 @@
     [button setImage:[UIImage imageNamed:hightImage] forState:UIControlStateHighlighted];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-    // 让按钮根据图片和文字的宽自适应
-    // [button sizeToFit];
     button.size = CGSizeMake(50, 30);
-    // 让按钮内部的所有内容左对齐
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    // 微调button在导航条上的位置
-    //    button.contentEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 10);
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     return [[self alloc] initWithCustomView:button];
 }

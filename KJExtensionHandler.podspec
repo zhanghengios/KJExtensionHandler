@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://www.jianshu.com/u/c84c00476ab6'
   s.requires_arc = true
 
-  s.default_subspec = 'Kit'
+  s.default_subspec  = 'Kit'
   s.ios.source_files = 'KJExtensionHandler/KJExtensionHeader.h'
   s.resources = "README.md"
 

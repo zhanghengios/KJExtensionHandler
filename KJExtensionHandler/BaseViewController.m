@@ -20,7 +20,7 @@
     
     self.view.backgroundColor = UIColorFromHEXA(0xf5f5f5, 1);
     /// 去掉返回文字
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem kj_ItemWithImage:@"KJBase.bundle/Arrow" HighImage:@"" Title:@"" TitleColor:UIColor.clearColor Target:self Action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem kj_ItemWithImage:@"Arrow" HighImage:@"" Title:@"" TitleColor:UIColor.clearColor Target:self Action:@selector(back)];
 }
 
 - (void)back{

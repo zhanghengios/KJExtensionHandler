@@ -11,14 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIBarButtonItem (KJExtension)
-/** 快速创建一个 UIBarButtonItem
- *  @param image     普通状态下的图片
- *  @param highImage 高亮状态下的图片
- *  @param title     名字
- *  @param target    目标
- *  @param action    操作
- */
-+ (instancetype)kj_ItemWithImage:(NSString *)image HighImage:(NSString *)highImage Title:(NSString *)title TitleColor:(UIColor *)titleColor Target:(id)target Action:(SEL)action;
+
++ (instancetype)kj_ItemWithImage:(NSString*)image HighImage:(NSString*)highImage Title:(NSString*)title TitleColor:(UIColor*)titleColor Target:(id)target Action:(SEL)action;
 
 + (instancetype)leftItemWithImage:(NSString*)image higthImage:(NSString*)hightImage title:(NSString*)title target:(id)target action:(SEL)action;
 

@@ -19,7 +19,6 @@
 		68AD7250251D9AD2000C89C5 /* KJExtensionHandler.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 68AD724E251D9AD2000C89C5 /* KJExtensionHandler.podspec */; };
 		68AD7251251D9AD2000C89C5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 68AD724F251D9AD2000C89C5 /* README.md */; };
 		68AD7259251D9B9D000C89C5 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7256251D9B9D000C89C5 /* BaseViewController.m */; };
-		68AD725A251D9B9D000C89C5 /* KJBase.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 68AD7257251D9B9D000C89C5 /* KJBase.bundle */; };
 		68AD72DD251D9BB8000C89C5 /* NSDictionary+KJNilSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7260251D9BB8000C89C5 /* NSDictionary+KJNilSafe.m */; };
 		68AD72DE251D9BB8000C89C5 /* NSDictionary+KJLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7263251D9BB8000C89C5 /* NSDictionary+KJLog.m */; };
 		68AD72DF251D9BB8000C89C5 /* NSNull+KJSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7266251D9BB8000C89C5 /* NSNull+KJSafe.m */; };
@@ -138,7 +137,6 @@
 		68AD724E251D9AD2000C89C5 /* KJExtensionHandler.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = KJExtensionHandler.podspec; sourceTree = SOURCE_ROOT; };
 		68AD724F251D9AD2000C89C5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		68AD7256251D9B9D000C89C5 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		68AD7257251D9B9D000C89C5 /* KJBase.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KJBase.bundle; sourceTree = "<group>"; };
 		68AD7258251D9B9D000C89C5 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		68AD7260251D9BB8000C89C5 /* NSDictionary+KJNilSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+KJNilSafe.m"; sourceTree = "<group>"; };
 		68AD7261251D9BB8000C89C5 /* NSDictionary+KJLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+KJLog.h"; sourceTree = "<group>"; };
@@ -335,15 +333,17 @@
 				68AD724A251D99CF000C89C5 /* KJExtensionHeader.h */,
 				68AD7275251D9BB8000C89C5 /* Kit */,
 				68AD725E251D9BB8000C89C5 /* Foundation */,
-				68AD7255251D9B9D000C89C5 /* Base */,
 				68AD731A251D9C75000C89C5 /* TextDemo */,
-				68AD7317251D9C74000C89C5 /* UINavigationController */,
 				68AD71BA251D9705000C89C5 /* AppDelegate.h */,
 				68AD71BB251D9705000C89C5 /* AppDelegate.m */,
 				68AD71BD251D9705000C89C5 /* SceneDelegate.h */,
 				68AD71BE251D9705000C89C5 /* SceneDelegate.m */,
 				68AD71C0251D9705000C89C5 /* ViewController.h */,
 				68AD71C1251D9705000C89C5 /* ViewController.m */,
+				68AD7258251D9B9D000C89C5 /* BaseViewController.h */,
+				68AD7256251D9B9D000C89C5 /* BaseViewController.m */,
+				68AD7318251D9C74000C89C5 /* UINavigationController+FDFullscreenPopGesture.h */,
+				68AD7319251D9C74000C89C5 /* UINavigationController+FDFullscreenPopGesture.m */,
 				68AD71C3251D9705000C89C5 /* Main.storyboard */,
 				68AD71C6251D9706000C89C5 /* Assets.xcassets */,
 				68AD71C8251D9706000C89C5 /* LaunchScreen.storyboard */,
@@ -372,16 +372,6 @@
 				68AD71E3251D9707000C89C5 /* Info.plist */,
 			);
 			path = KJExtensionHandlerUITests;
-			sourceTree = "<group>";
-		};
-		68AD7255251D9B9D000C89C5 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				68AD7257251D9B9D000C89C5 /* KJBase.bundle */,
-				68AD7258251D9B9D000C89C5 /* BaseViewController.h */,
-				68AD7256251D9B9D000C89C5 /* BaseViewController.m */,
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		68AD725E251D9BB8000C89C5 /* Foundation */ = {
@@ -663,15 +653,6 @@
 			path = UISlider;
 			sourceTree = "<group>";
 		};
-		68AD7317251D9C74000C89C5 /* UINavigationController */ = {
-			isa = PBXGroup;
-			children = (
-				68AD7318251D9C74000C89C5 /* UINavigationController+FDFullscreenPopGesture.h */,
-				68AD7319251D9C74000C89C5 /* UINavigationController+FDFullscreenPopGesture.m */,
-			);
-			path = UINavigationController;
-			sourceTree = "<group>";
-		};
 		68AD731A251D9C75000C89C5 /* TextDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -845,7 +826,6 @@
 				68AD71C7251D9706000C89C5 /* Assets.xcassets in Resources */,
 				68AD7357251D9C75000C89C5 /* KJMathVC.xib in Resources */,
 				68AD7251251D9AD2000C89C5 /* README.md in Resources */,
-				68AD725A251D9B9D000C89C5 /* KJBase.bundle in Resources */,
 				68AD7250251D9AD2000C89C5 /* KJExtensionHandler.podspec in Resources */,
 				68AD72F2251D9BB8000C89C5 /* KJKit.bundle in Resources */,
 				68AD71C5251D9705000C89C5 /* Main.storyboard in Resources */,
