@@ -78,7 +78,7 @@
         [temp0 addObject:@{@"VCName":@"KJCoreImageVC",@"describeName":@"CoreImage框架相关"}];
         
         NSMutableArray *temp1 = [NSMutableArray array];
-        [temp1 addObject:@{@"VCName":@"KJCollectionVC",@"describeName":@"左右滚动和Touch事件处理"}];
+        [temp1 addObject:@{@"VCName":@"KJCollectionVC",@"describeName":@"CollectView滚动处理"}];
         [temp1 addObject:@{@"VCName":@"KJButtonVC",@"describeName":@"Button图文布局点赞粒子"}];
         [temp1 addObject:@{@"VCName":@"KJViewVC",@"describeName":@"View快速切圆角"}];
         [temp1 addObject:@{@"VCName":@"KJSliderVC",@"describeName":@"Slider渐变色滑块"}];

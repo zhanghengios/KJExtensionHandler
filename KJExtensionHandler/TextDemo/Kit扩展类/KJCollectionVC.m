@@ -20,6 +20,10 @@
     // Do any additional setup after loading the view.
     [self.view addSubview:self.collectView];
     [self.view addSubview:self.imageView];
+    UILabel *label = [UILabel kj_createLabelWithText:@"核心就是解决左右滚动和上下滑动冲突处理" FontSize:15 TextColor:UIColor.blueColor];
+    label.centerX = self.view.centerX;
+    label.centerY = 100;
+    [self.view addSubview:label];
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView{
     return 1;
@@ -56,7 +60,8 @@
         [layOut setScrollDirection:UICollectionViewScrollDirectionHorizontal];
         layOut.minimumLineSpacing = 10;
         layOut.minimumInteritemSpacing = 10;
-        _collectView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, kScreenH-70, kScreenW, 70) collectionViewLayout:layOut];
+        _collectView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 70) collectionViewLayout:layOut];
+        _collectView.centerY = self.view.centerY;
         _collectView.delegate = self;
         _collectView.dataSource = self;
         _collectView.alwaysBounceHorizontal = YES;
@@ -67,23 +72,28 @@
         _collectView.kOpenExchange = true;
         _weakself;
         __block bool move = false;
+        __block CGPoint beginPoint = CGPointZero;
         _collectView.moveblock = ^(KJMoveStateType state, CGPoint point) {
-            if (point.y <= 60 && move == false) {
+            if (move == KJMoveStateTypeBegin && CGPointEqualToPoint(beginPoint,CGPointZero)) {
+                beginPoint = point;
+            }else if (fabs(beginPoint.y - point.y) >= 10 && move == false) {
                 move = true;
-                point = [weakself.collectView convertPoint:point toView:kKeyWindow];
                 NSIndexPath *idx = [weakself.collectView indexPathForItemAtPoint:point];
-                UICollectionViewCell *nextCell = [weakself.collectView cellForItemAtIndexPath:idx];
-                weakself.imageView.backgroundColor = nextCell.backgroundColor;
-                weakself.imageView.center = point;
-                weakself.imageView.hidden = NO;
-            }else if (move && point.y < 60 && state == KJMoveStateTypeMove) {
+                if (idx) {
+                    point = [weakself.collectView convertPoint:point toView:kKeyWindow];
+                    UICollectionViewCell *nextCell = [weakself.collectView cellForItemAtIndexPath:idx];
+                    weakself.imageView.backgroundColor = nextCell.backgroundColor;
+                    weakself.imageView.center = point;
+                    weakself.imageView.hidden = NO;
+                }
+            }else if (move && state == KJMoveStateTypeMove) {
                 point = [weakself.collectView convertPoint:point toView:kKeyWindow];
                 weakself.imageView.center = point;
                 weakself.collectView.scrollEnabled = NO;
                 return;
             }else if (state == KJMoveStateTypeEnd || state == KJMoveStateTypeCancelled) {
                 move = false;
-                point = [weakself.collectView convertPoint:point toView:kKeyWindow];
+                beginPoint = CGPointZero;
                 weakself.imageView.center = CGPointZero;
                 weakself.imageView.hidden = YES;
             }
