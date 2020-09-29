@@ -21,8 +21,10 @@
     [super viewDidLoad];
     _RectCornerArr = [NSMutableArray array];
     [self.view addSubview:self.testView];
-    [self.testView kj_AddTapGestureRecognizerBlock:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull gesture) {
-        NSLog(@"123");
+
+    
+    [self.testView kj_AddGestureRecognizer:(KJGestureTypeDouble) block:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull gesture) {
+        NSLog(@"2222");
     }];
     [self createSwitch];
     

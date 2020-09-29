@@ -74,12 +74,13 @@
         __block bool move = false;
         __block CGPoint beginPoint = CGPointZero;
         _collectView.moveblock = ^(KJMoveStateType state, CGPoint point) {
+            weakself.collectView.scrollEnabled = NO;
             if (move == KJMoveStateTypeBegin && CGPointEqualToPoint(beginPoint,CGPointZero)) {
                 beginPoint = point;
             }else if (fabs(beginPoint.y - point.y) >= 10 && move == false) {
-                move = true;
-                NSIndexPath *idx = [weakself.collectView indexPathForItemAtPoint:point];
+                NSIndexPath *idx = [weakself.collectView indexPathForItemAtPoint:beginPoint];
                 if (idx) {
+                    move = true;
                     point = [weakself.collectView convertPoint:point toView:kKeyWindow];
                     UICollectionViewCell *nextCell = [weakself.collectView cellForItemAtIndexPath:idx];
                     weakself.imageView.backgroundColor = nextCell.backgroundColor;
@@ -89,7 +90,6 @@
             }else if (move && state == KJMoveStateTypeMove) {
                 point = [weakself.collectView convertPoint:point toView:kKeyWindow];
                 weakself.imageView.center = point;
-                weakself.collectView.scrollEnabled = NO;
                 return;
             }else if (state == KJMoveStateTypeEnd || state == KJMoveStateTypeCancelled) {
                 move = false;
