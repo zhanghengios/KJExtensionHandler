@@ -84,7 +84,7 @@
         [temp1 addObject:@{@"VCName":@"KJSliderVC",@"describeName":@"Slider渐变色滑块"}];
         [temp1 addObject:@{@"VCName":@"KJTextViewVC",@"describeName":@"TextView设置限制字数"}];
         [temp1 addObject:@{@"VCName":@"KJFloodImageVC",@"describeName":@"填充同颜色区域图片"}];
-        [temp1 addObject:@{@"VCName":@"KJIMageVC",@"describeName":@"加水印和拼接图片"}];
+        [temp1 addObject:@{@"VCName":@"KJImageVC",@"describeName":@"加水印和拼接图片"}];
         
         NSMutableArray *temp2 = [NSMutableArray array];
         [temp2 addObject:@{@"VCName":@"KJMathVC",@"describeName":@"数学方程式"}];

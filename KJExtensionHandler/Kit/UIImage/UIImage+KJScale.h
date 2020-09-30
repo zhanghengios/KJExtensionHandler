@@ -11,18 +11,18 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIImage (KJScale)
 
 #pragma mark - 图片尺寸处理
-/// 改变Image的任何的大小
-- (UIImage*)kj_cropImageWithAnySize:(CGSize)size;
-/// 以固定宽度缩放图像
-- (UIImage*)scaleWithFixedWidth:(CGFloat)width;
-/// 以固定高度缩放图像
-- (UIImage*)scaleWithFixedHeight:(CGFloat)height;
-/// 裁剪和拉升图片
-- (UIImage*)kj_scalingAndCroppingForTargetSize:(CGSize)targetSize;
 /// 通过比例来缩放图片
-- (UIImage*)kj_transformImageScale:(CGFloat)scale;
+- (UIImage*)kj_scaleImage:(CGFloat)scale;
+/// 以固定宽度缩放图像
+- (UIImage*)kj_scaleWithFixedWidth:(CGFloat)width;
+/// 以固定高度缩放图像
+- (UIImage*)kj_scaleWithFixedHeight:(CGFloat)height;
+/// 等比改变图片尺寸
+- (UIImage*)kj_cropImageWithAnySize:(CGSize)size;
+/// 等比缩小图片尺寸
+- (UIImage*)kj_zoomImageWithMaxSize:(CGSize)size;
 /// 不拉升填充图片
-- (UIImage*)kj_scaleAspectFitImageWithSize:(CGSize)size;
+- (UIImage*)kj_fitImageWithSize:(CGSize)size;
 @end
 
 NS_ASSUME_NONNULL_END

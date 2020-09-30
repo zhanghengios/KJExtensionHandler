@@ -72,7 +72,7 @@
 		68AD730F251D9BB8000C89C5 /* KJColorSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD72DA251D9BB8000C89C5 /* KJColorSlider.m */; };
 		68AD7310251D9BB8000C89C5 /* UISlider+KJTapValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD72DB251D9BB8000C89C5 /* UISlider+KJTapValue.m */; };
 		68AD7353251D9C75000C89C5 /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7319251D9C74000C89C5 /* UINavigationController+FDFullscreenPopGesture.m */; };
-		68AD7354251D9C75000C89C5 /* KJIMageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AD731C251D9C75000C89C5 /* KJIMageVC.xib */; };
+		68AD7354251D9C75000C89C5 /* KJImageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AD731C251D9C75000C89C5 /* KJImageVC.xib */; };
 		68AD7355251D9C75000C89C5 /* KJFloodImageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AD731E251D9C75000C89C5 /* KJFloodImageVC.xib */; };
 		68AD7356251D9C75000C89C5 /* KJCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD731F251D9C75000C89C5 /* KJCollectionVC.m */; };
 		68AD7357251D9C75000C89C5 /* KJMathVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AD7320251D9C75000C89C5 /* KJMathVC.xib */; };
@@ -82,7 +82,7 @@
 		68AD735B251D9C75000C89C5 /* KJViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7328251D9C75000C89C5 /* KJViewVC.m */; };
 		68AD735C251D9C75000C89C5 /* KJSliderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD732B251D9C75000C89C5 /* KJSliderVC.m */; };
 		68AD735D251D9C75000C89C5 /* KJFloodImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD732C251D9C75000C89C5 /* KJFloodImageVC.m */; };
-		68AD735E251D9C75000C89C5 /* KJIMageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD732D251D9C75000C89C5 /* KJIMageVC.m */; };
+		68AD735E251D9C75000C89C5 /* KJImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD732D251D9C75000C89C5 /* KJImageVC.m */; };
 		68AD7369251D9C75000C89C5 /* KJFilterImageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AD7344251D9C75000C89C5 /* KJFilterImageVC.xib */; };
 		68AD736A251D9C75000C89C5 /* KJShadowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7346251D9C75000C89C5 /* KJShadowVC.m */; };
 		68AD736B251D9C75000C89C5 /* KJReflectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68AD7347251D9C75000C89C5 /* KJReflectionVC.xib */; };
@@ -245,7 +245,7 @@
 		68AD72DC251D9BB8000C89C5 /* KJColorSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJColorSlider.h; sourceTree = "<group>"; };
 		68AD7318251D9C74000C89C5 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		68AD7319251D9C74000C89C5 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
-		68AD731C251D9C75000C89C5 /* KJIMageVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KJIMageVC.xib; sourceTree = "<group>"; };
+		68AD731C251D9C75000C89C5 /* KJImageVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KJImageVC.xib; sourceTree = "<group>"; };
 		68AD731D251D9C75000C89C5 /* KJMathVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJMathVC.h; sourceTree = "<group>"; };
 		68AD731E251D9C75000C89C5 /* KJFloodImageVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KJFloodImageVC.xib; sourceTree = "<group>"; };
 		68AD731F251D9C75000C89C5 /* KJCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJCollectionVC.m; sourceTree = "<group>"; };
@@ -255,14 +255,14 @@
 		68AD7323251D9C75000C89C5 /* KJFloodImageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJFloodImageVC.h; sourceTree = "<group>"; };
 		68AD7324251D9C75000C89C5 /* KJSliderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJSliderVC.h; sourceTree = "<group>"; };
 		68AD7325251D9C75000C89C5 /* KJTextViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJTextViewVC.m; sourceTree = "<group>"; };
-		68AD7326251D9C75000C89C5 /* KJIMageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJIMageVC.h; sourceTree = "<group>"; };
+		68AD7326251D9C75000C89C5 /* KJImageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJImageVC.h; sourceTree = "<group>"; };
 		68AD7327251D9C75000C89C5 /* KJMathVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJMathVC.m; sourceTree = "<group>"; };
 		68AD7328251D9C75000C89C5 /* KJViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJViewVC.m; sourceTree = "<group>"; };
 		68AD7329251D9C75000C89C5 /* KJButtonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJButtonVC.h; sourceTree = "<group>"; };
 		68AD732A251D9C75000C89C5 /* KJCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJCollectionVC.h; sourceTree = "<group>"; };
 		68AD732B251D9C75000C89C5 /* KJSliderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJSliderVC.m; sourceTree = "<group>"; };
 		68AD732C251D9C75000C89C5 /* KJFloodImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJFloodImageVC.m; sourceTree = "<group>"; };
-		68AD732D251D9C75000C89C5 /* KJIMageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJIMageVC.m; sourceTree = "<group>"; };
+		68AD732D251D9C75000C89C5 /* KJImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJImageVC.m; sourceTree = "<group>"; };
 		68AD732E251D9C75000C89C5 /* KJTextViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJTextViewVC.h; sourceTree = "<group>"; };
 		68AD7344251D9C75000C89C5 /* KJFilterImageVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KJFilterImageVC.xib; sourceTree = "<group>"; };
 		68AD7345251D9C75000C89C5 /* KJReflectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJReflectionVC.h; sourceTree = "<group>"; };
@@ -673,9 +673,9 @@
 				68AD7323251D9C75000C89C5 /* KJFloodImageVC.h */,
 				68AD732C251D9C75000C89C5 /* KJFloodImageVC.m */,
 				68AD731E251D9C75000C89C5 /* KJFloodImageVC.xib */,
-				68AD7326251D9C75000C89C5 /* KJIMageVC.h */,
-				68AD732D251D9C75000C89C5 /* KJIMageVC.m */,
-				68AD731C251D9C75000C89C5 /* KJIMageVC.xib */,
+				68AD7326251D9C75000C89C5 /* KJImageVC.h */,
+				68AD732D251D9C75000C89C5 /* KJImageVC.m */,
+				68AD731C251D9C75000C89C5 /* KJImageVC.xib */,
 				68AD7324251D9C75000C89C5 /* KJSliderVC.h */,
 				68AD732B251D9C75000C89C5 /* KJSliderVC.m */,
 				68AD732E251D9C75000C89C5 /* KJTextViewVC.h */,
@@ -833,7 +833,7 @@
 				68AD7369251D9C75000C89C5 /* KJFilterImageVC.xib in Resources */,
 				68AD736C251D9C75000C89C5 /* KJCoreImageVC.xib in Resources */,
 				68AD736B251D9C75000C89C5 /* KJReflectionVC.xib in Resources */,
-				68AD7354251D9C75000C89C5 /* KJIMageVC.xib in Resources */,
+				68AD7354251D9C75000C89C5 /* KJImageVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -901,7 +901,7 @@
 				68AD71BC251D9705000C89C5 /* AppDelegate.m in Sources */,
 				68AD7302251D9BB8000C89C5 /* UIView+KJXib.m in Sources */,
 				68AD7300251D9BB8000C89C5 /* UIView+KJAppointView.m in Sources */,
-				68AD735E251D9C75000C89C5 /* KJIMageVC.m in Sources */,
+				68AD735E251D9C75000C89C5 /* KJImageVC.m in Sources */,
 				68AD735B251D9C75000C89C5 /* KJViewVC.m in Sources */,
 				68AD7304251D9BB8000C89C5 /* UIView+KJFrame.m in Sources */,
 				68AD72F8251D9BB8000C89C5 /* UIButton+KJButtonContentLayout.m in Sources */,

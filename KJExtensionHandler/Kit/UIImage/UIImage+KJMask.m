@@ -124,4 +124,36 @@
     CGFloat alpha = pixel[0]/255.0f;
     return alpha < 0.01f;
 }
+/// 文字转图片
++ (UIImage*)kj_imageFromText:(NSArray*)contents ContentWidth:(CGFloat)width Font:(UIFont*)font TextColor:(UIColor*)textColor BgColor:(UIColor*)bgColor{
+    NSMutableArray *temps = [[NSMutableArray alloc] initWithCapacity:contents.count];
+    CGFloat fHeight = 0.0f;
+    for (NSString *sContent in contents) {
+        CGSize stringSize = [sContent sizeWithFont:font constrainedToSize:CGSizeMake(width, 10000) lineBreakMode:NSLineBreakByWordWrapping];
+        [temps addObject:[NSNumber numberWithFloat:stringSize.height]];
+        fHeight += stringSize.height;
+    }
+    CGSize newSize = CGSizeMake(width, fHeight+10);
+    UIGraphicsBeginImageContextWithOptions(newSize,NO,0.0);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    if(bgColor){
+        [bgColor set];
+        UIRectFill(CGRectMake(0, 0, newSize.width, newSize.height));
+    }
+    CGContextSetCharacterSpacing(ctx, 10);
+    CGContextSetTextDrawingMode (ctx, kCGTextFillClip);
+    [textColor set];
+    int nIndex = 0;
+    CGFloat fPosY = 10.0f;
+    for (NSString *sContent in contents) {
+        NSNumber *numHeight = [temps objectAtIndex:nIndex];
+        CGRect rect = CGRectMake(0, fPosY, width , [numHeight floatValue]);
+        [sContent drawInRect:rect withFont:font lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
+        fPosY += [numHeight floatValue];
+        nIndex++;
+    }
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 @end

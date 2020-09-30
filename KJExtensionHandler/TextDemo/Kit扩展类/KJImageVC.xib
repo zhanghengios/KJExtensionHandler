@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KJIMageVC">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KJImageVC">
             <connections>
                 <outlet property="Button" destination="zU8-Ve-SAj" id="PQk-BT-y3l"/>
                 <outlet property="Button2" destination="sO7-3V-roT" id="jwp-UC-61P"/>
@@ -43,7 +43,7 @@
                         <constraint firstAttribute="width" secondItem="1Nd-ZE-xSU" secondAttribute="height" multiplier="1:1" id="Pe2-eQ-RxT"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zU8-Ve-SAj">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zU8-Ve-SAj">
                     <rect key="frame" x="68.666666666666671" y="459" width="80.000000000000014" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="F4h-Co-zjc"/>
@@ -65,7 +65,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sO7-3V-roT">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sO7-3V-roT">
                     <rect key="frame" x="68.666666666666671" y="509" width="80.000000000000014" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="8h0-IQ-hWA"/>
@@ -101,6 +101,7 @@
                     </constraints>
                 </imageView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="zZU-Wi-3GR" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="0tM-wH-Ktp"/>
@@ -124,7 +125,6 @@
                 <constraint firstItem="pvB-P9-szM" firstAttribute="centerX" secondItem="bIA-7f-W53" secondAttribute="centerX" id="yKw-hl-7aJ"/>
                 <constraint firstItem="1Nd-ZE-xSU" firstAttribute="width" secondItem="zZU-Wi-3GR" secondAttribute="width" id="zBN-Q8-OeD"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="137.68115942028987" y="84.782608695652186"/>
         </view>
     </objects>
