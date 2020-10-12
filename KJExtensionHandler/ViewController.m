@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-#import "NSArray+KJOverstep.h"
+#import "KJExceptionTool.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic, strong) UITableView *tableView;
@@ -24,6 +24,25 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+    
+    [KJExceptionTool kj_openAllExchangeMethod];
+    [KJExceptionTool kj_crashBlock:^BOOL(NSDictionary * _Nonnull dict) {
+        NSLog(@"回调处理:\n%@", dict[@"crashTitle"]);
+        return YES;
+    }];
+    [self.sectionTemps objectAtIndex:3];
+    NSMutableArray *temp = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",nil];
+    NSString *str = nil;
+    [temp addObject:str];
+    [temp setObject:@"1" atIndexedSubscript:4];
+    [temp insertObject:str atIndex:4];
+    NSDictionary *dicX = @{str:@"123",
+                           @"key":str,
+                           @"key":@"1"
+    };
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjects:@[@"1",@"1"] forKeys:@[@"2",@"2"]];
+    [dict setObject:str forKey:@"3"];
+    [dict removeObjectForKey:str];
 }
 
 #pragma mark - UITableViewDataSource

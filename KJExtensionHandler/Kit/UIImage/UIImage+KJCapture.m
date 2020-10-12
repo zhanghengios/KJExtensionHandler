@@ -211,14 +211,35 @@
     CGPoint result = CGPointMake((point1.x*rect2.width)/rect1.width, (point1.y*rect2.height)/rect1.height);
     return result;
 }
++ (CGRect)kj_newScaleRect:(CGRect)cropRect Image:(UIImage*)image{
+    CGFloat scale = image.scale;
+    if (scale != 1) {
+        cropRect.origin.x *= scale;
+        cropRect.origin.y *= scale;
+        cropRect.size.width *= scale;
+        cropRect.size.height *= scale;
+    }
+    return cropRect;
+}
 /// 根据特定的区域对图片进行裁剪
-+ (UIImage*)kj_cutImageWithImage:(UIImage*)image Frame:(CGRect)frame{
++ (UIImage*)kj_cutImageWithImage:(UIImage*)image Frame:(CGRect)cropRect{
     return ({
-        CGImageRef tmp = CGImageCreateWithImageInRect([image CGImage], frame);
+        CGImageRef tmp = CGImageCreateWithImageInRect([image CGImage], cropRect);
         UIImage *newImage = [UIImage imageWithCGImage:tmp scale:image.scale orientation:image.imageOrientation];
         CGImageRelease(tmp);
         newImage;
     });
+}
+/// quartz 2d 实现裁剪
++ (UIImage*)kj_quartzCutImageWithImage:(UIImage*)image Frame:(CGRect)cropRect{
+    cropRect = [self kj_newScaleRect:cropRect Image:image];
+    UIGraphicsBeginImageContext(cropRect.size);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, cropRect);
+    CGContextDrawImage(ctx, cropRect, imageRef);
+    image = [UIImage imageWithCGImage:imageRef];
+    UIGraphicsEndImageContext();
+    return image;
 }
 /// 图片路径裁剪，裁剪路径 "以外" 部分
 + (UIImage*)kj_captureOuterImage:(UIImage*)image BezierPath:(UIBezierPath*)path Rect:(CGRect)rect{

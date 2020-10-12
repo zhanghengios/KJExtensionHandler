@@ -1,5 +1,5 @@
 //
-//  NSArray+Overstep.h
+//  NSArray+KJException.h
 //  MoLiao
 //
 //  Created by 杨科军 on 2018/8/28.
@@ -7,10 +7,10 @@
 //  解决数组越界异常崩溃问题
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import "NSObject+KJSwizzle.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSArray (KJOverstep)
+@interface NSArray (KJException)<KJExceptionProtocol>
 
 @end
 

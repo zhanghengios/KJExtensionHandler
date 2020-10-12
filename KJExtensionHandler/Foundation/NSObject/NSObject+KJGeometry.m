@@ -17,11 +17,9 @@
 static inline CGPoint kj_perpendicularLineDots(CGPoint A, CGPoint B, CGFloat len, BOOL positive){
     CGFloat x1 = A.x,y1 = A.y;
     CGFloat x2 = B.x,y2 = B.y;
-    if (x1 == x2) {
-        /// 垂直线
+    if (x1 == x2) {/// 垂直线
         return positive ? CGPointMake(x2 + len, y2) : CGPointMake(x2 - len, y2);
-    }else if (y1 == y2) {
-        /// 水平线
+    }else if (y1 == y2) {/// 水平线
         return positive ? CGPointMake(x2, y2 + len) : CGPointMake(x2, y2 - len);
     }
     /// 既非垂直又非水平处理

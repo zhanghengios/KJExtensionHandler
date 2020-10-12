@@ -19,6 +19,7 @@ pod 'KJEmitterView/Control' # 自定义控件
 图片压缩加工处理、滤镜渲染、泛洪算法、识别网址超链接等等
 pod 'KJExtensionHandler'
 pod 'KJExtensionHandler/Foundation'
+pod 'KJExtensionHandler/Exception'  # 异常处理
 
 基类库 - 封装整理常用，采用链式处理，提炼独立工具
 pod 'KJBaseHandler'
@@ -70,9 +71,9 @@ Github地址：https://github.com/yangKJ
 #import "UIView+KJXib.h"   /// Xib
 #import "UIView+KJFrame.h" /// Frame - 轻量级布局
 #import "UIView+KJGestureBlock.h" /// 手势Block
-#import "UIView+KJRectCorner.h" /// 切圆角
+#import "UIView+KJRectCorner.h"   /// 切圆角
 //#import "UIView+KJGradient.h" /// 渐变处理
-//#import "UIView+KJAppointView.h"  /// 画一些指定图形（直线、虚线、五角星、六边形、八边形）
+//#import "UIView+KJAppointView.h" /// 画一些指定图形（直线、虚线、五角星、六边形、八边形）
 
 //#import "KJShadowLayer.h" // 内阴影、外阴影、投影相关
 //#import "CALayer+KJReflection.h" // 倒影处理
@@ -84,14 +85,14 @@ Github地址：https://github.com/yangKJ
 //#import "UITextView+KJLimitCounter.h" // 限制字数
 //#import "UITextView+KJHyperlink.h" // 超链接处理
 
-#import "UIColor+KJExtension.h" /// 颜色相关扩展
+#import "UIColor+KJExtension.h"/// 颜色相关扩展
 #import "UIColor+KJExtension2.h"
 
-#import "UIImage+KJScale.h"  /// 图片尺寸处理相关
+#import "UIImage+KJScale.h" /// 图片尺寸处理相关
 #import "UIImage+KJCompress.h" /// 图片压缩处理
-#import "UIImage+KJMask.h"/// 蒙版处理
-#import "UIImage+KJCapture.h"/// 截图和裁剪处理
-#import "UIImage+KJCoreImage.h" /// CoreImage 框架图片效果处理
+#import "UIImage+KJMask.h" /// 蒙版处理
+#import "UIImage+KJCapture.h" /// 截图和裁剪处理
+#import "UIImage+KJCoreImage.h"  /// CoreImage 框架图片效果处理
 #import "UIImage+KJAccelerate.h" /// Accelerate 框架的图片处理
 #import "UIImage+KJPhotoshop.h"
 //#import "UIImage+KJFloodFill.h" /// 图片泛洪算法
@@ -108,9 +109,14 @@ Github地址：https://github.com/yangKJ
 
 //#import "KJColorSlider.h" /// 渐变色滑块
 
-//************************************* Foundation相关扩展 *****************************************
+//************************************* Foundation 相关扩展 *****************************************
+// 需要引入，请使用 pod 'KJExtensionHandler/Foundation'
 //#import "NSArray+ElementDeal.h"  /// 对数组元素的处理 包括排序、查找、去重等等
 //#import "NSObject+KJMath.h"  /// 数学方程式
 //#import "NSObject+KJGeometry.h" /// 几何方程式
+
+//************************************* Exception 异常处理 *****************************************
+// 需要引入，请使用 pod 'KJExtensionHandler/Exception'
+//#import "KJExceptionTool.h" /// 异常捕获处理
 
 #endif /* KJExtensionHeader_h */

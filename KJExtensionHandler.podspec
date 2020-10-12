@@ -28,6 +28,12 @@ Pod::Spec.new do |s|
     fun.dependency 'KJExtensionHandler/Kit'
   end
   
+  s.subspec 'Exception' do |ex|
+    ex.source_files = "KJExtensionHandler/Exception/**/*.{h,m}"
+    ex.public_header_files = 'KJExtensionHandler/Exception/*.h',"KJExtensionHandler/Exception/**/*.h"
+    ex.dependency 'KJExtensionHandler/Kit'
+  end
+  
 end
 
 

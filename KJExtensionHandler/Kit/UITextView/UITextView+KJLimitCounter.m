@@ -11,12 +11,13 @@
 
 @implementation UITextView (KJLimitCounter)
 @dynamic kj_LabFont;
-+ (void)load {
++ (void)kj_openExchangeMethod{
     [super load];
-    method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"layoutSubviews")),
-                                   class_getInstanceMethod(self.class, @selector(kj_limitCounter_swizzling_layoutSubviews)));
-    method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"dealloc")),
-                                   class_getInstanceMethod(self.class, @selector(kj_limitCounter_swizzled_dealloc)));
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"layoutSubviews")), class_getInstanceMethod(self.class, @selector(kj_limitCounter_swizzling_layoutSubviews)));
+        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"dealloc")), class_getInstanceMethod(self.class, @selector(kj_limitCounter_swizzled_dealloc)));
+    });
 }
 #pragma mark - swizzled
 - (void)kj_limitCounter_swizzled_dealloc {
@@ -96,7 +97,7 @@
     self.kj_InputLimitLabel.attributedText = attrString;
 }
 #pragma mark - kvo
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:@"layer.borderWidth"] || [keyPath isEqualToString:@"text"]){
         [self updateLimitCount];
     }

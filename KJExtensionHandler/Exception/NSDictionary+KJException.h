@@ -1,5 +1,5 @@
 //
-//  NSDictionary+NilSafe.h
+//  NSDictionary+KJException.h
 //  MoLiao
 //
 //  Created by 杨科军 on 2018/7/31.
@@ -7,10 +7,10 @@
 //  防止键和值为空的时候崩溃
 
 #import <Foundation/Foundation.h>
-
+#import "NSObject+KJSwizzle.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSDictionary (KJNilSafe)
+@interface NSDictionary (KJException)<KJExceptionProtocol>
 
 @end
 

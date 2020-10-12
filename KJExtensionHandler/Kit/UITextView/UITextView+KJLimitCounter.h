@@ -7,8 +7,13 @@
 //
 #import <UIKit/UIKit.h>
 NS_ASSUME_NONNULL_BEGIN
+@protocol KJTextViewExchangeMethodProtocol <NSObject>
+@required
+/// 开启方法交换
++ (void)kj_openExchangeMethod;
+@end
 
-@interface UITextView (KJLimitCounter)
+@interface UITextView (KJLimitCounter)<KJTextViewExchangeMethodProtocol>
 /// 限制字数
 @property(nonatomic,assign)NSInteger kj_LimitCount;
 /// lab的右边距(默认10)

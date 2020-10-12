@@ -63,6 +63,7 @@ pod 'KJEmitterView/Control' # 自定义控件
 图片加工处理、滤镜渲染、泛洪算法、识别网址超链接等等
 pod 'KJExtensionHandler'
 pod 'KJExtensionHandler/Foundation'
+pod 'KJExtensionHandler/Exception'
  
 基类库 - 封装整理常用，采用链式处理，提炼独立工具
 pod 'KJBaseHandler'
@@ -99,11 +100,16 @@ pod 'KJWorkbox/CommonBox'
 ```
 pod 'KJExtensionHandler'
 pod 'KJExtensionHandler/Foundation'
+pod 'KJExtensionHandler/Exception'
 ```
 
 #### <a id="更新日志"></a>更新日志
 ```
 ####版本更新日志:
+#### Add 0.0.2
+1. 新增Exception异常处理
+2. UITextView 增加是否开启方法交换处理
+
 #### Add 0.0.1
 1. 从原先的KJEmitterView库中分离出来
 

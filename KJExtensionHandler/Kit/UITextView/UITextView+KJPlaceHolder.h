@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UITextView+KJLimitCounter.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UITextView (KJPlaceHolder)
+@interface UITextView (KJPlaceHolder)<KJTextViewExchangeMethodProtocol>
 
 @property(nonatomic,copy)NSString *kj_PlaceHolder;
 /// placeHolder颜色

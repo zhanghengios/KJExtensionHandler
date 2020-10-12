@@ -13,14 +13,14 @@
 @property(nonatomic,readonly)UILabel *Label;
 @end
 @implementation UITextView (KJPlaceHolder)
-+(void)load{
++(void)kj_openExchangeMethod{
     [super load];
-    method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"layoutSubviews")),
-                                   class_getInstanceMethod(self.class, @selector(kj_PlaceHolder_swizzling_layoutSubviews)));
-    method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"dealloc")),
-                                   class_getInstanceMethod(self.class, @selector(kj_PlaceHolder_swizzled_dealloc)));
-    method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"setText:")),
-                                   class_getInstanceMethod(self.class, @selector(kj_PlaceHolder_swizzled_setText:)));
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"layoutSubviews")), class_getInstanceMethod(self.class, @selector(kj_PlaceHolder_swizzling_layoutSubviews)));
+        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"dealloc")), class_getInstanceMethod(self.class, @selector(kj_PlaceHolder_swizzled_dealloc)));
+        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"setText:")), class_getInstanceMethod(self.class, @selector(kj_PlaceHolder_swizzled_setText:)));
+    });
 }
 #pragma mark - swizzled
 - (void)kj_PlaceHolder_swizzled_dealloc {

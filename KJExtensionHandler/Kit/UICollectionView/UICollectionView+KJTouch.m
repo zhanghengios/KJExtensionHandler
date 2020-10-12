@@ -9,7 +9,7 @@
 #import "UICollectionView+KJTouch.h"
 #import <objc/runtime.h>
 @implementation NSObject (Swizzling)
-+ (BOOL)kj_swizzleMethod:(SEL)origSel Method:(SEL)altSel {
++ (BOOL)kj_swizzleMethod:(SEL)origSel Method:(SEL)altSel{
     Method origMethod = class_getInstanceMethod(self, origSel);
     Method altMethod  = class_getInstanceMethod(self, altSel);
     if (!origMethod || !altMethod) return NO;

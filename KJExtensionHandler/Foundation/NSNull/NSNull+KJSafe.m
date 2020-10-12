@@ -86,8 +86,7 @@
                 //若获得了selector方法签名，赋值signatureCache[selectorString] = signature(学习此种三目运算使用技巧)；
                 //若未获得，把静态字典signatureCache[selectorString] = [NSNull null];这样处理是为了若再次查找此selector方法的时候，直接在上面“signature = signatureCache[selectorString];”中signature获得为NSNull，这样就会走下面的else判断
                 signatureCache[selectorString] = signature ?: [NSNull null];
-            }
-            else if ([signature isKindOfClass:[NSNull class]]){
+            }else if ([signature isKindOfClass:[NSNull class]]){
                 //若未实现，就把selector方法签名置为nil，不会走下面forwardInvocation，直接crash，因为所有类都找不到此方法
                 signature = nil;
             }
