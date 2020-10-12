@@ -48,8 +48,10 @@ static kExceptionBlock _exceptionblock = nil;
                                @"exception":exception,
                                @"callStackSymbols":[NSThread callStackSymbols]
         };
-        _weakself;
-        kGCD_main(^{weakself.exceptionblock(dict);});
+        __weak __typeof(&*self) weakself = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakself.exceptionblock(dict);
+        });
     }
 }
 /// 解析异常消息
