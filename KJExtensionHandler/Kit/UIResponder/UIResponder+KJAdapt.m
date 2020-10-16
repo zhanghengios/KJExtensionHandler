@@ -6,7 +6,7 @@
 //
 
 #import "UIResponder+KJAdapt.h"
-
+#import <objc/runtime.h>
 @implementation UIResponder (KJAdapt)
 + (KJAdaptModelType)adaptType{
     return (KJAdaptModelType)[objc_getAssociatedObject(self, @selector(adaptType)) intValue];
