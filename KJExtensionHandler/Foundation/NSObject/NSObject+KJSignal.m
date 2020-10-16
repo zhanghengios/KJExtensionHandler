@@ -6,7 +6,7 @@
 //
 
 #import "NSObject+KJSignal.h"
-
+#import <objc/runtime.h>
 @implementation NSObject (KJSignal)
 - (kSignalBlock)signalblock{
     return objc_getAssociatedObject(self, @selector(signalblock));
