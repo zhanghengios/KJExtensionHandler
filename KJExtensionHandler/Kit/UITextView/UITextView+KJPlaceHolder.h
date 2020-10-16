@@ -7,18 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
 NS_ASSUME_NONNULL_BEGIN
-@protocol KJTextViewExchangeMethodProtocol2 <NSObject>
+@protocol KJTextViewPlaceHolderExchangeMethodProtocol <NSObject>
 @required
-/// 开启方法交换
-+ (void)kj_openExchangeMethod;
++ (void)kj_openPlaceHolderExchangeMethod;
 @end
-@interface UITextView (KJPlaceHolder)<KJTextViewExchangeMethodProtocol2>
-
-@property(nonatomic,copy)NSString *kj_PlaceHolder;
-/// placeHolder颜色
-@property(nonatomic,strong)UIColor *kj_PlaceHolderColor;
-
+@interface UITextView (KJPlaceHolder)<KJTextViewPlaceHolderExchangeMethodProtocol>
+/// 占位符文字
+@property(nonatomic,strong)NSString *kj_placeHolder;
+/// 占位符Label
+@property(nonatomic,strong,readonly)UILabel *kj_placeHolderLabel;
 @end
 NS_ASSUME_NONNULL_END

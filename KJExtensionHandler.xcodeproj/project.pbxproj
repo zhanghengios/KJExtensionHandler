@@ -11,6 +11,7 @@
 		686B01DD25318CE4004A779D /* NSMutableArray+KJException.m in Sources */ = {isa = PBXBuildFile; fileRef = 686B01DC25318CE4004A779D /* NSMutableArray+KJException.m */; };
 		686B01EC2531A641004A779D /* NSMutableDictionary+KJException.m in Sources */ = {isa = PBXBuildFile; fileRef = 686B01EB2531A641004A779D /* NSMutableDictionary+KJException.m */; };
 		686B01F22531B6BA004A779D /* NSMutableString+KJException.m in Sources */ = {isa = PBXBuildFile; fileRef = 686B01F12531B6BA004A779D /* NSMutableString+KJException.m */; };
+		6895B9D62536943700AEEFA1 /* UIResponder+KJAdapt.m in Sources */ = {isa = PBXBuildFile; fileRef = 6895B9D52536943700AEEFA1 /* UIResponder+KJAdapt.m */; };
 		68AD71BC251D9705000C89C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD71BB251D9705000C89C5 /* AppDelegate.m */; };
 		68AD71BF251D9705000C89C5 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD71BE251D9705000C89C5 /* SceneDelegate.m */; };
 		68AD71C2251D9705000C89C5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD71C1251D9705000C89C5 /* ViewController.m */; };
@@ -25,7 +26,6 @@
 		68AD7259251D9B9D000C89C5 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7256251D9B9D000C89C5 /* BaseViewController.m */; };
 		68AD72DD251D9BB8000C89C5 /* NSDictionary+KJException.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7260251D9BB8000C89C5 /* NSDictionary+KJException.m */; };
 		68AD72DE251D9BB8000C89C5 /* NSDictionary+KJLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7263251D9BB8000C89C5 /* NSDictionary+KJLog.m */; };
-		68AD72DF251D9BB8000C89C5 /* NSNull+KJSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7266251D9BB8000C89C5 /* NSNull+KJSafe.m */; };
 		68AD72E0251D9BB8000C89C5 /* NSArray+KJLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7268251D9BB8000C89C5 /* NSArray+KJLog.m */; };
 		68AD72E1251D9BB8000C89C5 /* NSArray+ElementDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD726A251D9BB8000C89C5 /* NSArray+ElementDeal.m */; };
 		68AD72E2251D9BB8000C89C5 /* NSArray+KJException.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD726B251D9BB8000C89C5 /* NSArray+KJException.m */; };
@@ -97,6 +97,11 @@
 		68AD7370251D9C75000C89C5 /* KJCoreImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7350251D9C75000C89C5 /* KJCoreImageVC.m */; };
 		68AD7371251D9C75000C89C5 /* KJShineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7351251D9C75000C89C5 /* KJShineVC.m */; };
 		68AD7372251D9C75000C89C5 /* KJFilterImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7352251D9C75000C89C5 /* KJFilterImageVC.m */; };
+		68F3A8702539401E00BCD817 /* NSString+KJPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3A86F2539401E00BCD817 /* NSString+KJPredicate.m */; };
+		68F3A876253942B400BCD817 /* NSArray+KJPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3A875253942B400BCD817 /* NSArray+KJPredicate.m */; };
+		68F3A889253969FA00BCD817 /* NSObject+KJSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3A888253969FA00BCD817 /* NSObject+KJSignal.m */; };
+		68F3A8A12539739A00BCD817 /* KJHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3A8A02539739A00BCD817 /* KJHomeView.m */; };
+		68F3A8AA253973AF00BCD817 /* KJHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3A8A9253973AF00BCD817 /* KJHomeModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +131,8 @@
 		686B01F02531B6BA004A779D /* NSMutableString+KJException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+KJException.h"; sourceTree = "<group>"; };
 		686B01F12531B6BA004A779D /* NSMutableString+KJException.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+KJException.m"; sourceTree = "<group>"; };
 		688C92AD251DCC170095D734 /* KJExtensionHandler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KJExtensionHandler.entitlements; sourceTree = "<group>"; };
+		6895B9D42536943700AEEFA1 /* UIResponder+KJAdapt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIResponder+KJAdapt.h"; sourceTree = "<group>"; };
+		6895B9D52536943700AEEFA1 /* UIResponder+KJAdapt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+KJAdapt.m"; sourceTree = "<group>"; };
 		68AD71B7251D9705000C89C5 /* KJExtensionHandler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KJExtensionHandler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68AD71BA251D9705000C89C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		68AD71BB251D9705000C89C5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -154,8 +161,6 @@
 		68AD7261251D9BB8000C89C5 /* NSDictionary+KJLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+KJLog.h"; sourceTree = "<group>"; };
 		68AD7262251D9BB8000C89C5 /* NSDictionary+KJException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+KJException.h"; sourceTree = "<group>"; };
 		68AD7263251D9BB8000C89C5 /* NSDictionary+KJLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+KJLog.m"; sourceTree = "<group>"; };
-		68AD7265251D9BB8000C89C5 /* NSNull+KJSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+KJSafe.h"; sourceTree = "<group>"; };
-		68AD7266251D9BB8000C89C5 /* NSNull+KJSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+KJSafe.m"; sourceTree = "<group>"; };
 		68AD7268251D9BB8000C89C5 /* NSArray+KJLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+KJLog.m"; sourceTree = "<group>"; };
 		68AD7269251D9BB8000C89C5 /* NSArray+KJException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+KJException.h"; sourceTree = "<group>"; };
 		68AD726A251D9BB8000C89C5 /* NSArray+ElementDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ElementDeal.m"; sourceTree = "<group>"; };
@@ -292,6 +297,16 @@
 		68AD7351251D9C75000C89C5 /* KJShineVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJShineVC.m; sourceTree = "<group>"; };
 		68AD7352251D9C75000C89C5 /* KJFilterImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJFilterImageVC.m; sourceTree = "<group>"; };
 		68D393E82533EC010046B945 /* KJExceptionProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KJExceptionProtocol.h; sourceTree = "<group>"; };
+		68F3A86E2539401E00BCD817 /* NSString+KJPredicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+KJPredicate.h"; sourceTree = "<group>"; };
+		68F3A86F2539401E00BCD817 /* NSString+KJPredicate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+KJPredicate.m"; sourceTree = "<group>"; };
+		68F3A874253942B400BCD817 /* NSArray+KJPredicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+KJPredicate.h"; sourceTree = "<group>"; };
+		68F3A875253942B400BCD817 /* NSArray+KJPredicate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+KJPredicate.m"; sourceTree = "<group>"; };
+		68F3A887253969FA00BCD817 /* NSObject+KJSignal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+KJSignal.h"; sourceTree = "<group>"; };
+		68F3A888253969FA00BCD817 /* NSObject+KJSignal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KJSignal.m"; sourceTree = "<group>"; };
+		68F3A89F2539739A00BCD817 /* KJHomeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KJHomeView.h; sourceTree = "<group>"; };
+		68F3A8A02539739A00BCD817 /* KJHomeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KJHomeView.m; sourceTree = "<group>"; };
+		68F3A8A8253973AF00BCD817 /* KJHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KJHomeModel.h; sourceTree = "<group>"; };
+		68F3A8A9253973AF00BCD817 /* KJHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KJHomeModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +356,15 @@
 			path = Exception;
 			sourceTree = "<group>";
 		};
+		6895B9D32536941F00AEEFA1 /* UIResponder */ = {
+			isa = PBXGroup;
+			children = (
+				6895B9D42536943700AEEFA1 /* UIResponder+KJAdapt.h */,
+				6895B9D52536943700AEEFA1 /* UIResponder+KJAdapt.m */,
+			);
+			path = UIResponder;
+			sourceTree = "<group>";
+		};
 		68AD71AE251D9705000C89C5 = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +400,10 @@
 				68AD71BE251D9705000C89C5 /* SceneDelegate.m */,
 				68AD71C0251D9705000C89C5 /* ViewController.h */,
 				68AD71C1251D9705000C89C5 /* ViewController.m */,
+				68F3A8A8253973AF00BCD817 /* KJHomeModel.h */,
+				68F3A8A9253973AF00BCD817 /* KJHomeModel.m */,
+				68F3A89F2539739A00BCD817 /* KJHomeView.h */,
+				68F3A8A02539739A00BCD817 /* KJHomeView.m */,
 				68AD7258251D9B9D000C89C5 /* BaseViewController.h */,
 				68AD7256251D9B9D000C89C5 /* BaseViewController.m */,
 				68AD7318251D9C74000C89C5 /* UINavigationController+FDFullscreenPopGesture.h */,
@@ -413,8 +441,8 @@
 		68AD725E251D9BB8000C89C5 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				68F3A86D25393FE600BCD817 /* NSString */,
 				68AD725F251D9BB8000C89C5 /* NSDictionary */,
-				68AD7264251D9BB8000C89C5 /* NSNull */,
 				68AD7267251D9BB8000C89C5 /* NSArray */,
 				68AD726E251D9BB8000C89C5 /* NSObject */,
 			);
@@ -430,15 +458,6 @@
 			path = NSDictionary;
 			sourceTree = "<group>";
 		};
-		68AD7264251D9BB8000C89C5 /* NSNull */ = {
-			isa = PBXGroup;
-			children = (
-				68AD7265251D9BB8000C89C5 /* NSNull+KJSafe.h */,
-				68AD7266251D9BB8000C89C5 /* NSNull+KJSafe.m */,
-			);
-			path = NSNull;
-			sourceTree = "<group>";
-		};
 		68AD7267251D9BB8000C89C5 /* NSArray */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +465,8 @@
 				68AD726A251D9BB8000C89C5 /* NSArray+ElementDeal.m */,
 				68AD726C251D9BB8000C89C5 /* NSArray+KJLog.h */,
 				68AD7268251D9BB8000C89C5 /* NSArray+KJLog.m */,
+				68F3A874253942B400BCD817 /* NSArray+KJPredicate.h */,
+				68F3A875253942B400BCD817 /* NSArray+KJPredicate.m */,
 			);
 			path = NSArray;
 			sourceTree = "<group>";
@@ -453,6 +474,8 @@
 		68AD726E251D9BB8000C89C5 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
+				68F3A887253969FA00BCD817 /* NSObject+KJSignal.h */,
+				68F3A888253969FA00BCD817 /* NSObject+KJSignal.m */,
 				68AD7274251D9BB8000C89C5 /* NSObject+KJGeometry.h */,
 				68AD726F251D9BB8000C89C5 /* NSObject+KJGeometry.m */,
 				68AD7271251D9BB8000C89C5 /* NSObject+KJMath.h */,
@@ -464,6 +487,7 @@
 		68AD7275251D9BB8000C89C5 /* Kit */ = {
 			isa = PBXGroup;
 			children = (
+				6895B9D32536941F00AEEFA1 /* UIResponder */,
 				68AD72D3251D9BB8000C89C5 /* CALayer */,
 				68AD72B0251D9BB8000C89C5 /* KJMacros */,
 				68AD7290251D9BB8000C89C5 /* Res */,
@@ -748,6 +772,15 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
+		68F3A86D25393FE600BCD817 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				68F3A86E2539401E00BCD817 /* NSString+KJPredicate.h */,
+				68F3A86F2539401E00BCD817 /* NSString+KJPredicate.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -892,6 +925,7 @@
 				68AD72E4251D9BB8000C89C5 /* NSObject+KJSwizzle.m in Sources */,
 				68AD7309251D9BB8000C89C5 /* UICollectionView+KJTouch.m in Sources */,
 				68AD72F0251D9BB8000C89C5 /* UIImage+KJCapture.m in Sources */,
+				6895B9D62536943700AEEFA1 /* UIResponder+KJAdapt.m in Sources */,
 				68AD72E6251D9BB8000C89C5 /* UIImage+KJPhotoshop.m in Sources */,
 				68AD7372251D9C75000C89C5 /* KJFilterImageVC.m in Sources */,
 				68AD72EE251D9BB8000C89C5 /* UIImage+KJRemoteSize.m in Sources */,
@@ -900,6 +934,7 @@
 				68AD72DE251D9BB8000C89C5 /* NSDictionary+KJLog.m in Sources */,
 				68AD72EB251D9BB8000C89C5 /* UIImage+KJMask.m in Sources */,
 				68AD72F6251D9BB8000C89C5 /* UIButton+KJIndicator.m in Sources */,
+				68F3A876253942B400BCD817 /* NSArray+KJPredicate.m in Sources */,
 				68AD7371251D9C75000C89C5 /* KJShineVC.m in Sources */,
 				68AD7310251D9BB8000C89C5 /* UISlider+KJTapValue.m in Sources */,
 				68AD71C2251D9705000C89C5 /* ViewController.m in Sources */,
@@ -908,6 +943,7 @@
 				68AD736E251D9C75000C89C5 /* KJReflectionVC.m in Sources */,
 				68AD7359251D9C75000C89C5 /* KJTextViewVC.m in Sources */,
 				68AD7307251D9BB8000C89C5 /* UITextView+KJHyperlink.m in Sources */,
+				68F3A8AA253973AF00BCD817 /* KJHomeModel.m in Sources */,
 				68AD72F5251D9BB8000C89C5 /* UILabel+KJAttributedString.m in Sources */,
 				68AD735A251D9C75000C89C5 /* KJMathVC.m in Sources */,
 				68AD72E7251D9BB8000C89C5 /* UIImage+KJScale.m in Sources */,
@@ -925,11 +961,14 @@
 				68AD72FF251D9BB8000C89C5 /* UIColor+KJExtension2.m in Sources */,
 				68AD7301251D9BB8000C89C5 /* UIView+KJGradient.m in Sources */,
 				68AD7356251D9C75000C89C5 /* KJCollectionVC.m in Sources */,
+				68F3A8702539401E00BCD817 /* NSString+KJPredicate.m in Sources */,
 				68AD735C251D9C75000C89C5 /* KJSliderVC.m in Sources */,
 				68AD7305251D9BB8000C89C5 /* UIView+KJGestureBlock.m in Sources */,
 				68AD72F4251D9BB8000C89C5 /* UILabel+KJCreate.m in Sources */,
+				68F3A889253969FA00BCD817 /* NSObject+KJSignal.m in Sources */,
 				68AD72F3251D9BB8000C89C5 /* UILabel+KJExtension.m in Sources */,
 				68AD71BC251D9705000C89C5 /* AppDelegate.m in Sources */,
+				68F3A8A12539739A00BCD817 /* KJHomeView.m in Sources */,
 				68AD7302251D9BB8000C89C5 /* UIView+KJXib.m in Sources */,
 				68AD7300251D9BB8000C89C5 /* UIView+KJAppointView.m in Sources */,
 				686B01BF253156CC004A779D /* KJExceptionTool.m in Sources */,
@@ -942,7 +981,6 @@
 				686B01EC2531A641004A779D /* NSMutableDictionary+KJException.m in Sources */,
 				68AD7353251D9C75000C89C5 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				68AD7358251D9C75000C89C5 /* KJButtonVC.m in Sources */,
-				68AD72DF251D9BB8000C89C5 /* NSNull+KJSafe.m in Sources */,
 				686B01F22531B6BA004A779D /* NSMutableString+KJException.m in Sources */,
 				68AD72FA251D9BB8000C89C5 /* UIButton+KJEmitter.m in Sources */,
 				68AD735D251D9C75000C89C5 /* KJFloodImageVC.m in Sources */,

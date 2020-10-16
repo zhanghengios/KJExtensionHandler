@@ -10,77 +10,70 @@
 #import <objc/runtime.h>
 
 @interface UITextView ()
-@property(nonatomic,readonly)UILabel *Label;
+@property(nonatomic,readonly)UILabel *kj_placeHolderLabel;
 @end
 @implementation UITextView (KJPlaceHolder)
-+(void)kj_openExchangeMethod{
-    [super load];
++ (void)kj_openPlaceHolderExchangeMethod{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"layoutSubviews")), class_getInstanceMethod(self.class, @selector(kj_PlaceHolder_swizzling_layoutSubviews)));
-        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"dealloc")), class_getInstanceMethod(self.class, @selector(kj_PlaceHolder_swizzled_dealloc)));
-        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"setText:")), class_getInstanceMethod(self.class, @selector(kj_PlaceHolder_swizzled_setText:)));
+        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"layoutSubviews")), class_getInstanceMethod(self.class, @selector(kj_placeHolder_layoutSubviews)));
+        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"dealloc")), class_getInstanceMethod(self.class, @selector(kj_placeHolder_dealloc)));
+        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"setText:")), class_getInstanceMethod(self.class, @selector(kj_placeHolder_setText:)));
     });
 }
 #pragma mark - swizzled
-- (void)kj_PlaceHolder_swizzled_dealloc {
+- (void)kj_placeHolder_dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self kj_PlaceHolder_swizzled_dealloc];
+    [self kj_placeHolder_dealloc];
 }
-- (void)kj_PlaceHolder_swizzling_layoutSubviews {
-    if (self.kj_PlaceHolder){
+- (void)kj_placeHolder_layoutSubviews{
+    if (self.kj_placeHolder){
         UIEdgeInsets textContainerInset = self.textContainerInset;
         CGFloat lineFragmentPadding = self.textContainer.lineFragmentPadding;
         CGFloat x = lineFragmentPadding + textContainerInset.left + self.layer.borderWidth;
         CGFloat y = textContainerInset.top + self.layer.borderWidth;
         CGFloat width = CGRectGetWidth(self.bounds)- x - textContainerInset.right - 2*self.layer.borderWidth;
-        CGFloat height = [self.Label sizeThatFits:CGSizeMake(width, 0)].height;
-        self.Label.frame = CGRectMake(x, y, width, height);
+        CGFloat height = [self.kj_placeHolderLabel sizeThatFits:CGSizeMake(width, 0)].height;
+        self.kj_placeHolderLabel.frame = CGRectMake(x, y, width, height);
     }
-    [self kj_PlaceHolder_swizzling_layoutSubviews];
+    [self kj_placeHolder_layoutSubviews];
 }
-- (void)kj_PlaceHolder_swizzled_setText:(NSString *)text{
-    [self kj_PlaceHolder_swizzled_setText:text];
-    if (self.kj_PlaceHolder) [self updatePlaceHolder];
+- (void)kj_placeHolder_setText:(NSString*)text{
+    [self kj_placeHolder_setText:text];
+    if (self.kj_placeHolder) [self updatePlaceHolder];
 }
 #pragma mark - associated
-- (NSString *)kj_PlaceHolder{
-    return objc_getAssociatedObject(self, @selector(kj_PlaceHolder));
+- (NSString*)kj_placeHolder{
+    return objc_getAssociatedObject(self, @selector(kj_placeHolder));
 }
-- (void)setKj_PlaceHolder:(NSString *)kj_placeHolder{
-    objc_setAssociatedObject(self, @selector(kj_PlaceHolder), kj_placeHolder, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setKj_placeHolder:(NSString *)kj_placeHolder{
+    objc_setAssociatedObject(self, @selector(kj_placeHolder), kj_placeHolder, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self updatePlaceHolder];
-}
-- (UIColor *)kj_PlaceHolderColor{
-    return self.Label.textColor;
-}
-- (void)setKj_PlaceHolderColor:(UIColor *)kj_placeHolderColor{
-    self.Label.textColor = kj_placeHolderColor;
 }
 #pragma mark - update
 - (void)updatePlaceHolder{
     if (self.text.length){
-        [self.Label removeFromSuperview];
+        [self.kj_placeHolderLabel removeFromSuperview];
         return;
     }
-    self.Label.font = self.font ? self.font:self.cacutDefaultFont;
-    self.Label.textAlignment = self.textAlignment;
-    self.Label.text = self.kj_PlaceHolder;
-    [self insertSubview:self.Label atIndex:0];
+    self.kj_placeHolderLabel.font = self.font ? self.font:self.cacutDefaultFont;
+    self.kj_placeHolderLabel.textAlignment = self.textAlignment;
+    self.kj_placeHolderLabel.text = self.kj_placeHolder;
+    [self insertSubview:self.kj_placeHolderLabel atIndex:0];
 }
 #pragma mark - lazzing
-- (UILabel *)Label{
-    UILabel *placeHolderLab = objc_getAssociatedObject(self, @selector(Label));
-    if (!placeHolderLab){
-        placeHolderLab = [[UILabel alloc] init];
-        placeHolderLab.numberOfLines = 0;
-        placeHolderLab.textColor = [UIColor lightGrayColor];
-        objc_setAssociatedObject(self, @selector(Label), placeHolderLab, OBJC_ASSOCIATION_RETAIN);
+- (UILabel*)kj_placeHolderLabel{
+    UILabel *label = objc_getAssociatedObject(self, @selector(kj_placeHolderLabel));
+    if (label == nil){
+        label = [[UILabel alloc] init];
+        label.numberOfLines = 0;
+        label.textColor = [UIColor lightGrayColor];
+        objc_setAssociatedObject(self, @selector(kj_placeHolderLabel), label, OBJC_ASSOCIATION_RETAIN);
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePlaceHolder)name:UITextViewTextDidChangeNotification object:self];
     }
-    return placeHolderLab;
+    return label;
 }
-- (UIFont *)cacutDefaultFont{
+- (UIFont*)cacutDefaultFont{
     static UIFont *font = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

@@ -17,7 +17,6 @@ struct KJMathPoint {
 static inline KJMathPoint KJMathPointMake(CGFloat x, CGFloat y) {
     KJMathPoint p; p.x = x; p.y = y; return p;
 }
-
 @interface NSObject (KJMath)
 /// 把弧度转换成角度
 + (CGFloat)kj_degreeFromRadian:(CGFloat)radian;

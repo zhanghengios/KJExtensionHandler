@@ -106,9 +106,14 @@ pod 'KJExtensionHandler/Exception'
 #### <a id="更新日志"></a>更新日志
 ```
 ####版本更新日志:
+#### Add 0.0.3
+1. 新增 UIResponder+KJAdapt 简单的比例适配
+2. 新增 NSArray+KJPredicate 谓词数组处理
+3. 新增 NSString+KJPredicate 谓词字符串处理
+
 #### Add 0.0.2
 1. 新增Exception异常处理
-2. UITextView 增加是否开启方法交换处理
+2. UITextView 增加是否开启方法交换委托处理
 
 #### Add 0.0.1
 1. 从原先的KJEmitterView库中分离出来

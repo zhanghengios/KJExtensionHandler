@@ -7,22 +7,19 @@
 //
 #import <UIKit/UIKit.h>
 NS_ASSUME_NONNULL_BEGIN
-@protocol KJTextViewExchangeMethodProtocol <NSObject>
+@protocol KJTextViewLimitExchangeMethodProtocol <NSObject>
 @required
-/// 开启方法交换
-+ (void)kj_openExchangeMethod;
++ (void)kj_openLimitExchangeMethod;
 @end
 
-@interface UITextView (KJLimitCounter)<KJTextViewExchangeMethodProtocol>
+@interface UITextView (KJLimitCounter)<KJTextViewLimitExchangeMethodProtocol>
 /// 限制字数
-@property(nonatomic,assign)NSInteger kj_LimitCount;
-/// lab的右边距(默认10)
-@property(nonatomic,assign)CGFloat kj_LabMargin;
-/// lab的高度(默认20)
-@property(nonatomic,assign)CGFloat kj_LabHeight;
-/// lab的文字大小(默认12)
-@property(nonatomic,strong)UIFont *kj_LabFont;
+@property(nonatomic,assign)NSInteger kj_limitCount;
+/// 限制区域右边距，默认10
+@property(nonatomic,assign)CGFloat kj_limitMargin;
+/// 限制区域高度，默认20
+@property(nonatomic,assign)CGFloat kj_limitHeight;
 /// 统计限制字数Label
-@property(nonatomic,readonly)UILabel *kj_InputLimitLabel;
+@property(nonatomic,strong,readonly)UILabel *kj_limitLabel;
 @end
 NS_ASSUME_NONNULL_END

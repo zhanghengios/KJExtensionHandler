@@ -15,10 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray*)kj_disorganizeArray;
 /// 删除数组当中的相同元素
 - (NSArray*)kj_delArrayEquelObj;
-/// 对比两个数组删除相同元素并合并
-- (NSArray*)kj_mergeArrayAndDelEqualObjWithOtherArray:(NSArray*)temp;
 /// 查找数据，返回-1表示未查询到
 - (NSInteger)kj_searchDataWithTarget:(id)target;
+/// 生成一组不重复的随机数
+- (NSArray*)kj_noRepeatRandomArrayWithMinNum:(NSInteger)min maxNum:(NSInteger)max count:(NSInteger)count;
 /// 二分查找，当数据量很大适宜采用该方法
 - (NSInteger)kj_binarySearchTarget:(NSInteger)target;
 /// 冒泡排序
@@ -27,8 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray*)kj_insertSort;
 /// 选择排序
 - (NSArray*)kj_selectionSort;
-/// 生成一组不重复的随机数
-- (NSArray*)kj_noRepeatRandomArrayWithMinNum:(NSInteger)min maxNum:(NSInteger )max count:(NSInteger)count;
 
 @end
 

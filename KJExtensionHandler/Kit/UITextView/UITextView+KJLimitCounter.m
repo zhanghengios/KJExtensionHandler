@@ -10,107 +10,100 @@
 #import <objc/runtime.h>
 
 @implementation UITextView (KJLimitCounter)
-@dynamic kj_LabFont;
-+ (void)kj_openExchangeMethod{
-    [super load];
++ (void)kj_openLimitExchangeMethod{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"layoutSubviews")), class_getInstanceMethod(self.class, @selector(kj_limitCounter_swizzling_layoutSubviews)));
-        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"dealloc")), class_getInstanceMethod(self.class, @selector(kj_limitCounter_swizzled_dealloc)));
+        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"layoutSubviews")), class_getInstanceMethod(self.class, @selector(kj_limit_layoutSubviews)));
+        method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"dealloc")), class_getInstanceMethod(self.class, @selector(kj_limit_dealloc)));
     });
 }
 #pragma mark - swizzled
-- (void)kj_limitCounter_swizzled_dealloc {
+- (void)kj_limit_dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     @try {
         [self removeObserver:self forKeyPath:@"layer.borderWidth"];
         [self removeObserver:self forKeyPath:@"text"];
     }@catch (NSException *exception){
-    }@finally { }
-    [self kj_limitCounter_swizzled_dealloc];
+    }@finally {
+        [self kj_limit_dealloc];
+    }
 }
-- (void)kj_limitCounter_swizzling_layoutSubviews {
-    [self kj_limitCounter_swizzling_layoutSubviews];
-    if (self.kj_LimitCount){
+- (void)kj_limit_layoutSubviews{
+    [self kj_limit_layoutSubviews];
+    if (self.kj_limitCount){
         UIEdgeInsets textContainerInset = self.textContainerInset;
-        textContainerInset.bottom = self.kj_LabHeight;
+        textContainerInset.bottom = self.kj_limitHeight;
         self.contentInset = textContainerInset;
         CGFloat x = CGRectGetMinX(self.frame)+self.layer.borderWidth;
         CGFloat y = CGRectGetMaxY(self.frame)-self.contentInset.bottom-self.layer.borderWidth;
         CGFloat width = CGRectGetWidth(self.bounds)-self.layer.borderWidth*2;
-        CGFloat height = self.kj_LabHeight;
-        self.kj_InputLimitLabel.frame = CGRectMake(x, y, width, height);
-        if ([self.superview.subviews containsObject:self.kj_InputLimitLabel]){
-            return;
-        }
-        [self.superview insertSubview:self.kj_InputLimitLabel aboveSubview:self];
+        CGFloat height = self.kj_limitHeight;
+        self.kj_limitLabel.frame = CGRectMake(x, y, width, height);
+        if ([self.superview.subviews containsObject:self.kj_limitLabel]) return;
+        [self.superview insertSubview:self.kj_limitLabel aboveSubview:self];
     }
 }
 #pragma mark - associated
--(NSInteger)kj_LimitCount{
-    return [objc_getAssociatedObject(self, @selector(kj_LimitCount)) integerValue];
+- (NSInteger)kj_limitCount{
+    return [objc_getAssociatedObject(self, @selector(kj_limitCount)) integerValue];
 }
-- (void)setKj_LimitCount:(NSInteger)kj_limitCount{
-    objc_setAssociatedObject(self, @selector(kj_LimitCount), @(kj_limitCount), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setKj_limitCount:(NSInteger)kj_limitCount{
+    objc_setAssociatedObject(self, @selector(kj_limitCount), @(kj_limitCount), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self updateLimitCount];
 }
--(CGFloat)kj_LabMargin{
-    return [objc_getAssociatedObject(self, @selector(kj_LabMargin))floatValue];
+- (CGFloat)kj_limitMargin{
+    return [objc_getAssociatedObject(self, @selector(kj_limitMargin))floatValue];
 }
--(void)setKj_LabMargin:(CGFloat)kj_labMargin{
-    objc_setAssociatedObject(self, @selector(kj_LabMargin), @(kj_labMargin), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setKj_limitMargin:(CGFloat)kj_labMargin{
+    objc_setAssociatedObject(self, @selector(kj_limitMargin), @(kj_labMargin), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self updateLimitCount];
 }
--(CGFloat)kj_LabHeight{
-    return [objc_getAssociatedObject(self, @selector(kj_LabHeight)) floatValue];
+- (CGFloat)kj_limitHeight{
+    return [objc_getAssociatedObject(self, @selector(kj_limitHeight)) floatValue];
 }
--(void)setKj_LabHeight:(CGFloat)kj_labHeight{
-    objc_setAssociatedObject(self, @selector(kj_LabHeight), @(kj_labHeight), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setKj_limitHeight:(CGFloat)kj_labHeight{
+    objc_setAssociatedObject(self, @selector(kj_limitHeight), @(kj_labHeight), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self updateLimitCount];
-}
-- (void)setKj_LabFont:(UIFont *)kj_labFont{
-    self.kj_InputLimitLabel.font = kj_labFont;
 }
 #pragma mark - config
 - (void)_configTextView{
-    /// 设置默认值
-    self.kj_LabHeight = 20;
-    self.kj_LabMargin = 10;
-    self.kj_LabFont = [UIFont systemFontOfSize:12];
+    self.kj_limitHeight = 20;
+    self.kj_limitMargin = 10;
 }
 #pragma mark - update
 - (void)updateLimitCount{
-    if (self.text.length > self.kj_LimitCount){
+    if (self.text.length > self.kj_limitCount){
         UITextRange *markedRange = [self markedTextRange];
         if (markedRange) return;
-        NSRange range = [self.text rangeOfComposedCharacterSequenceAtIndex:self.kj_LimitCount];
+        NSRange range = [self.text rangeOfComposedCharacterSequenceAtIndex:self.kj_limitCount];
         self.text = [self.text substringToIndex:range.location];
     }
-    NSString *showText = [NSString stringWithFormat:@"%lu/%ld",(unsigned long)self.text.length,(long)self.kj_LimitCount];
-    self.kj_InputLimitLabel.text = showText;
+    NSString *showText = [NSString stringWithFormat:@"%lu/%ld",(unsigned long)self.text.length,(long)self.kj_limitCount];
+    self.kj_limitLabel.text = showText;
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:showText];
     NSUInteger length = [showText length];
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    style.tailIndent = -self.kj_LabMargin;
+    style.tailIndent = -self.kj_limitMargin;
     style.alignment = NSTextAlignmentRight;
     [attrString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, length)];
-    self.kj_InputLimitLabel.attributedText = attrString;
+    self.kj_limitLabel.attributedText = attrString;
 }
 #pragma mark - kvo
-- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id>*)change context:(void*)context{
     if ([keyPath isEqualToString:@"layer.borderWidth"] || [keyPath isEqualToString:@"text"]){
         [self updateLimitCount];
     }
 }
 #pragma mark - lazzing
-- (UILabel *)kj_InputLimitLabel{
-    UILabel *label = objc_getAssociatedObject(self, @selector(kj_InputLimitLabel));
-    if (!label){
+- (UILabel *)kj_limitLabel{
+    UILabel *label = objc_getAssociatedObject(self, @selector(kj_limitLabel));
+    if (label == nil){
         label = [[UILabel alloc] init];
         label.backgroundColor = self.backgroundColor;
         label.textColor = [UIColor lightGrayColor];
         label.textAlignment = NSTextAlignmentRight;
-        objc_setAssociatedObject(self, @selector(kj_InputLimitLabel), label, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        label.font = [UIFont systemFontOfSize:12];
+        objc_setAssociatedObject(self, @selector(kj_limitLabel), label, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLimitCount) name:UITextViewTextDidChangeNotification object:self];
         [self addObserver:self forKeyPath:@"layer.borderWidth" options:NSKeyValueObservingOptionNew context:nil];
         [self addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
