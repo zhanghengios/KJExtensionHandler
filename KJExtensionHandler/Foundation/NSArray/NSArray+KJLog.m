@@ -10,7 +10,7 @@
 
 @implementation NSArray (KJLog)
 #if DEBUG // 调试模式打印
-- (NSString*)descriptionWithLocale:(id)locale indent:(NSUInteger)level {
+- (NSString*)descriptionWithLocale:(id)locale indent:(NSUInteger)level{
     NSMutableString *desc = [NSMutableString string];
     NSMutableString *tabString = [[NSMutableString alloc] initWithCapacity:level];
     for (NSUInteger i = 0; i < level; ++i) {
@@ -23,16 +23,14 @@
         if (![obj respondsToSelector:@selector(description)]) {
             continue;
         }
-        if ([obj isKindOfClass:[NSDictionary class]]
-            || [obj isKindOfClass:[NSArray class]]
-            || [obj isKindOfClass:[NSSet class]]) {
+        if ([obj isKindOfClass:[NSDictionary class]] || [obj isKindOfClass:[NSArray class]] || [obj isKindOfClass:[NSSet class]]) {
             NSString *str = [((NSDictionary *)obj) descriptionWithLocale:locale indent:level + 1];
             [desc appendFormat:@"%@\t%@,\n", tab, str];
-        } else if ([obj isKindOfClass:[NSString class]]) {
+        }else if ([obj isKindOfClass:[NSString class]]) {
             [desc appendFormat:@"%@\t\"%@\",\n", tab, obj];
-        } else if ([obj isKindOfClass:[NSData class]]) {
+        }else if ([obj isKindOfClass:[NSData class]]) {
             NSError *error = nil;
-            NSObject *result =  [NSJSONSerialization JSONObjectWithData:obj options:NSJSONReadingMutableContainers error:&error];
+            NSObject *result = [NSJSONSerialization JSONObjectWithData:obj options:NSJSONReadingMutableContainers error:&error];
             if (error == nil && result != nil) {
                 if ([result isKindOfClass:[NSDictionary class]] || [result isKindOfClass:[NSArray class]] || [result isKindOfClass:[NSSet class]]) {
                     NSString *str = [((NSDictionary *)result) descriptionWithLocale:locale indent:level + 1];
@@ -52,14 +50,12 @@
                     [desc appendFormat:@"%@\t%@,\n", tab, obj];
                 }
             }
-        } else {
+        }else {
             @try {
                 [desc appendFormat:@"%@\t%@,\n", tab, obj];
             }@catch (NSException *exception) {
                 
-            }@finally {
-                
-            }
+            }@finally { }
         }
     }
     [desc appendFormat:@"%@)", tab];

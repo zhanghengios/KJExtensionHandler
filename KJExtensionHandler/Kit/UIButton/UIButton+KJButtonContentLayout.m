@@ -19,22 +19,19 @@ static NSString * const kPaddingInsetKey = @"kj_paddingInsetKey";
 
 - (void)setupButtonLayout{
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    CGFloat image_w = self.imageView.frame.size.width;
-    CGFloat image_h = self.imageView.frame.size.height;
-    CGFloat title_w = self.titleLabel.frame.size.width;
-    CGFloat title_h = self.titleLabel.frame.size.height;
-    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0){
-        // 由于iOS8中titleLabel的size为0，用下面的这种设置
-        title_w = self.titleLabel.intrinsicContentSize.width;
-        title_h = self.titleLabel.intrinsicContentSize.height;
+    CGFloat imageWith = self.imageView.image.size.width;
+    CGFloat imageHeight = self.imageView.image.size.height;
+    CGFloat labelWidth = 0.0,labelHeight = 0.0;
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
+        labelWidth = self.titleLabel.intrinsicContentSize.width;
+        labelHeight = self.titleLabel.intrinsicContentSize.height;
+    }else {
+        labelWidth = self.titleLabel.frame.size.width;
+        labelHeight = self.titleLabel.frame.size.height;
     }
-    
     UIEdgeInsets imageEdge = UIEdgeInsetsZero;
     UIEdgeInsets titleEdge = UIEdgeInsetsZero;
-    if (self.kj_PaddingInset == 0){
-        self.kj_PaddingInset = 5;
-    }
-    
+    if (self.kj_PaddingInset == 0) self.kj_PaddingInset = 5;
     switch (self.kj_ButtonContentLayoutType) {
         case KJButtonContentLayoutStyleNormal:{
             titleEdge = UIEdgeInsetsMake(0, self.kj_Padding, 0, 0);
@@ -43,20 +40,20 @@ static NSString * const kPaddingInsetKey = @"kj_paddingInsetKey";
         }
             break;
         case KJButtonContentLayoutStyleCenterImageRight:{
-            titleEdge = UIEdgeInsetsMake(0, -image_w - self.kj_Padding, 0, image_w);
-            imageEdge = UIEdgeInsetsMake(0, title_w + self.kj_Padding, 0, -title_w);
+            titleEdge = UIEdgeInsetsMake(0, -imageWith - self.kj_Padding, 0, imageWith);
+            imageEdge = UIEdgeInsetsMake(0, labelWidth + self.kj_Padding, 0, -labelWidth);
             self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         }
             break;
         case KJButtonContentLayoutStyleCenterImageTop:{
-            titleEdge = UIEdgeInsetsMake(0, -image_w, -image_h - self.kj_Padding, 0);
-            imageEdge = UIEdgeInsetsMake(-title_h - self.kj_Padding, 0, 0, -title_w);
+            titleEdge = UIEdgeInsetsMake(0, -imageWith, -imageHeight - self.kj_Padding, 0);
+            imageEdge = UIEdgeInsetsMake(-labelHeight - self.kj_Padding, 0, 0, -labelWidth);
             self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         }
             break;
         case KJButtonContentLayoutStyleCenterImageBottom:{
-            titleEdge = UIEdgeInsetsMake(-image_h - self.kj_Padding, -image_w, 0, 0);
-            imageEdge = UIEdgeInsetsMake(0, 0, -title_h - self.kj_Padding, -title_w);
+            titleEdge = UIEdgeInsetsMake(-imageHeight - self.kj_Padding, -imageWith, 0, 0);
+            imageEdge = UIEdgeInsetsMake(0, 0, -labelHeight - self.kj_Padding, -labelWidth);
             self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         }
             break;
@@ -67,8 +64,8 @@ static NSString * const kPaddingInsetKey = @"kj_paddingInsetKey";
         }
             break;
         case KJButtonContentLayoutStyleLeftImageRight:{
-            titleEdge = UIEdgeInsetsMake(0, -image_w + self.kj_PaddingInset, 0, 0);
-            imageEdge = UIEdgeInsetsMake(0, title_w + self.kj_Padding + self.kj_PaddingInset, 0, 0);
+            titleEdge = UIEdgeInsetsMake(0, -imageWith + self.kj_PaddingInset, 0, 0);
+            imageEdge = UIEdgeInsetsMake(0, labelWidth + self.kj_Padding + self.kj_PaddingInset, 0, 0);
             self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         }
             break;
@@ -79,8 +76,8 @@ static NSString * const kPaddingInsetKey = @"kj_paddingInsetKey";
         }
             break;
         case KJButtonContentLayoutStyleRightImageRight:{
-            titleEdge = UIEdgeInsetsMake(0, -self.frame.size.width / 2, 0, image_w + self.kj_Padding + self.kj_PaddingInset);
-            imageEdge = UIEdgeInsetsMake(0, 0, 0, -title_w + self.kj_PaddingInset);
+            titleEdge = UIEdgeInsetsMake(0, -self.frame.size.width / 2, 0, imageWith + self.kj_Padding + self.kj_PaddingInset);
+            imageEdge = UIEdgeInsetsMake(0, 0, 0, -labelWidth + self.kj_PaddingInset);
             self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         }
             break;
@@ -90,7 +87,6 @@ static NSString * const kPaddingInsetKey = @"kj_paddingInsetKey";
     self.titleEdgeInsets = titleEdge;
     [self setNeedsDisplay];
 }
-
 
 #pragma mark - SET
 - (void)setKj_ButtonContentLayoutType:(KJButtonContentLayoutStyle)kj_buttonContentLayoutType{

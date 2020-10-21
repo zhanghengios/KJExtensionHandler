@@ -39,7 +39,7 @@
 // block相关宏
 #define kBlockSafeRun(block, ...) block ? block(__VA_ARGS__) : nil
 // 版本判定 大于等于某个版本
-#define kSystemVersion(version) ([[[UIDevice currentDevice] systemVersion] compare:@#version options:NSNumericSearch] != NSOrderedAscending)
+#define kCurrentSystemVersion(version) ([[[UIDevice currentDevice] systemVersion] compare:@#version options:NSNumericSearch] != NSOrderedAscending)
 // 获取时间间隔宏
 #define kTimeTick CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
 #define kTimeTock NSLog(@"Time: %f", CFAbsoluteTimeGetCurrent() - start);

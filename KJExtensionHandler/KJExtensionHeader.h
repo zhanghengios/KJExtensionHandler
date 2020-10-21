@@ -24,6 +24,7 @@ pod 'KJExtensionHandler/Exception'  # 异常处理
 基类库 - 封装整理常用，采用链式处理，提炼独立工具
 pod 'KJBaseHandler'
 pod 'KJBaseHandler/Tool' # 工具相关
+pod 'KJBaseHandler/Router' # 路由相关
 
 播放器 - KJPlayer是一款视频播放器，AVPlayer的封装，继承UIView
 视频可以边下边播，把播放器播放过的数据流缓存到本地，下次直接从缓冲读取播放
@@ -113,19 +114,19 @@ Github地址：https://github.com/yangKJ
 
 //************************************* Foundation 相关扩展 *****************************************
 // 需要引入，请使用 pod 'KJExtensionHandler/Foundation'
-#if __has_include(<KJExtensionHandler/NSString+KJPredicate.h>)
-#import "NSString+KJPredicate.h"
-#import "NSArray+KJPredicate.h" /// 谓词工具
-#import "NSArray+ElementDeal.h" /// 对数组元素的处理 包括排序、查找、去重等等
-#import "NSObject+KJMath.h" /// 数学方程式
-#import "NSObject+KJGeometry.h" /// 几何方程式
+#if __has_include("NSObject+KJSignal.h")
 #import "NSObject+KJSignal.h" /// 信号方式解耦工具
+//#import "NSString+KJPredicate.h"
+//#import "NSArray+KJPredicate.h" /// 谓词工具
+//#import "NSArray+ElementDeal.h" /// 对数组元素的处理 包括排序、查找、去重等等
+//#import "NSObject+KJMath.h" /// 数学方程式
+//#import "NSObject+KJGeometry.h" /// 几何方程式
 #else
 #endif
 
 //************************************* Exception 异常处理 *****************************************
 // 需要引入，请使用 pod 'KJExtensionHandler/Exception'
-#if __has_include(<KJExtensionHandler/KJExceptionTool.h>)
+#if __has_include("KJExceptionTool.h")
 #import "KJExceptionTool.h" /// 异常捕获处理
 #else
 #endif

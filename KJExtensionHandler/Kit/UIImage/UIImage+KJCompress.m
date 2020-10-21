@@ -16,12 +16,11 @@
     return [UIImage kj_compressImage:self TargetByte:maxLength];
 }
 /// 压缩图片精确至指定Data大小, 只需循环3次, 并且保持图片不失真
-+ (UIImage *)kj_compressImage:(UIImage *)image TargetByte:(NSUInteger)maxLength {
++ (UIImage*)kj_compressImage:(UIImage*)image TargetByte:(NSUInteger)maxLength{
     CGFloat compression = 1.;
     NSData *data = UIImageJPEGRepresentation(image, compression);
     if (data.length < maxLength) return image;
     CGFloat max = 1,min = 0;
-    // 二分法处理
     for (int i = 0; i < 6; ++i) {
         compression = (max + min) / 2;
         data = UIImageJPEGRepresentation(image, compression);

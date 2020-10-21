@@ -49,7 +49,7 @@
     UIGraphicsEndImageContext();
     return resultImage;
 }
-/**把图片多次合成
+/*把图片多次合成
  @param loopNums   要合成的次数
  @param orientation 当前的方向
  @return 合成完成的图片
@@ -66,7 +66,7 @@
                 [self drawInRect:CGRectMake(X, Y, W, H)];
             }
             break;
-        case UIImageOrientationLeft :
+        case UIImageOrientationLeft:
             for (int i = 0; i < loopNums; i ++){
                 CGFloat X = 0;
                 CGFloat Y = self.size.height / loopNums * i;
@@ -127,13 +127,13 @@
 /// 文字转图片
 + (UIImage*)kj_imageFromText:(NSArray*)contents ContentWidth:(CGFloat)width Font:(UIFont*)font TextColor:(UIColor*)textColor BgColor:(UIColor*)bgColor{
     NSMutableArray *temps = [[NSMutableArray alloc] initWithCapacity:contents.count];
-    CGFloat fHeight = 0.0f;
+    CGFloat height = 0.0f;
     for (NSString *sContent in contents) {
-        CGSize stringSize = [sContent sizeWithFont:font constrainedToSize:CGSizeMake(width, 10000) lineBreakMode:NSLineBreakByWordWrapping];
+        CGSize stringSize = [sContent boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
         [temps addObject:[NSNumber numberWithFloat:stringSize.height]];
-        fHeight += stringSize.height;
+        height += stringSize.height;
     }
-    CGSize newSize = CGSizeMake(width, fHeight+10);
+    CGSize newSize = CGSizeMake(width, height+10);
     UIGraphicsBeginImageContextWithOptions(newSize,NO,0.0);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     if(bgColor){
@@ -143,14 +143,18 @@
     CGContextSetCharacterSpacing(ctx, 10);
     CGContextSetTextDrawingMode (ctx, kCGTextFillClip);
     [textColor set];
-    int nIndex = 0;
-    CGFloat fPosY = 10.0f;
+    int index = 0;
+    CGFloat y = 10.0f;
+    NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
+    paragraph.alignment = NSTextAlignmentCenter;
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    NSDictionary *dict = @{NSFontAttributeName:font,NSParagraphStyleAttributeName:paragraph};
     for (NSString *sContent in contents) {
-        NSNumber *numHeight = [temps objectAtIndex:nIndex];
-        CGRect rect = CGRectMake(0, fPosY, width , [numHeight floatValue]);
-        [sContent drawInRect:rect withFont:font lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
-        fPosY += [numHeight floatValue];
-        nIndex++;
+        NSNumber *numHeight = [temps objectAtIndex:index];
+        CGRect rect = CGRectMake(0, y, width , [numHeight floatValue]);
+        [sContent drawInRect:rect withAttributes:dict];
+        y += [numHeight floatValue];
+        index++;
     }
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

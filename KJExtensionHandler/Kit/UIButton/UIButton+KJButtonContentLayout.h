@@ -26,9 +26,9 @@ IB_DESIGNABLE /// xib 动态刷新
 @interface UIButton (KJContentLayout)
 /// 图文样式
 @property(nonatomic,assign) IBInspectable KJButtonContentLayoutStyle kj_ButtonContentLayoutType;
-/// 图文间距，默认为0
+/// 图文间距
 @property(nonatomic,assign) IBInspectable CGFloat kj_Padding;
-/// 图文边界的间距，默认为5
+/// 图文边界的间距，默认为5px
 @property(nonatomic,assign) IBInspectable CGFloat kj_PaddingInset;
 
 @end

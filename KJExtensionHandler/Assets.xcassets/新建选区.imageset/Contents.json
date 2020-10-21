@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "新建选区 dsgn_create_union_region.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "新建选区 dsgn_create_union_region@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "新建选区 dsgn_create_union_region@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

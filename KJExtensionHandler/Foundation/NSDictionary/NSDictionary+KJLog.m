@@ -30,7 +30,7 @@
             [desc appendFormat:@"%@\t%@ = %@,\n", tab, key, [obj descriptionWithLocale:locale indent:level + 1]];
         }else if ([obj isKindOfClass:[NSData class]]) {
             NSError *error = nil;
-            NSObject *result =  [NSJSONSerialization JSONObjectWithData:obj options:NSJSONReadingMutableContainers error:&error];
+            NSObject *result = [NSJSONSerialization JSONObjectWithData:obj options:NSJSONReadingMutableContainers error:&error];
             if (error == nil && result != nil) {
                 if ([result isKindOfClass:[NSDictionary class]] || [result isKindOfClass:[NSArray class]] || [result isKindOfClass:[NSSet class]]) {
                     NSString *str = [((NSDictionary *)result) descriptionWithLocale:locale indent:level + 1];
@@ -55,9 +55,7 @@
                 [desc appendFormat:@"%@\t%@ = %@,\n", tab, key, obj];
             }@catch (NSException *exception) {
                 
-            }@finally {
-                
-            }
+            }@finally { }
         }
     }
     [desc appendFormat:@"%@}", tab];
