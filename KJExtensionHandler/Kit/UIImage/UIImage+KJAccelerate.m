@@ -36,6 +36,35 @@
 }
 
 #pragma mark - 模糊处理
+- (UIImage*)kj_blurImageSoft{
+    return [self kj_blurImageWithTintColor:[UIColor colorWithWhite:0.84 alpha:0.36]];
+}
+- (UIImage*)kj_blurImageLight{
+    return [self kj_blurImageWithTintColor:[UIColor colorWithWhite:1.0 alpha:0.3]];
+}
+- (UIImage*)kj_blurImageExtraLight{
+    return [self kj_blurImageWithTintColor:[UIColor colorWithWhite:0.97 alpha:0.82]];
+}
+- (UIImage*)kj_blurImageDark{
+    return [self kj_blurImageWithTintColor:[UIColor colorWithWhite:0.11 alpha:0.73]];
+}
+- (UIImage*)kj_blurImageWithTintColor:(UIColor*)color{
+    const CGFloat alpha = 0.6;
+    UIColor *effectColor = color;
+    size_t componentCount = CGColorGetNumberOfComponents(color.CGColor);
+    if (componentCount == 2) {
+        CGFloat b;
+        if ([color getWhite:&b alpha:NULL]) {
+            effectColor = [UIColor colorWithWhite:b alpha:alpha];
+        }
+    }else {
+        CGFloat r, g, b;
+        if ([color getRed:&r green:&g blue:&b alpha:NULL]) {
+            effectColor = [UIColor colorWithRed:r green:g blue:b alpha:alpha];
+        }
+    }
+    return [self kj_blurImageWithRadius:20 Color:color MaskImage:nil];
+}
 /// 模糊处理保留透明区域，范围0 ~ 1
 - (UIImage*)kj_linearBlurryImageBlur:(CGFloat)blur{
     blur = MAX(MIN(blur,1),0);
@@ -172,6 +201,7 @@
     // Add in color tint.
     if (color) {
         CGContextSaveGState(outputContext);
+        CGContextSetBlendMode(outputContext, kCGBlendModeNormal);
         CGContextSetFillColorWithColor(outputContext, color.CGColor);
         CGContextFillRect(outputContext, imageRect);
         CGContextRestoreGState(outputContext);

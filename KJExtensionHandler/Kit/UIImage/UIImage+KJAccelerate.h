@@ -19,6 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIImage*)kj_rotateInRadians:(CGFloat)radians;
 
 #pragma mark - 模糊处理
+
+- (UIImage*)kj_blurImageSoft;
+- (UIImage*)kj_blurImageLight;
+- (UIImage*)kj_blurImageExtraLight;
+- (UIImage*)kj_blurImageDark;
+/// 指定颜色线性模糊
+- (UIImage*)kj_blurImageWithTintColor:(UIColor*)color;
 /// 线性模糊（保留透明区域）范围 0 ~ 1
 - (UIImage*)kj_linearBlurryImageBlur:(CGFloat)blur;
 /// 模糊处理（可设置模糊半径，模糊颜色，模糊蒙板）

@@ -55,7 +55,6 @@
     }else{
         imageSize = CGSizeMake([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
     }
-    
     UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     for (UIWindow *window in [[UIApplication sharedApplication] windows]){
@@ -84,6 +83,16 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
+}
+/// 截取滚动的长图
++ (UIImage*)kj_captureScreenWithScrollView:(UIScrollView*)scroll ContentOffset:(CGPoint)contentOffset{
+    UIGraphicsBeginImageContext(scroll.bounds.size);
+    CGContextTranslateCTM(UIGraphicsGetCurrentContext(), 0.0f, -contentOffset.y);
+    [scroll.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.55);
+    return [UIImage imageWithData:imageData];
 }
 
 #pragma mark - 裁剪处理

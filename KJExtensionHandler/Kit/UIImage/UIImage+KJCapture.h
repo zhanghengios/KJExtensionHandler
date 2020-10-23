@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage*)kj_captureScreenWindow;
 /// 截取当前屏幕（根据手机方向旋转）
 + (UIImage*)kj_captureScreenWindowForInterfaceOrientation;
+/// 截取滚动视图的长图
++ (UIImage*)kj_captureScreenWithScrollView:(UIScrollView*)scroll ContentOffset:(CGPoint)contentOffset;
 
 #pragma mark - 裁剪处理
 /// 裁剪掉图片周围的透明部分

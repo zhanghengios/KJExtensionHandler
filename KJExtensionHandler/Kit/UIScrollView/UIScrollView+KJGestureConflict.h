@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIScrollView (KJGestureConflict)
-/// 是否需要处理UISlider和UIScrollView的滑动事件冲突
-@property(nonatomic,assign)bool kDelConflict;
+///// 是否需要处理UISlider和UIScrollView的滑动事件冲突
+//@property(nonatomic,assign)bool kDelConflict;
 
 @end
 
