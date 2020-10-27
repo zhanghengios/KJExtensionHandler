@@ -20,7 +20,7 @@
     BOOL boo = class_addMethod(clazz, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
     if (boo) {
         class_replaceMethod(clazz, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
-    } else {
+    }else {
         method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }
@@ -35,8 +35,7 @@
 }
 - (void)setKj_openButtonEmitter:(BOOL)kj_openButtonEmitter{
     objc_setAssociatedObject(self, @selector(kj_openButtonEmitter), @(kj_openButtonEmitter), OBJC_ASSOCIATION_ASSIGN);
-    /// 设置粒子效果
-    [self setupLayer];
+    [self setupLayer];/// 设置粒子效果
 }
 /// 交换方法
 - (void)kj_setSelected:(BOOL)selected{

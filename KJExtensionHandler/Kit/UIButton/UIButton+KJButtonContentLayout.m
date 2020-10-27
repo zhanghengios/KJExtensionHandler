@@ -21,14 +21,11 @@ static NSString * const kPaddingInsetKey = @"kj_paddingInsetKey";
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     CGFloat imageWith = self.imageView.image.size.width;
     CGFloat imageHeight = self.imageView.image.size.height;
-    CGFloat labelWidth = 0.0,labelHeight = 0.0;
-    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
-        labelWidth = self.titleLabel.intrinsicContentSize.width;
-        labelHeight = self.titleLabel.intrinsicContentSize.height;
-    }else {
-        labelWidth = self.titleLabel.frame.size.width;
-        labelHeight = self.titleLabel.frame.size.height;
-    }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    CGFloat labelWidth  = [self.titleLabel.text sizeWithFont:self.titleLabel.font].width;
+    CGFloat labelHeight = [self.titleLabel.text sizeWithFont:self.titleLabel.font].height;
+#pragma clang diagnostic pop
     UIEdgeInsets imageEdge = UIEdgeInsetsZero;
     UIEdgeInsets titleEdge = UIEdgeInsetsZero;
     if (self.kj_PaddingInset == 0) self.kj_PaddingInset = 5;

@@ -27,11 +27,8 @@ static char leftNameKey;
     NSNumber *bottomEdge= objc_getAssociatedObject(self, &bottomNameKey);
     NSNumber *leftEdge  = objc_getAssociatedObject(self, &leftNameKey);
     if (topEdge && rightEdge && bottomEdge && leftEdge){
-        return CGRectMake(self.bounds.origin.x - leftEdge.floatValue,
-                          self.bounds.origin.y - topEdge.floatValue,
-                          self.bounds.size.width + leftEdge.floatValue + rightEdge.floatValue,
-                          self.bounds.size.height + topEdge.floatValue + bottomEdge.floatValue);
-    } else {
+        return CGRectMake(self.bounds.origin.x - leftEdge.floatValue, self.bounds.origin.y - topEdge.floatValue, self.bounds.size.width + leftEdge.floatValue + rightEdge.floatValue, self.bounds.size.height + topEdge.floatValue + bottomEdge.floatValue);
+    }else {
         return self.bounds;
     }
 }
@@ -53,13 +50,10 @@ static char leftNameKey;
     objc_setAssociatedObject(self, @selector(touchAreaInsets), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent*)event{
     UIEdgeInsets touchAreaInsets = self.touchAreaInsets;
     CGRect bounds = self.bounds;
-    bounds = CGRectMake(bounds.origin.x - touchAreaInsets.left,
-                        bounds.origin.y - touchAreaInsets.top,
-                        bounds.size.width + touchAreaInsets.left + touchAreaInsets.right,
-                        bounds.size.height + touchAreaInsets.top + touchAreaInsets.bottom);
+    bounds = CGRectMake(bounds.origin.x - touchAreaInsets.left, bounds.origin.y - touchAreaInsets.top, bounds.size.width + touchAreaInsets.left + touchAreaInsets.right, bounds.size.height + touchAreaInsets.top + touchAreaInsets.bottom);
     return CGRectContainsPoint(bounds, point);
 }
 

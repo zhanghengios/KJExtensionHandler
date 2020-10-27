@@ -26,20 +26,23 @@
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.temps[section] count];
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 40.0;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.bounds.size.height / 18.;
+    return 50;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell"];
     if (!cell) cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"tableViewCell"];
     NSDictionary *dic = self.temps[indexPath.section][indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%ld. %@",indexPath.row + 1,dic[@"VCName"]];
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
-    cell.textLabel.textColor = UIColor.blueColor;
+    cell.textLabel.font = [UIFont systemFontOfSize:16];
+//    cell.textLabel.textColor = UIColor.blueColor;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.detailTextLabel.text = dic[@"describeName"];
-    cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:13];
-    cell.detailTextLabel.textColor = [UIColor.blueColor colorWithAlphaComponent:0.5];
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
+//    cell.detailTextLabel.textColor = [UIColor.blueColor colorWithAlphaComponent:0.5];
     return cell;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -47,8 +50,8 @@
 }
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section{
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    header.textLabel.textColor = UIColor.redColor;
-    header.textLabel.font = [UIFont boldSystemFontOfSize:14];
+//    header.textLabel.textColor = UIColor.redColor;
+    header.textLabel.font = [UIFont boldSystemFontOfSize:15];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

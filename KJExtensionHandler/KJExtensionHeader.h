@@ -55,26 +55,26 @@ Github地址：https://github.com/yangKJ
 #ifndef KJExtensionHeader_h
 #define KJExtensionHeader_h
 
-#import "_KJMacros.h"  /// 宏
-#import "_KJINLINE.h"  /// 简单的常用函数
+#import "_KJMacros.h" /// 宏
+#import "_KJINLINE.h" /// 简单的常用函数
 
 #import "UIButton+KJBlock.h" /// 点击事件ButtonBlock
 #import "UIButton+KJEnlargeTouchArea.h" /// 改变UIButton的响应区域
 #import "UIButton+KJButtonContentLayout.h"  /// 图文混排
+#import "UIButton+KJCreate.h" /// 快速创建按钮
 //#import "UIButton+KJIndicator.h" /// 指示器
 //#import "UIButton+KJEmitter.h" /// 按钮粒子效果
 //#import "UIButton+KJCountDown.h" /// 倒计时
-#import "UIButton+KJCreate.h" /// 快速创建按钮
 
-//#import "UILabel+KJAttributedString.h" // 富文本
 #import "UILabel+KJCreate.h" /// 快速创建文本
+//#import "UILabel+KJAttributedString.h" // 富文本
 
 #import "UIView+KJXib.h"   /// Xib
 #import "UIView+KJFrame.h" /// Frame - 轻量级布局
 #import "UIView+KJGestureBlock.h" /// 手势Block
 #import "UIView+KJRectCorner.h"   /// 切圆角
-//#import "UIView+KJGradient.h" /// 渐变处理
-//#import "UIView+KJAppointView.h" /// 画一些指定图形（直线、虚线、五角星、六边形、八边形）
+#import "UIView+Toast.h" /// Toast快捷显示
+//#import "UIView+KJGradient.h" /// 渐变处理 和 画指定图形（直线、虚线、五角星、六边形、八边形）
 
 //#import "KJShadowLayer.h" // 内阴影、外阴影、投影相关
 //#import "CALayer+KJReflection.h" // 倒影处理
@@ -102,7 +102,7 @@ Github地址：https://github.com/yangKJ
 
 #import "UIViewController+KJFullScreen.h" /// 充满全屏处理
 
-#import "UISegmentedControl+KJCustom.h" /// 修改背景色和文字颜色
+//#import "UISegmentedControl+KJCustom.h" /// 修改背景色和文字颜色
 
 //#import "UIScrollView+KJGestureConflict.h" /// 滚动冲突处理
 

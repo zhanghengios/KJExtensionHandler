@@ -27,5 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Right边框
 @property(nonatomic,assign)bool kj_borderRight;
 
+/// 移动阴影效果
+- (void)kj_movingShadow;
+
 @end
 NS_ASSUME_NONNULL_END

@@ -13,25 +13,26 @@ NS_ASSUME_NONNULL_BEGIN
 IB_DESIGNABLE // 动态刷新 在类名前加上此宏定义，初始化、布置和绘制方法将被用来在画布上渲染该类的自定义视图
 @interface UIView (KJXib)
 
-/// xib创建的view
+/// Xib创建的View
 + (instancetype)kj_viewFromXib;
-/// xib创建的view
+/// Xib创建的View
 + (instancetype)kj_viewFromXibWithFrame:(CGRect)frame;
 /// 判断一个控件是否真正显示在主窗口
 - (BOOL)kj_isShowingOnKeyWindow;
-/// 寻找子视图
-- (UIView*)kj_FindSubviewRecursively:(BOOL(^)(UIView *subview, BOOL * stop))recurse;
+@property(nonatomic,assign,readonly) BOOL showKeyWindow;
 /// 当前的控制器
 - (UIViewController*)kj_currentViewController;
+@property(nonatomic,strong,readonly)UIViewController *viewController;
+@property(nonatomic,strong,readonly)UIViewController *topViewController;
 
-/******************  xib中显示的属性 - xib创建的view右上角才有这几个选项 ******************/
+//****************  Xib中显示属性  ******************
 // 注意: 加上IBInspectable就可以可视化显示相关的属性
 /// 圆角边框
 @property (nonatomic,strong)IBInspectable UIColor *borderColor;
 @property (nonatomic,assign)IBInspectable CGFloat borderWidth;
 @property (nonatomic,assign)IBInspectable CGFloat cornerRadius;
 
-/// 阴影 - View默认颜色ClearColor,阴影不会生效
+/// 阴影，备注View默认颜色ClearColor，阴影不会生效
 @property (nonatomic,strong)IBInspectable UIColor *shadowColor;// 阴影颜色
 @property (nonatomic,assign)IBInspectable CGFloat shadowRadius;// 阴影的圆角
 @property (nonatomic,assign)IBInspectable CGFloat shadowOpacity;// 阴影透明度，默认0
