@@ -121,6 +121,7 @@ Github地址：https://github.com/yangKJ
 //#import "NSArray+ElementDeal.h" /// 对数组元素的处理 包括排序、查找、去重等等
 //#import "NSObject+KJMath.h" /// 数学方程式
 //#import "NSObject+KJGeometry.h" /// 几何方程式
+#import "NSObject+KJKVO.h"/// 键值监听封装
 #else
 #endif
 

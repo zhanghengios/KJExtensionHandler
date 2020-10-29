@@ -18,6 +18,7 @@
 		686B01EC2531A641004A779D /* NSMutableDictionary+KJException.m in Sources */ = {isa = PBXBuildFile; fileRef = 686B01EB2531A641004A779D /* NSMutableDictionary+KJException.m */; };
 		686B01F22531B6BA004A779D /* NSMutableString+KJException.m in Sources */ = {isa = PBXBuildFile; fileRef = 686B01F12531B6BA004A779D /* NSMutableString+KJException.m */; };
 		6895B9D62536943700AEEFA1 /* UIResponder+KJAdapt.m in Sources */ = {isa = PBXBuildFile; fileRef = 6895B9D52536943700AEEFA1 /* UIResponder+KJAdapt.m */; };
+		689B947C254A573200E97DEF /* NSObject+KJKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 689B947B254A573200E97DEF /* NSObject+KJKVO.m */; };
 		68AD71BC251D9705000C89C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD71BB251D9705000C89C5 /* AppDelegate.m */; };
 		68AD71BF251D9705000C89C5 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD71BE251D9705000C89C5 /* SceneDelegate.m */; };
 		68AD71C2251D9705000C89C5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD71C1251D9705000C89C5 /* ViewController.m */; };
@@ -150,6 +151,8 @@
 		688C92AD251DCC170095D734 /* KJExtensionHandler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KJExtensionHandler.entitlements; sourceTree = "<group>"; };
 		6895B9D42536943700AEEFA1 /* UIResponder+KJAdapt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIResponder+KJAdapt.h"; sourceTree = "<group>"; };
 		6895B9D52536943700AEEFA1 /* UIResponder+KJAdapt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+KJAdapt.m"; sourceTree = "<group>"; };
+		689B947A254A573200E97DEF /* NSObject+KJKVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+KJKVO.h"; sourceTree = "<group>"; };
+		689B947B254A573200E97DEF /* NSObject+KJKVO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KJKVO.m"; sourceTree = "<group>"; };
 		68AD71B7251D9705000C89C5 /* KJExtensionHandler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KJExtensionHandler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68AD71BA251D9705000C89C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		68AD71BB251D9705000C89C5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -506,6 +509,8 @@
 				68AD726F251D9BB8000C89C5 /* NSObject+KJGeometry.m */,
 				68AD7271251D9BB8000C89C5 /* NSObject+KJMath.h */,
 				68AD7273251D9BB8000C89C5 /* NSObject+KJMath.m */,
+				689B947A254A573200E97DEF /* NSObject+KJKVO.h */,
+				689B947B254A573200E97DEF /* NSObject+KJKVO.m */,
 			);
 			path = NSObject;
 			sourceTree = "<group>";
@@ -999,6 +1004,7 @@
 				68AD7356251D9C75000C89C5 /* KJCollectionVC.m in Sources */,
 				68F3A8702539401E00BCD817 /* NSString+KJPredicate.m in Sources */,
 				68AD735C251D9C75000C89C5 /* KJSliderVC.m in Sources */,
+				689B947C254A573200E97DEF /* NSObject+KJKVO.m in Sources */,
 				68AD7305251D9BB8000C89C5 /* UIView+KJGestureBlock.m in Sources */,
 				68AD72F4251D9BB8000C89C5 /* UILabel+KJCreate.m in Sources */,
 				68F3A889253969FA00BCD817 /* NSObject+KJSignal.m in Sources */,

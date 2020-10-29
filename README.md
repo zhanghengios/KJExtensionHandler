@@ -110,6 +110,7 @@ pod 'KJExtensionHandler/Exception'
 #### Add 0.0.4
 1. 新增 UIView+Toast 快捷显示
 2. 新增 UIResponder+KJChain 响应链处理
+3. 新增 NSObject+KJKVO 键值监听简单封装
 
 #### Add 0.0.3
 1. 新增 UIResponder+KJAdapt 简单的比例适配

@@ -62,6 +62,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIImage*)kj_gaussianImage;
 /// 边缘检测
 - (UIImage*)kj_marginImage;
+/// 边缘检测
+- (UIImage*)kj_edgeDetection;
 
 @end
 
