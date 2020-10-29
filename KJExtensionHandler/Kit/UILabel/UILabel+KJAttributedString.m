@@ -4,7 +4,7 @@
 //
 //  Created by 杨科军 on 2019/4/4.
 //  Copyright © 2019 杨科军. All rights reserved.
-//
+//  https://github.com/yangKJ/KJExtensionHandler
 
 #import "UILabel+KJAttributedString.h"
 
@@ -28,9 +28,7 @@
 }
 
 - (void)kj_AttributedStringTextFont:(UIFont *)font TextColor:(UIColor *)color Range:(NSRange)range{
-    [self kj_AttributedStringTextAttributes:@{NSFontAttributeName:font,
-                                              NSForegroundColorAttributeName:color,
-                                              } Range:range];
+    [self kj_AttributedStringTextAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:color} Range:range];
 }
 
 - (void)kj_AttributedStringTextAttributes:(NSDictionary *)attributes Range:(NSRange)range{
@@ -53,9 +51,7 @@
 
 - (void)kj_AttributedStringTextFont:(UIFont *)font TextColor:(UIColor *)color Loc:(NSInteger)loc Len:(NSInteger)len{
     NSRange range = NSMakeRange(loc, len);
-    [self kj_AttributedStringTextAttributes:@{NSFontAttributeName:font,
-                                              NSForegroundColorAttributeName:color,
-                                              } Range:range];
+    [self kj_AttributedStringTextAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:color} Range:range];
 }
 
 - (void)kj_AttributedStringTextAttributes:(NSDictionary *)attributes Loc:(NSInteger)loc Len:(NSInteger)len{

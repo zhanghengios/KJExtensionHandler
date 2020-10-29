@@ -4,35 +4,32 @@
 //
 //  Created by 杨科军 on 2019/4/4.
 //  Copyright © 2019 杨科军. All rights reserved.
-//
+//  https://github.com/yangKJ/KJExtensionHandler
 
 #import "UIButton+KJBlock.h"
 #import <objc/runtime.h>
 
 @implementation UIButton (KJBlock)
-
-/*********************** Block ************************/
 static char ActionTag;
 /// button 添加点击事件 默认点击方式UIControlEventTouchUpInside
 - (void)kj_addAction:(KJButtonBlock)block {
     objc_setAssociatedObject(self, &ActionTag, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
     [self addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
 }
-
 /// button 添加事件 controlEvents 点击的方式
 - (void)kj_addAction:(KJButtonBlock)block forControlEvents:(UIControlEvents)controlEvents {
     objc_setAssociatedObject(self, &ActionTag, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
     [self addTarget:self action:@selector(action:) forControlEvents:controlEvents];
 }
-
 /// button 事件的响应方法
 - (void)action:(UIButton*)sender {
     KJButtonBlock blockAction = (KJButtonBlock)objc_getAssociatedObject(self, &ActionTag);
     if (blockAction) blockAction(self);
 }
 
-
-+ (void)load {
+#pragma mark - 时间相关方法交换
+/// 是否开启时间间隔的方法交换
++ (void)kj_openTimeExchangeMethod{
     SEL originalSelector = @selector(sendAction:to:forEvent:);
     SEL swizzledSelector = @selector(kj_sendAction:to:forEvent:);
     Class clazz = [self class];
@@ -41,11 +38,10 @@ static char ActionTag;
     BOOL boo = class_addMethod(clazz, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
     if (boo) {
         class_replaceMethod(clazz, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
-    } else {
+    }else {
         method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }
-
 - (NSTimeInterval)kj_AcceptEventTime{
     return [objc_getAssociatedObject(self, @selector(kj_AcceptEventTime)) doubleValue];
 }

@@ -4,7 +4,7 @@
 //
 //  Created by 杨科军 on 2019/6/5.
 //  Copyright © 2019 杨科军. All rights reserved.
-//
+//  https://github.com/yangKJ/KJExtensionHandler
 
 #ifndef _KJMacros_h
 #define _KJMacros_h

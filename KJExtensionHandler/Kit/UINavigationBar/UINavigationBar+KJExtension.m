@@ -16,7 +16,7 @@
 @implementation UINavigationBar (KJExtension)
 
 #pragma mark - associated
-- (UIColor *)kj_BackgroundColor{
+- (UIColor*)kj_BackgroundColor{
     return objc_getAssociatedObject(self, @selector(kj_BackgroundColor));
 }
 - (void)setKj_BackgroundColor:(UIColor *)kj_BackgroundColor{
@@ -30,7 +30,6 @@
     }
     self.kj_view.backgroundColor = kj_BackgroundColor;
 }
-
 - (CGFloat)kj_Alpha{
     return [objc_getAssociatedObject(self, @selector(kj_Alpha)) floatValue];
 }

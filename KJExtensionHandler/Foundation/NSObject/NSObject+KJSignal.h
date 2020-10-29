@@ -3,9 +3,20 @@
 //  KJExtensionHandler
 //
 //  Created by 杨科军 on 2020/10/15.
+//  https://github.com/yangKJ/KJExtensionHandler
 //  信号处理工具
-//  使用方案：
-/*
+
+#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+typedef id _Nullable (^kSignalBlock)(NSString *key, id message, id parameter);
+@interface NSObject (KJSignal)
+/// 发送消息处理
+- (id)kj_sendSignalWithKey:(NSString*)key Message:(id)message Parameter:(id _Nullable)parameter;
+/// 接收消息处理
+- (void)kj_receivedSignalWithSender:(NSObject*)sender SignalBlock:(kSignalBlock)block;
+
+/* 简单使用
  在View当中发送消息
  UIViewController *vc = [NSClassFromString(dic[@"VCName"]) new];
  [self kj_sendSignalWithKey:kHomeViewKey Message:vc Parameter:dic];
@@ -18,17 +29,7 @@
      }
      return nil;
  }];
- 
- */
-#import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
-typedef id _Nullable (^kSignalBlock)(NSString *key, id message, id parameter);
-@interface NSObject (KJSignal)
-/// 发送消息处理
-- (id)kj_sendSignalWithKey:(NSString*)key Message:(id)message Parameter:(id _Nullable)parameter;
-/// 接收消息处理
-- (void)kj_receivedSignalWithSender:(NSObject*)sender SignalBlock:(kSignalBlock)block;
+*/
 
 @end
 

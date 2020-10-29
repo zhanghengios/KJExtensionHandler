@@ -4,6 +4,7 @@
 //
 //  Created by 杨科军 on 2018/12/1.
 //  Copyright © 2018 杨科军. All rights reserved.
+//  https://github.com/yangKJ/KJExtensionHandler
 /* 基于扫描线的泛洪算法，获取填充同颜色区域后的图片
  * 泛洪算法通常有3种实现,四邻域，八邻域和基于扫描线
  * 了解更多泛洪算法可以查看下列链接：

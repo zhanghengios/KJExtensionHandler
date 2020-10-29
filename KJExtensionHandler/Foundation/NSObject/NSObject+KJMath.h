@@ -4,6 +4,7 @@
 //
 //  Created by 杨科军 on 2019/10/31.
 //  Copyright © 2019 杨科军. All rights reserved.
+//  https://github.com/yangKJ/KJExtensionHandler
 //  数学算法方程式
 
 #import <Foundation/Foundation.h>

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		683FA3AD2542A6C50083D806 /* UIDevice+KJSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 683FA3AC2542A6C50083D806 /* UIDevice+KJSystem.m */; };
-		683FA3B72542AA560083D806 /* UIImage+KJBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 683FA3B62542AA560083D806 /* UIImage+KJBlur.m */; };
-		685EA0B52546753200C2C33C /* UIView+KJBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA0B42546753200C2C33C /* UIView+KJBlur.m */; };
 		685EA0BB25467C7200C2C33C /* UIResponder+KJChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA0BA25467C7200C2C33C /* UIResponder+KJChain.m */; };
 		685EA0C32546A2D400C2C33C /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA0C12546A2D400C2C33C /* UIView+Toast.m */; };
 		685EA0C92546A30A00C2C33C /* KJToastVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA0C82546A30A00C2C33C /* KJToastVC.m */; };
@@ -130,10 +128,6 @@
 /* Begin PBXFileReference section */
 		683FA3AB2542A6C50083D806 /* UIDevice+KJSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+KJSystem.h"; sourceTree = "<group>"; };
 		683FA3AC2542A6C50083D806 /* UIDevice+KJSystem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+KJSystem.m"; sourceTree = "<group>"; };
-		683FA3B52542AA560083D806 /* UIImage+KJBlur.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+KJBlur.h"; sourceTree = "<group>"; };
-		683FA3B62542AA560083D806 /* UIImage+KJBlur.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KJBlur.m"; sourceTree = "<group>"; };
-		685EA0B32546753200C2C33C /* UIView+KJBlur.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+KJBlur.h"; sourceTree = "<group>"; };
-		685EA0B42546753200C2C33C /* UIView+KJBlur.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+KJBlur.m"; sourceTree = "<group>"; };
 		685EA0B925467C7200C2C33C /* UIResponder+KJChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIResponder+KJChain.h"; sourceTree = "<group>"; };
 		685EA0BA25467C7200C2C33C /* UIResponder+KJChain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+KJChain.m"; sourceTree = "<group>"; };
 		685EA0C12546A2D400C2C33C /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
@@ -565,8 +559,6 @@
 				68AD7288251D9BB8000C89C5 /* UIImage+KJRemoteSize.m */,
 				68AD7283251D9BB8000C89C5 /* UIImage+KJScale.h */,
 				68AD7279251D9BB8000C89C5 /* UIImage+KJScale.m */,
-				683FA3B52542AA560083D806 /* UIImage+KJBlur.h */,
-				683FA3B62542AA560083D806 /* UIImage+KJBlur.m */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -666,8 +658,6 @@
 				68AD72B8251D9BB8000C89C5 /* UIView+KJRectCorner.m */,
 				68AD72BF251D9BB8000C89C5 /* UIView+KJXib.h */,
 				68AD72B7251D9BB8000C89C5 /* UIView+KJXib.m */,
-				685EA0B32546753200C2C33C /* UIView+KJBlur.h */,
-				685EA0B42546753200C2C33C /* UIView+KJBlur.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -1030,7 +1020,6 @@
 				685EA0C92546A30A00C2C33C /* KJToastVC.m in Sources */,
 				68AD72EC251D9BB8000C89C5 /* UIImage+KJCoreImage.m in Sources */,
 				68AD7370251D9C75000C89C5 /* KJCoreImageVC.m in Sources */,
-				685EA0B52546753200C2C33C /* UIView+KJBlur.m in Sources */,
 				68AD72E8251D9BB8000C89C5 /* UIImage+KJReflection.m in Sources */,
 				68AD72E5251D9BB8000C89C5 /* NSObject+KJMath.m in Sources */,
 				68AD730D251D9BB8000C89C5 /* KJShadowLayer.m in Sources */,
@@ -1039,7 +1028,6 @@
 				68AD71BF251D9705000C89C5 /* SceneDelegate.m in Sources */,
 				68AD72F7251D9BB8000C89C5 /* UIButton+KJCreate.m in Sources */,
 				68AD72FE251D9BB8000C89C5 /* UIColor+KJExtension.m in Sources */,
-				683FA3B72542AA560083D806 /* UIImage+KJBlur.m in Sources */,
 				68AD730E251D9BB8000C89C5 /* CALayer+KJReflection.m in Sources */,
 				68AD7303251D9BB8000C89C5 /* UIView+KJRectCorner.m in Sources */,
 				68AD72E0251D9BB8000C89C5 /* NSArray+KJLog.m in Sources */,

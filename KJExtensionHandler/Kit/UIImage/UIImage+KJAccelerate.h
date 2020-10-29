@@ -4,6 +4,7 @@
 //
 //  Created by 杨科军 on 2020/7/24.
 //  Copyright © 2020 杨科军. All rights reserved.
+//  https://github.com/yangKJ/KJExtensionHandler
 //  Accelerate 框架的图片处理
 //  介绍文档：http://www.invasivecode.com/weblog/ios-image-processing-with-the-accelerate/
 //  官网文档地址：https://developer.apple.com/library/archive/releasenotes/General/iOS10APIDiffs/Objective-C/Accelerate.html

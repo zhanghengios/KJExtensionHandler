@@ -3,15 +3,9 @@
 //  KJExtensionHandler
 //
 //  Created by 杨科军 on 2020/10/14.
+//  https://github.com/yangKJ/KJExtensionHandler
 //  简单的屏幕比例适配
-/*
- 在最初的地方AppDelegate里面调用 [UIResponder kj_adaptModelType:KJAdaptTypeIPhone6];
- 
- 然后在需要适配的地方 替换 CGRectMake 为 KJAdaptRectMake
- view.frame = CGRectMake(0, 0, 10, 10);
- view.frame = KJAdaptRectMake(0, 0, 10, 10);
- 即可完成简单的屏幕比例适配
-*/
+
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -44,6 +38,15 @@ CGSize KJAdaptSizeMake(CGFloat width, CGFloat height);
 CGRect KJAdaptRectMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height);
 /// 适配UIEdgeInsets
 UIEdgeInsets KJAdaptEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
+
+/*
+ 在最初的地方AppDelegate里面调用 [UIResponder kj_adaptModelType:KJAdaptTypeIPhone6];
+ 
+ 然后在需要适配的地方 替换 CGRectMake 为 KJAdaptRectMake
+ view.frame = CGRectMake(0, 0, 10, 10);
+ view.frame = KJAdaptRectMake(0, 0, 10, 10);
+ 即可完成简单的屏幕比例适配
+*/
 
 @end
 

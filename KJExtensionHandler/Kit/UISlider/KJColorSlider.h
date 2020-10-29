@@ -4,6 +4,7 @@
 //
 //  Created by 杨科军 on 2019/8/24.
 //  Copyright © 2020 杨科军. All rights reserved.
+//  https://github.com/yangKJ/KJExtensionHandler
 //  渐变色滑块
 
 #import <UIKit/UIKit.h>
