@@ -17,13 +17,19 @@ IB_DESIGNABLE // 动态刷新 在类名前加上此宏定义，初始化、布�
 + (instancetype)kj_viewFromXib;
 /// Xib创建的View
 + (instancetype)kj_viewFromXibWithFrame:(CGRect)frame;
-/// 判断一个控件是否真正显示在主窗口
-- (BOOL)kj_isShowingOnKeyWindow;
-@property(nonatomic,assign,readonly) BOOL showKeyWindow;
+
 /// 当前的控制器
 - (UIViewController*)kj_currentViewController;
 @property(nonatomic,strong,readonly)UIViewController *viewController;
 @property(nonatomic,strong,readonly)UIViewController *topViewController;
+
+/// 判断一个控件是否真正显示在主窗口
+- (BOOL)kj_isShowingOnKeyWindow;
+@property(nonatomic,assign,readonly) BOOL showKeyWindow;
+/// 判断是否有子视图在滚动
+- (BOOL)kj_anySubViewScrolling;
+@property(nonatomic,assign,readonly) BOOL anySubViewScrolling;
+
 
 //****************  Xib中显示属性  ******************
 // 注意: 加上IBInspectable就可以可视化显示相关的属性

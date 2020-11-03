@@ -137,7 +137,7 @@
     UIImage *newImage = [UIImage imageWithCIImage:outputImage];
     return newImage;
 }
-/**
+/*
 将定向聚光灯效果应用于图像（射灯）
 LightPosition：光源位置（三维坐标）
 LightPointsAt：光点（三维坐标）

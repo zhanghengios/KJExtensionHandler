@@ -119,5 +119,19 @@
             return NO;
     }
 }
+/// 随机汉字
++ (NSString*)kj_randomCreatChinese:(NSInteger)count{
+    NSMutableString *randomChineseString =@"".mutableCopy;
+    for (NSInteger i=0; i < count; i++){
+        NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        NSInteger randomH = 0xA1+arc4random()%(0xFE - 0xA1+1);
+        NSInteger randomL = 0xB0+arc4random()%(0xF7 - 0xB0+1);
+        NSInteger number = (randomH<<8)+randomL;
+        NSData *data = [NSData dataWithBytes:&number length:2];
+        NSString *string = [[NSString alloc]initWithData:data encoding:gbkEncoding];
+        [randomChineseString appendString:string];
+    }
+    return randomChineseString.mutableCopy;
+}
 
 @end

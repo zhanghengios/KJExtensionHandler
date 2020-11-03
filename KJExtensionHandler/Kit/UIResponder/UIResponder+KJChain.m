@@ -6,8 +6,8 @@
 //  https://github.com/yangKJ/KJExtensionHandler
 
 #import "UIResponder+KJChain.h"
-static __weak id currentFirstResponder;
 @implementation UIResponder (KJChain)
+static __weak id currentFirstResponder;
 - (NSString*)kChainDescription{
     NSMutableArray *temps = [NSMutableArray array];
     [temps addObject:[self class]];

@@ -36,6 +36,7 @@ typedef struct KJColorHSL {
 - (KJColorHSL)kj_colorGetHSL;
 /// 获取颜色的均值
 + (UIColor*)kj_averageColors:(NSArray<UIColor*>*)colors;
+
 @end
 
 NS_ASSUME_NONNULL_END

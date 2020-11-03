@@ -47,6 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 寻找子视图
 - (UIView*)kj_FindSubviewRecursively:(BOOL(^)(UIView *subview, BOOL * stop))recurse;
+/// 移除所有子视图
+- (void)kj_removeAllSubviews;
 
 @end
+
 NS_ASSUME_NONNULL_END

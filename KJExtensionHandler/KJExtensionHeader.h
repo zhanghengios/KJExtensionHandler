@@ -4,6 +4,7 @@
 //
 //  Created by 杨科军 on 2018/11/26.
 //  Copyright © 2018 杨科军. All rights reserved.
+//  https://github.com/yangKJ/KJExtensionHandler
 //  从原先的KJEmitterView库当中分离出来的扩展工具库
 /*
 *********************************************************************************
@@ -98,7 +99,7 @@ Github地址：https://github.com/yangKJ
 #import "UIImage+KJPhotoshop.h"
 //#import "UIImage+KJFloodFill.h" /// 图片泛洪算法
 //#import "UIImage+KJFilter.h"    /// 处理图片滤镜，渲染相关
-//#import "UIImage+KJRemoteSize.h" /// 获取网络图片尺寸
+//#import "UIImage+KJURLSize.h" /// 获取网络图片尺寸
 
 #import "UIViewController+KJFullScreen.h" /// 充满全屏处理
 
@@ -112,24 +113,26 @@ Github地址：https://github.com/yangKJ
 
 #import "UIResponder+KJAdapt.h" /// 简单的比例适配
 
+
 //************************************* Foundation 相关扩展 *****************************************
 // 需要引入，请使用 pod 'KJExtensionHandler/Foundation'
-#if __has_include("NSObject+KJSignal.h")
-#import "NSObject+KJSignal.h" /// 信号方式解耦工具
-//#import "NSString+KJPredicate.h"
-//#import "NSArray+KJPredicate.h" /// 谓词工具
-//#import "NSArray+ElementDeal.h" /// 对数组元素的处理 包括排序、查找、去重等等
-//#import "NSObject+KJMath.h" /// 数学方程式
-//#import "NSObject+KJGeometry.h" /// 几何方程式
-#import "NSObject+KJKVO.h"/// 键值监听封装
+#if __has_include(<KJExtensionHandler/KJFoundartionHeader.h>)
+#import <KJExtensionHandler/KJFoundartionHeader.h>
+#elif __has_include("KJFoundartionHeader.h")
+#import "KJFoundartionHeader.h"
 #else
+@import KJFoundartionHeader;
 #endif
+
 
 //************************************* Exception 异常处理 *****************************************
 // 需要引入，请使用 pod 'KJExtensionHandler/Exception'
-#if __has_include("KJExceptionTool.h")
-#import "KJExceptionTool.h" /// 异常捕获处理
+#if __has_include(<KJExtensionHandler/KJExceptionTool.h>)
+#import <KJExtensionHandler/KJExceptionTool.h>
+#elif __has_include("KJExceptionTool.h")
+#import "KJExceptionTool.h"/// 异常捕获处理
 #else
+@import KJExceptionTool;
 #endif
 
 #endif /* KJExtensionHeader_h */

@@ -107,6 +107,12 @@ pod 'KJExtensionHandler/Exception'
 #### <a id="更新日志"></a>更新日志
 ```
 ####版本更新日志:
+#### Add 0.0.5
+1. NSString+KJPredicate 新增随机汉字 kj_randomCreatChinese
+2. UIView+KJXib 新增判断是否有子视图在滚动 anySubViewScrolling
+3. UIView+KJFrame 新增移除所有子视图 kj_removeAllSubviews
+
+
 #### Add 0.0.4
 1. 新增 UIView+Toast 快捷显示
 2. 新增 UIResponder+KJChain 响应链处理

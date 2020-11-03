@@ -39,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage*)kj_captureOuterImage:(UIImage*)image BezierPath:(UIBezierPath*)path Rect:(CGRect)rect;
 /// 图片路径裁剪，裁剪路径 "以内" 部分
 + (UIImage*)kj_captureInnerImage:(UIImage*)image BezierPath:(UIBezierPath*)path Rect:(CGRect)rect;
+
 @end
 
 NS_ASSUME_NONNULL_END

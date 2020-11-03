@@ -28,8 +28,8 @@
 }
 
 - (void)kj_presentViewController:(UIViewController*)vc animated:(BOOL)animated completion:(void(^)(void))completion{
-    if (@available(iOS 13.0, *)) {
-        vc.modalPresentationStyle = UIModalPresentationOverFullScreen;/// 充满全屏
+    if (@available(iOS 13.0, *) && ![vc isKindOfClass:[UISearchController class]]) {
+        vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
     }
     [self kj_presentViewController:vc animated:animated completion:completion];
 }

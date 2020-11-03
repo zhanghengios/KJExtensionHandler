@@ -4,7 +4,7 @@
 //
 //  Created by 杨科军 on 2020/7/25.
 //  Copyright © 2020 杨科军. All rights reserved.
-//  https://github.com/yangKJ/KJExtensionHandler
+//  
 
 #import "UIImage+KJReflection.h"
 
@@ -38,7 +38,12 @@ CGImageRef CreateGradientImage (int pixelsWide, int pixelsHigh, CGFloat endPoint
   
 static CGContextRef MyCreateBitmapContext (int pixelsWide, int pixelsHigh) {
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef bitmapContext = CGBitmapContextCreate (NULL, pixelsWide, pixelsHigh, 8, 0, colorSpace, (kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst));
+    CGContextRef bitmapContext = CGBitmapContextCreate(NULL,
+                                                       pixelsWide,
+                                                       pixelsHigh,
+                                                       8,0,
+                                                       colorSpace,
+                                                       (kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst));
     CGColorSpaceRelease(colorSpace);
     return bitmapContext;
 }

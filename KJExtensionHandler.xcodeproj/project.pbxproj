@@ -45,7 +45,7 @@
 		68AD72EB251D9BB8000C89C5 /* UIImage+KJMask.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7284251D9BB8000C89C5 /* UIImage+KJMask.m */; };
 		68AD72EC251D9BB8000C89C5 /* UIImage+KJCoreImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7285251D9BB8000C89C5 /* UIImage+KJCoreImage.m */; };
 		68AD72ED251D9BB8000C89C5 /* UIImage+KJFloodFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7287251D9BB8000C89C5 /* UIImage+KJFloodFill.m */; };
-		68AD72EE251D9BB8000C89C5 /* UIImage+KJRemoteSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7288251D9BB8000C89C5 /* UIImage+KJRemoteSize.m */; };
+		68AD72EE251D9BB8000C89C5 /* UIImage+KJURLSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7288251D9BB8000C89C5 /* UIImage+KJURLSize.m */; };
 		68AD72EF251D9BB8000C89C5 /* UIImage+KJAccelerate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD7289251D9BB8000C89C5 /* UIImage+KJAccelerate.m */; };
 		68AD72F0251D9BB8000C89C5 /* UIImage+KJCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD728B251D9BB8000C89C5 /* UIImage+KJCapture.m */; };
 		68AD72F1251D9BB8000C89C5 /* UIScrollView+KJGestureConflict.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AD728E251D9BB8000C89C5 /* UIScrollView+KJGestureConflict.m */; };
@@ -106,6 +106,7 @@
 		68F3A889253969FA00BCD817 /* NSObject+KJSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3A888253969FA00BCD817 /* NSObject+KJSignal.m */; };
 		68F3A8A12539739A00BCD817 /* KJHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3A8A02539739A00BCD817 /* KJHomeView.m */; };
 		68F3A8AA253973AF00BCD817 /* KJHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F3A8A9253973AF00BCD817 /* KJHomeModel.m */; };
+		68FFFC78254FEAA300B2E9E3 /* UIBezierPath+KJPoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FFFC76254FEAA300B2E9E3 /* UIBezierPath+KJPoints.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		681B8075254BC37000AE3968 /* KJFoundartionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KJFoundartionHeader.h; sourceTree = "<group>"; };
 		683FA3AB2542A6C50083D806 /* UIDevice+KJSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+KJSystem.h"; sourceTree = "<group>"; };
 		683FA3AC2542A6C50083D806 /* UIDevice+KJSystem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+KJSystem.m"; sourceTree = "<group>"; };
 		685EA0B925467C7200C2C33C /* UIResponder+KJChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIResponder+KJChain.h"; sourceTree = "<group>"; };
@@ -194,7 +196,7 @@
 		68AD727B251D9BB8000C89C5 /* UIImage+KJCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KJCapture.h"; sourceTree = "<group>"; };
 		68AD727C251D9BB8000C89C5 /* UIImage+KJAccelerate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KJAccelerate.h"; sourceTree = "<group>"; };
 		68AD727D251D9BB8000C89C5 /* UIImage+KJFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KJFilter.m"; sourceTree = "<group>"; };
-		68AD727E251D9BB8000C89C5 /* UIImage+KJRemoteSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KJRemoteSize.h"; sourceTree = "<group>"; };
+		68AD727E251D9BB8000C89C5 /* UIImage+KJURLSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KJURLSize.h"; sourceTree = "<group>"; };
 		68AD727F251D9BB8000C89C5 /* UIImage+KJFloodFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KJFloodFill.h"; sourceTree = "<group>"; };
 		68AD7280251D9BB8000C89C5 /* UIImage+KJCoreImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KJCoreImage.h"; sourceTree = "<group>"; };
 		68AD7281251D9BB8000C89C5 /* UIImage+KJCompress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KJCompress.m"; sourceTree = "<group>"; };
@@ -204,7 +206,7 @@
 		68AD7285251D9BB8000C89C5 /* UIImage+KJCoreImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KJCoreImage.m"; sourceTree = "<group>"; };
 		68AD7286251D9BB8000C89C5 /* UIImage+KJCompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KJCompress.h"; sourceTree = "<group>"; };
 		68AD7287251D9BB8000C89C5 /* UIImage+KJFloodFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KJFloodFill.m"; sourceTree = "<group>"; };
-		68AD7288251D9BB8000C89C5 /* UIImage+KJRemoteSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KJRemoteSize.m"; sourceTree = "<group>"; };
+		68AD7288251D9BB8000C89C5 /* UIImage+KJURLSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KJURLSize.m"; sourceTree = "<group>"; };
 		68AD7289251D9BB8000C89C5 /* UIImage+KJAccelerate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KJAccelerate.m"; sourceTree = "<group>"; };
 		68AD728A251D9BB8000C89C5 /* UIImage+KJFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KJFilter.h"; sourceTree = "<group>"; };
 		68AD728B251D9BB8000C89C5 /* UIImage+KJCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KJCapture.m"; sourceTree = "<group>"; };
@@ -319,6 +321,8 @@
 		68F3A8A02539739A00BCD817 /* KJHomeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KJHomeView.m; sourceTree = "<group>"; };
 		68F3A8A8253973AF00BCD817 /* KJHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KJHomeModel.h; sourceTree = "<group>"; };
 		68F3A8A9253973AF00BCD817 /* KJHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KJHomeModel.m; sourceTree = "<group>"; };
+		68FFFC76254FEAA300B2E9E3 /* UIBezierPath+KJPoints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+KJPoints.m"; sourceTree = "<group>"; };
+		68FFFC77254FEAA300B2E9E3 /* UIBezierPath+KJPoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+KJPoints.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +468,7 @@
 		68AD725E251D9BB8000C89C5 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				681B8075254BC37000AE3968 /* KJFoundartionHeader.h */,
 				68F3A86D25393FE600BCD817 /* NSString */,
 				68AD725F251D9BB8000C89C5 /* NSDictionary */,
 				68AD7267251D9BB8000C89C5 /* NSArray */,
@@ -512,6 +517,7 @@
 		68AD7275251D9BB8000C89C5 /* Kit */ = {
 			isa = PBXGroup;
 			children = (
+				68FFFC75254FEA8E00B2E9E3 /* UIBezierPath */,
 				683FA3AA2542A69B0083D806 /* UIDevice */,
 				6895B9D32536941F00AEEFA1 /* UIResponder */,
 				68AD72D3251D9BB8000C89C5 /* CALayer */,
@@ -555,8 +561,8 @@
 				68AD7277251D9BB8000C89C5 /* UIImage+KJPhotoshop.m */,
 				68AD728C251D9BB8000C89C5 /* UIImage+KJReflection.h */,
 				68AD727A251D9BB8000C89C5 /* UIImage+KJReflection.m */,
-				68AD727E251D9BB8000C89C5 /* UIImage+KJRemoteSize.h */,
-				68AD7288251D9BB8000C89C5 /* UIImage+KJRemoteSize.m */,
+				68AD727E251D9BB8000C89C5 /* UIImage+KJURLSize.h */,
+				68AD7288251D9BB8000C89C5 /* UIImage+KJURLSize.m */,
 				68AD7283251D9BB8000C89C5 /* UIImage+KJScale.h */,
 				68AD7279251D9BB8000C89C5 /* UIImage+KJScale.m */,
 			);
@@ -809,6 +815,15 @@
 			path = NSString;
 			sourceTree = "<group>";
 		};
+		68FFFC75254FEA8E00B2E9E3 /* UIBezierPath */ = {
+			isa = PBXGroup;
+			children = (
+				68FFFC77254FEAA300B2E9E3 /* UIBezierPath+KJPoints.h */,
+				68FFFC76254FEAA300B2E9E3 /* UIBezierPath+KJPoints.m */,
+			);
+			path = UIBezierPath;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -871,7 +886,7 @@
 		68AD71AF251D9705000C89C5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					68AD71B6251D9705000C89C5 = {
 						CreatedOnToolsVersion = 12.0;
@@ -957,7 +972,7 @@
 				68AD72E6251D9BB8000C89C5 /* UIImage+KJPhotoshop.m in Sources */,
 				68AD7372251D9C75000C89C5 /* KJFilterImageVC.m in Sources */,
 				685EA0BB25467C7200C2C33C /* UIResponder+KJChain.m in Sources */,
-				68AD72EE251D9BB8000C89C5 /* UIImage+KJRemoteSize.m in Sources */,
+				68AD72EE251D9BB8000C89C5 /* UIImage+KJURLSize.m in Sources */,
 				68AD72E9251D9BB8000C89C5 /* UIImage+KJFilter.m in Sources */,
 				68AD7308251D9BB8000C89C5 /* UITextView+KJPlaceHolder.m in Sources */,
 				68AD72DE251D9BB8000C89C5 /* NSDictionary+KJLog.m in Sources */,
@@ -976,6 +991,7 @@
 				68F3A8AA253973AF00BCD817 /* KJHomeModel.m in Sources */,
 				68AD72F5251D9BB8000C89C5 /* UILabel+KJAttributedString.m in Sources */,
 				68AD735A251D9C75000C89C5 /* KJMathVC.m in Sources */,
+				68FFFC78254FEAA300B2E9E3 /* UIBezierPath+KJPoints.m in Sources */,
 				68AD72E7251D9BB8000C89C5 /* UIImage+KJScale.m in Sources */,
 				68AD72DD251D9BB8000C89C5 /* NSDictionary+KJException.m in Sources */,
 				68AD730C251D9BB8000C89C5 /* UIViewController+KJFullScreen.m in Sources */,
@@ -1137,7 +1153,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1190,7 +1206,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

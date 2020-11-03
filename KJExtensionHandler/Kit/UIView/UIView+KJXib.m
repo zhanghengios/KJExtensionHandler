@@ -29,6 +29,24 @@
 - (BOOL)showKeyWindow{
     return [self kj_isShowingOnKeyWindow];
 }
+/// 判断是否有子视图在滚动
+- (BOOL)kj_anySubViewScrolling{
+    if ([self isKindOfClass:[UIScrollView class]]) {
+        UIScrollView *scrollView = (UIScrollView*)self;
+        if (scrollView.dragging || scrollView.decelerating) {
+            return YES;
+        }
+    }
+    for (UIView *subview in self.subviews) {
+        if ([subview kj_anySubViewScrolling]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+- (BOOL)anySubViewScrolling{
+    return [self kj_anySubViewScrolling];
+}
 /// 当前的控制器
 - (UIViewController*)kj_currentViewController{
     UIResponder *responder = self.nextResponder;

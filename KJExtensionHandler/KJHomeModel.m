@@ -30,8 +30,8 @@
         [temp1 addObject:@{@"VCName":@"KJViewVC",@"describeName":@"View快速切圆角"}];
         [temp1 addObject:@{@"VCName":@"KJSliderVC",@"describeName":@"Slider渐变色滑块"}];
         [temp1 addObject:@{@"VCName":@"KJTextViewVC",@"describeName":@"TextView设置限制字数"}];
-        [temp1 addObject:@{@"VCName":@"KJFloodImageVC",@"describeName":@"填充同颜色区域图片"}];
-        [temp1 addObject:@{@"VCName":@"KJImageVC",@"describeName":@"加水印和拼接图片"}];
+        [temp1 addObject:@{@"VCName":@"KJFloodImageVC",@"describeName":@"Image填充同颜色区域"}];
+        [temp1 addObject:@{@"VCName":@"KJImageVC",@"describeName":@"Image加水印和拼接"}];
         [temp1 addObject:@{@"VCName":@"KJToastVC",@"describeName":@"Toast处理"}];
         
         NSMutableArray *temp2 = [NSMutableArray array];

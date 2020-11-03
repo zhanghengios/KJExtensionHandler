@@ -10,7 +10,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (KJScale)
-
 #pragma mark - 图片尺寸处理
 /// 通过比例来缩放图片
 - (UIImage*)kj_scaleImage:(CGFloat)scale;
@@ -24,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIImage*)kj_zoomImageWithMaxSize:(CGSize)size;
 /// 不拉升填充图片
 - (UIImage*)kj_fitImageWithSize:(CGSize)size;
+
 @end
 
 NS_ASSUME_NONNULL_END

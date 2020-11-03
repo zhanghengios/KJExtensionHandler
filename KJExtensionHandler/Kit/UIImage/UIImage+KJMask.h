@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (bool)kj_transparentWithPoint:(CGPoint)point;
 /// 文字转图片
 + (UIImage*)kj_imageFromText:(NSArray*)contents ContentWidth:(CGFloat)width Font:(UIFont*)font TextColor:(UIColor*)textColor BgColor:(UIColor*_Nullable)bgColor;
+
 @end
 
 NS_ASSUME_NONNULL_END

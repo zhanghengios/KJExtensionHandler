@@ -7,7 +7,6 @@
 //  https://github.com/yangKJ/KJExtensionHandler
 
 #import "UIImage+KJPhotoshop.h"
-#import <objc/runtime.h>
 
 @implementation UIImage (KJPhotoshop)
 /// 获取图片平均颜色

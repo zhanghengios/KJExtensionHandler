@@ -147,5 +147,12 @@
     }
     return nil;
 }
+/// 移除所有子视图
+- (void)kj_removeAllSubviews{
+    while (self.subviews.count) {
+        UIView * child = self.subviews.lastObject;
+        [child removeFromSuperview];
+    }
+}
 
 @end

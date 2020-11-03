@@ -19,11 +19,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view addSubview:self.collectView];
-    [self.view addSubview:self.imageView];
-    UILabel *label = [UILabel kj_createLabelWithText:@"核心就是解决左右滚动和上下滑动冲突处理" FontSize:15 TextColor:UIColor.blueColor];
+    UILabel *label = [UILabel kj_createLabelWithText:@"核心就是解决左右滚动和上下滑动冲突处理" FontSize:16 TextColor:UIColor.orangeColor];
     label.centerX = self.view.centerX;
-    label.centerY = 100;
+    label.centerY = self.collectView.y - 50;
     [self.view addSubview:label];
+    [self.view addSubview:self.imageView];
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView{
     return 1;
@@ -45,7 +45,7 @@
 }
 - (UIImageView*)imageView{
     if (!_imageView) {
-        _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+        _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
         _imageView.hidden = YES;
         _imageView.layer.borderWidth = 2.;

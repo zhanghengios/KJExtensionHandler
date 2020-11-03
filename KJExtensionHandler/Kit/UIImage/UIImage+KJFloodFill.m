@@ -4,21 +4,18 @@
 //
 //  Created by 杨科军 on 2018/12/1.
 //  Copyright © 2018 杨科军. All rights reserved.
-//  https://github.com/yangKJ/KJExtensionHandler
+//  
 
 #import "UIImage+KJFloodFill.h"
 
-
-/*****************************  栈操作 KJLinkedListQueue *****************************/
+/* ***************************  栈操作 KJLinkedListQueue *****************************/
 
 #define INVALID_NODE_CONTENT INT_MIN
 typedef struct PointNode {
     NSInteger value;
     NSInteger nextNodeOffset;
 }PointNode;
-
 @interface KJLinkedListQueue : NSObject
-
 /// 初始化
 - (instancetype)initWithCapacity:(NSInteger)capacity cacheSizeIncrements:(NSInteger)increments multiplier:(NSInteger)multiplier;
 // 入栈
@@ -28,23 +25,18 @@ typedef struct PointNode {
 
 @end
 
-static const int8_t kFinallyNodeOffset = -1;
-
 @interface KJLinkedListQueue(){
-    // 存放数据
     NSMutableData *_nodeCache;
     NSInteger _topNodeOffset, _freeNodeOffset;
-    // 每次缓存大小增量
     NSInteger _cacheSizeIncrements, _multiplier;
 }
 @end
 
 @implementation KJLinkedListQueue
-
+static const int8_t kFinallyNodeOffset = -1;
 - (instancetype)init {
     return [self initWithCapacity:500 cacheSizeIncrements:500 multiplier:1000];
 }
-
 - (instancetype)initWithCapacity:(NSInteger)capacity cacheSizeIncrements:(NSInteger)increments multiplier: (NSInteger)multiplier {
     if (self == [super init]) {
         _nodeCache = [NSMutableData dataWithLength:capacity * sizeof(PointNode)];
@@ -71,18 +63,15 @@ static const int8_t kFinallyNodeOffset = -1;
     NSInteger nextNodeOffset = topNode->nextNodeOffset;
     *x = value / _multiplier;
     *y = value % _multiplier;
-    
-    // reset
     topNode->value = 0;
     topNode->nextNodeOffset = _freeNodeOffset;
     _freeNodeOffset = _topNodeOffset;
     _topNodeOffset = nextNodeOffset;
-    
     return value;
 }
 
 #pragma mark - Private
-- (PointNode *)nodeOfOffset:(NSInteger)offset {
+- (PointNode*)nodeOfOffset:(NSInteger)offset {
     return (PointNode *)_nodeCache.mutableBytes + offset;
 }
 
@@ -90,7 +79,7 @@ static const int8_t kFinallyNodeOffset = -1;
     return node - (PointNode *)_nodeCache.mutableBytes;
 }
 
-- (PointNode *)nextFreeNode {
+- (PointNode*)nextFreeNode {
     if (_freeNodeOffset < 0) {
         [_nodeCache increaseLengthBy:_cacheSizeIncrements * sizeof(PointNode)];
         _freeNodeOffset = _topNodeOffset + 1;
@@ -100,7 +89,6 @@ static const int8_t kFinallyNodeOffset = -1;
     _freeNodeOffset = node->nextNodeOffset;
     return node;
 }
-
 /// 初始化节点
 - (void)initialiseNodeWithCount:(NSInteger)count {
     PointNode *node = (PointNode *)_nodeCache.mutableBytes + _freeNodeOffset;
@@ -115,20 +103,11 @@ static const int8_t kFinallyNodeOffset = -1;
 
 @end
 
-/*****************************  栈操作 KJLinkedListQueue *****************************/
-
-
-
-
-
-
-
+/* ***************************  栈操作 KJLinkedListQueue *****************************/
 
 
 @implementation UIImage (KJFloodFill)
-
-/**
- 基于扫描线的泛洪算法，获取填充同颜色区域后的图片
+/* 基于扫描线的泛洪算法，获取填充同颜色区域后的图片
  @param startPoint 相对于图片的起点
  @param newColor    填充的颜色
  @param tolerance  判断相邻颜色相同的容差值
@@ -137,8 +116,6 @@ static const int8_t kFinallyNodeOffset = -1;
  */
 - (UIImage *)kj_FloodFillImageFromStartPoint:(CGPoint)startPoint NewColor:(UIColor*)newColor Tolerance: (CGFloat)tolerance UseAntialias:(BOOL)antialias {
     if (!self.CGImage || !newColor) return self;
-    
-    // 将图片转为位图，获取像素信息
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGImageRef imageRef = self.CGImage;
     NSUInteger width = CGImageGetWidth(imageRef);
@@ -151,7 +128,6 @@ static const int8_t kFinallyNodeOffset = -1;
     if (kCGImageAlphaLast == (uint32_t)bitmapInfo || kCGImageAlphaFirst == (uint32_t)bitmapInfo){
         bitmapInfo = (uint32_t)kCGImageAlphaPremultipliedLast;
     }
-
     CGContextRef context = CGBitmapContextCreate(imageData,
                                                  width,
                                                  height,
@@ -160,20 +136,17 @@ static const int8_t kFinallyNodeOffset = -1;
                                                  colorSpace,
                                                  bitmapInfo);
     CGColorSpaceRelease(colorSpace);
-    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef); // 解码
-    
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
     // 获取开始的点
     NSUInteger byteIndex = roundf(startPoint.x) * bytesPerPixel + roundf(startPoint.y) * bytesPerRow;
     NSUInteger statrColor = getColorCode(byteIndex, imageData);
-    //if (compareColor(statrColor, 0, 0)) return self;
-    
     // 将UIColor转为RGBA值
     NSUInteger red, green, blue, alpha = 0;
     const CGFloat *components = CGColorGetComponents(newColor.CGColor);
     if (CGColorGetNumberOfComponents(newColor.CGColor) == 2) {
         red = green = blue  = components[0] * 255;
         alpha = components[1] * 255;
-    } else {
+    }else {
         red = components[0] * 255;
         green = components[1] * 255;
         blue = components[2] * 255;
@@ -288,7 +261,6 @@ static NSUInteger getColorCode(NSUInteger byteIndex, unsigned char *imageData) {
 /// 对比两种颜色是否在容差内
 static BOOL compareColor(NSUInteger color1, NSUInteger color2, NSInteger tolerance) {
     if(color1 == color2) return true;
-    
     NSInteger red1   = ((0xff000000 & color1) >> 24);
     NSInteger green1 = ((0x00ff0000 & color1) >> 16);
     NSInteger blue1  = ((0x0000ff00 & color1) >> 8);
@@ -304,10 +276,7 @@ static BOOL compareColor(NSUInteger color1, NSUInteger color2, NSInteger toleran
     NSInteger diffBlue  = labs(blue2  - blue1);
     NSInteger diffAlpha = labs(alpha2 - alpha1);
     
-    if(diffRed   > tolerance ||
-       diffGreen > tolerance ||
-       diffBlue  > tolerance ||
-       diffAlpha > tolerance){
+    if (diffRed > tolerance || diffGreen > tolerance || diffBlue > tolerance || diffAlpha > tolerance){
         return false;
     }
     return true;
