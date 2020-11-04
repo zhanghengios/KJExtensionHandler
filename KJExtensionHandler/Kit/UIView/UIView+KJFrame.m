@@ -154,5 +154,23 @@
         [child removeFromSuperview];
     }
 }
+/// 移动时刻显示阴影效果
+- (void)kj_movingShadow{
+    static float step = 0.0;
+    if (step>20.0) step = 0.0;
+    self.layer.shadowOpacity = 0.4;
+    self.layer.shadowRadius = 1.5;
+    self.layer.shadowOffset = CGSizeMake(0, 0);
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    CGPoint p1 = CGPointMake(0.0, 0.0+self.frame.size.height);
+    CGPoint p2 = CGPointMake(0.0+self.frame.size.width, p1.y);
+    CGPoint c1 = CGPointMake((p1.x+p2.x)/4 , p1.y+step);
+    CGPoint c2 = CGPointMake(c1.x*3, c1.y);
+    [path moveToPoint:p1];
+    [path addCurveToPoint:p2 controlPoint1:c1 controlPoint2:c2];
+    self.layer.shadowPath = path.CGPath;
+    step += 0.1;
+    [self performSelector:@selector(kj_movingShadow) withObject:nil afterDelay:1.0/30.0];
+}
 
 @end

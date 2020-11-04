@@ -18,5 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong)NSString *kj_placeHolder;
 /// 占位符Label
 @property(nonatomic,strong,readonly)UILabel *kj_placeHolderLabel;
+
 @end
+
 NS_ASSUME_NONNULL_END

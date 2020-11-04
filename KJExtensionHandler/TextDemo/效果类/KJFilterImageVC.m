@@ -7,7 +7,6 @@
 //
 
 #import "KJFilterImageVC.h"
-#import "UIImage+KJFilter.h"
 
 @interface KJFilterImageVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *Image;

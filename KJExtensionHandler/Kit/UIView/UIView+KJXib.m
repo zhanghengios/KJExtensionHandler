@@ -91,8 +91,18 @@
 }
 
 /// Xib中显示的属性
+@dynamic viewImage;
 @dynamic borderColor,borderWidth,cornerRadius;
 @dynamic shadowColor,shadowRadius,shadowOffset,shadowOpacity;
+- (void)setViewImage:(UIImage*)viewImage{
+    if (viewImage) {
+        CALayer *topLayer = [[CALayer alloc]init];
+        [topLayer setBounds:self.bounds];
+        [topLayer setPosition:CGPointMake(self.bounds.size.width*.5, self.bounds.size.height*.5)];
+        [topLayer setContents:(id)viewImage.CGImage];
+        [self.layer addSublayer:topLayer];
+    }
+}
 - (void)setBorderColor:(UIColor*)borderColor {
     [self.layer setBorderColor:borderColor.CGColor];
 }

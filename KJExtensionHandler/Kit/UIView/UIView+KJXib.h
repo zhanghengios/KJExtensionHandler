@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-IB_DESIGNABLE // 动态刷新 在类名前加上此宏定义，初始化、布置和绘制方法将被用来在画布上渲染该类的自定义视图
+IB_DESIGNABLE // 动态刷新 在类名前加上此宏定义，初始化布置和绘制方法将被用来在画布上渲染该类的自定义视图
 @interface UIView (KJXib)
 
 /// Xib创建的View
@@ -31,18 +31,20 @@ IB_DESIGNABLE // 动态刷新 在类名前加上此宏定义，初始化、布�
 @property(nonatomic,assign,readonly) BOOL anySubViewScrolling;
 
 
-//****************  Xib中显示属性  ******************
-// 注意: 加上IBInspectable就可以可视化显示相关的属性
-/// 圆角边框
-@property (nonatomic,strong)IBInspectable UIColor *borderColor;
-@property (nonatomic,assign)IBInspectable CGFloat borderWidth;
-@property (nonatomic,assign)IBInspectable CGFloat cornerRadius;
+//*********  Xib中显示属性 IBInspectable就可以可视化显示相关的属性  ***********
+/// 图片属性，备注这个会覆盖掉UIImageView上面设置的image
+@property(nonatomic,strong)IBInspectable UIImage *viewImage;
 
-/// 阴影，备注View默认颜色ClearColor，阴影不会生效
-@property (nonatomic,strong)IBInspectable UIColor *shadowColor;// 阴影颜色
-@property (nonatomic,assign)IBInspectable CGFloat shadowRadius;// 阴影的圆角
-@property (nonatomic,assign)IBInspectable CGFloat shadowOpacity;// 阴影透明度，默认0
-@property (nonatomic,assign)IBInspectable CGSize shadowOffset;// 阴影偏移量
+/// 圆角边框
+@property(nonatomic,strong)IBInspectable UIColor *borderColor;
+@property(nonatomic,assign)IBInspectable CGFloat borderWidth;
+@property(nonatomic,assign)IBInspectable CGFloat cornerRadius;
+
+/// 阴影，备注View默认颜色ClearColor时阴影不会生效
+@property(nonatomic,strong)IBInspectable UIColor *shadowColor;// 阴影颜色
+@property(nonatomic,assign)IBInspectable CGFloat shadowRadius;// 阴影的圆角
+@property(nonatomic,assign)IBInspectable CGFloat shadowOpacity;// 阴影透明度，默认0
+@property(nonatomic,assign)IBInspectable CGSize shadowOffset;// 阴影偏移量
 
 @end
 

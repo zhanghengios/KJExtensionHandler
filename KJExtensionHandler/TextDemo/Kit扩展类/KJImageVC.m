@@ -22,12 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+      
+    /// 开启时间间隔的方法交换
+    [UIButton kj_openTimeExchangeMethod];
     
     _weakself;
     self.Button.kj_AcceptEventTime = 3;
     [self.Button kj_addAction:^(UIButton * _Nonnull kButton) {
-        UIImage *textImage = [UIImage kj_imageFromText:@[@"水印文字"] ContentWidth:weakself.Image1.size.width Font:[UIFont systemFontOfSize:50] TextColor:UIColor.redColor BgColor:nil];
-        UIImage *image = [weakself.Image1.image kj_waterMark:textImage InRect:CGRectMake(0, weakself.Image1.size.height-50, weakself.Image1.size.width, 50)];
+        UIImage *image = [weakself.Image1.image kj_waterMark:weakself.Image2.image InRect:CGRectMake(0, 0, weakself.Image1.image.size.width/4., weakself.Image1.image.size.width/4.)];
         weakself.ImageView.image = image;
     }];
     self.Button2.kj_AcceptDealTime = 5;
@@ -38,7 +40,7 @@
         /// 旋转图片
         UIImage *image = [weakself.Image2.image kj_rotateInRadians:M_PI];
         /// 拼接图片
-        weakself.ImageView2.image = [weakself.Image1.image kj_jointImageWithHeadImage:img FootImage:image];
+        weakself.ImageView2.image = [weakself.Image1.image kj_moreJointVerticalImage:img,image,weakself.Image1.image,nil];
     }];
 }
 

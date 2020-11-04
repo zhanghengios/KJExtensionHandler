@@ -20,7 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIImage*)kj_rotateInRadians:(CGFloat)radians;
 
 #pragma mark - 模糊处理
-
 - (UIImage*)kj_blurImageSoft;
 - (UIImage*)kj_blurImageLight;
 - (UIImage*)kj_blurImageExtraLight;

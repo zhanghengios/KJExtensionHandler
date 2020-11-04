@@ -31,66 +31,6 @@
     UIGraphicsEndImageContext();
     return newPic;
 }
-/* Image 拼接
- * headImage   头图片
- * footImage   尾图片
- */
-- (UIImage *)kj_jointImageWithHeadImage:(UIImage *)headImage FootImage:(UIImage *)footImage{
-    CGSize size = CGSizeZero;
-    size.width = self.size.width;
-    CGFloat headHeight = !headImage ? 0 : headImage.size.height;
-    CGFloat footHeight = !footImage ? 0 : footImage.size.height;
-    size.height = self.size.height + headHeight + footHeight;
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
-    if (headImage) [headImage drawInRect:CGRectMake(0, 0, self.size.width, headHeight)];
-    [self drawInRect:CGRectMake(0, headHeight, self.size.width, self.size.height)];
-    if (footImage) [footImage drawInRect:CGRectMake(0, self.size.height + headHeight, self.size.width, footHeight)];
-    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return resultImage;
-}
-/*把图片多次合成
- @param loopNums   要合成的次数
- @param orientation 当前的方向
- @return 合成完成的图片
- */
-- (UIImage *)kj_imageCompoundWithLoopNums:(NSInteger)loopNums Orientation:(UIImageOrientation)orientation{
-    UIGraphicsBeginImageContextWithOptions(self.size ,NO, 0.0);
-    switch (orientation) {
-        case UIImageOrientationUp:
-            for (int i = 0; i < loopNums; i ++){
-                CGFloat X = self.size.width/loopNums*i;
-                CGFloat Y = 0;
-                CGFloat W = self.size.width/loopNums;
-                CGFloat H = self.size.height;
-                [self drawInRect:CGRectMake(X, Y, W, H)];
-            }
-            break;
-        case UIImageOrientationLeft:
-            for (int i = 0; i < loopNums; i ++){
-                CGFloat X = 0;
-                CGFloat Y = self.size.height / loopNums * i;
-                CGFloat W = self.size.width;
-                CGFloat H = self.size.height / loopNums;
-                [self drawInRect:CGRectMake(X, Y, W, H)];
-            }
-            break;
-        case UIImageOrientationRight:
-            for (int i = 0; i < loopNums; i ++){
-                CGFloat X = 0;
-                CGFloat Y = self.size.height / loopNums * i;
-                CGFloat W = self.size.width;
-                CGFloat H = self.size.height / loopNums;
-                [self drawInRect:CGRectMake(X, Y, W, H)];
-            }
-            break;
-        default:
-            break;
-    }
-    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return resultingImage;
-}
 /// 蒙版图片处理
 - (UIImage*)kj_maskImage:(UIImage*)maskImage{
     UIImage *image = self;
@@ -124,40 +64,5 @@
     CGFloat alpha = pixel[0]/255.0f;
     return alpha < 0.01f;
 }
-/// 文字转图片
-+ (UIImage*)kj_imageFromText:(NSArray*)contents ContentWidth:(CGFloat)width Font:(UIFont*)font TextColor:(UIColor*)textColor BgColor:(UIColor*)bgColor{
-    NSMutableArray *temps = [[NSMutableArray alloc] initWithCapacity:contents.count];
-    CGFloat height = 0.0f;
-    for (NSString *sContent in contents) {
-        CGSize stringSize = [sContent boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
-        [temps addObject:[NSNumber numberWithFloat:stringSize.height]];
-        height += stringSize.height;
-    }
-    CGSize newSize = CGSizeMake(width, height+10);
-    UIGraphicsBeginImageContextWithOptions(newSize,NO,0.0);
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    if(bgColor){
-        [bgColor set];
-        UIRectFill(CGRectMake(0, 0, newSize.width, newSize.height));
-    }
-    CGContextSetCharacterSpacing(ctx, 10);
-    CGContextSetTextDrawingMode (ctx, kCGTextFillClip);
-    [textColor set];
-    int index = 0;
-    CGFloat y = 10.0f;
-    NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
-    paragraph.alignment = NSTextAlignmentCenter;
-    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
-    NSDictionary *dict = @{NSFontAttributeName:font,NSParagraphStyleAttributeName:paragraph};
-    for (NSString *sContent in contents) {
-        NSNumber *numHeight = [temps objectAtIndex:index];
-        CGRect rect = CGRectMake(0, y, width , [numHeight floatValue]);
-        [sContent drawInRect:rect withAttributes:dict];
-        y += [numHeight floatValue];
-        index++;
-    }
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
+
 @end

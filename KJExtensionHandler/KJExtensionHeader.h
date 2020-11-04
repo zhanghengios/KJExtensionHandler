@@ -93,13 +93,15 @@ Github地址：https://github.com/yangKJ
 #import "UIImage+KJScale.h" /// 图片尺寸处理相关
 #import "UIImage+KJCompress.h" /// 图片压缩处理
 #import "UIImage+KJMask.h" /// 蒙版处理
+#import "UIImage+KJJoint.h" /// 图片拼接处理
 #import "UIImage+KJCapture.h" /// 截图和裁剪处理
 #import "UIImage+KJCoreImage.h"  /// CoreImage 框架图片效果处理
-#import "UIImage+KJAccelerate.h" /// Accelerate 框架的图片处理
+#import "UIImage+KJAccelerate.h" /// Accelerate  框架的图片处理
 #import "UIImage+KJPhotoshop.h"
 //#import "UIImage+KJFloodFill.h" /// 图片泛洪算法
-//#import "UIImage+KJFilter.h"    /// 处理图片滤镜，渲染相关
+//#import "UIImage+KJFilter.h" /// 处理图片滤镜，渲染相关
 //#import "UIImage+KJURLSize.h" /// 获取网络图片尺寸
+//#import "UIImage+KJGIF.h" /// 动态图相关gif
 
 #import "UIViewController+KJFullScreen.h" /// 充满全屏处理
 

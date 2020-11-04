@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 + (void)kj_openLimitExchangeMethod;
 @end
-
 @interface UITextView (KJLimitCounter)<KJTextViewLimitExchangeMethodProtocol>
 /// 限制字数
 @property(nonatomic,assign)NSInteger kj_limitCount;
@@ -23,5 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign)CGFloat kj_limitHeight;
 /// 统计限制字数Label
 @property(nonatomic,strong,readonly)UILabel *kj_limitLabel;
+
 @end
+
 NS_ASSUME_NONNULL_END

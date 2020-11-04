@@ -29,13 +29,6 @@
     objc_setAssociatedObject(self, @selector(URLTemps), URLTemps, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-/**识别点击TextView里面的超链接网址地址
- 备注事项：
- 1、里面实现了委托UITextViewDelegate，外界再用会失效
- 2、需要在调用此方法之前设置text内容 self.textView.text = @"xxxx";
- 3、关闭了text的编辑功能
- 4、默认URL地址颜色为蓝色
- */
 - (NSArray*)kj_clickTextViewURLCustom:(URLCustom)custom URLHyperlink:(KJTextViewURLHyperlinkBlock)block{
     self.xxblock  = block;
     self.delegate = self;
@@ -64,12 +57,8 @@
     self.attributedText = abs;
     return self.URLTemps;
 }
-
-// 定义网址结构体类型
-struct kURLBody {
-    char *charURLString;
-    NSRange range;
-};
+/// 定义网址结构体类型
+struct kURLBody{char *charURLString; NSRange range;};
 /// IOS 正则表达式匹配文本中URL位置并获取URL所在位置
 static inline NSArray * getURLWithText(NSString *string) {
     NSError *error;
@@ -90,9 +79,10 @@ static inline NSArray * getURLWithText(NSString *string) {
 
 #pragma mark - UITextViewDelegate
 - (BOOL)textView:(UITextView*)textView shouldInteractWithURL:(NSURL*)URL inRange:(NSRange)characterRange {
-    NSInteger i = [URL.absoluteString integerValue];
-    NSString *url = self.URLTemps[i];
-    !self.xxblock?:self.xxblock(url);
+    if (self.xxblock) {
+        NSInteger i = [URL.absoluteString integerValue];
+        self.xxblock(self.URLTemps[i]);
+    }
     return YES;
 }
 

@@ -23,8 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)kj_validateEmail;
 /// 验证身份证是否是真实的
 - (BOOL)kj_validateIDCardNumber;
-/// 随机汉字
-+ (NSString*)kj_randomCreatChinese:(NSInteger)count;
 
 @end
 

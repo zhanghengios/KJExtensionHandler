@@ -108,10 +108,13 @@ pod 'KJExtensionHandler/Exception'
 ```
 ####版本更新日志:
 #### Add 0.0.5
-1. NSString+KJPredicate 新增随机汉字 kj_randomCreatChinese
-2. UIView+KJXib 新增判断是否有子视图在滚动 anySubViewScrolling
-3. UIView+KJFrame 新增移除所有子视图 kj_removeAllSubviews
-
+1. UIView+KJXib 新增判断是否有子视图在滚动 anySubViewScrolling
+2. UIView+KJFrame 新增移除所有子视图 kj_removeAllSubviews
+3. 新增 NSString+KJChinese 汉字相关操作
+4. UIView+KJRectCorner 修改局部边框处理
+5. UIView+KJXib 新增设置图片属性 viewImage
+6. 新增 UIImage+KJGIF 动态图显示gif
+7. 新增 UIImage+KJJoint 拼接图片相关操作
 
 #### Add 0.0.4
 1. 新增 UIView+Toast 快捷显示

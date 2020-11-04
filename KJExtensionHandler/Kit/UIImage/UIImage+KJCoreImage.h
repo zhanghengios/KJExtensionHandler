@@ -44,33 +44,25 @@ static NSString * const _Nonnull KJCoreImagePhotoshopTypeStringMap[] = {
     [KJCoreImagePhotoshopTypeGaussianBlur] = @"inputRadius",/// 高斯模糊
 };
 @interface UIImage (KJCoreImage)
+
 /// Photoshop滤镜相关操作
 - (UIImage*)kj_coreImagePhotoshopWithType:(KJCoreImagePhotoshopType)type Value:(CGFloat)value;
-
 /// 通用方法 - 传入滤镜过滤器名称 和 需要的参数
 - (UIImage*)kj_coreImageCustomWithName:(NSString*_Nonnull)name Dicts:(NSDictionary*_Nullable)dicts;
-
 /// 调整图像的色调映射，同时保留空间细节（高光和阴影）
 - (UIImage*)kj_coreImageHighlightShadowWithHighlightAmount:(CGFloat)HighlightAmount ShadowAmount:(CGFloat)ShadowAmount;
-
 /// 将图片里面的黑色变透明
 - (UIImage*)kj_coreImageBlackMaskToAlpha;
-
 /// 马赛克
 - (UIImage*)kj_coreImagePixellateWithCenter:(CGPoint)center Scale:(CGFloat)scale;
-
 /// 图片圆形变形
 - (UIImage*)kj_coreImageCircularWrapWithCenter:(CGPoint)center Radius:(CGFloat)radius Angle:(CGFloat)angle;
-
 /// 环形透镜畸变
 - (UIImage*)kj_coreImageTorusLensDistortionCenter:(CGPoint)center Radius:(CGFloat)radius Width:(CGFloat)width Refraction:(CGFloat)refraction;
-
 /// 空变形
 - (UIImage*)kj_coreImageHoleDistortionCenter:(CGPoint)center Radius:(CGFloat)radius;
-
 /// 应用透视校正，将源图像中的任意四边形区域转换为矩形输出图像
 - (UIImage*)kj_coreImagePerspectiveCorrectionWithTopLeft:(CGPoint)TopLeft TopRight:(CGPoint)TopRight BottomRight:(CGPoint)BottomRight BottomLeft:(CGPoint)BottomLeft;
-
 /// 透视变换，透视滤镜倾斜图像
 - (UIImage*)kj_coreImagePerspectiveTransformWithTopLeft:(CGPoint)TopLeft TopRight:(CGPoint)TopRight BottomRight:(CGPoint)BottomRight BottomLeft:(CGPoint)BottomLeft;
 
