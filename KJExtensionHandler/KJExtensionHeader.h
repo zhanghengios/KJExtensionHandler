@@ -115,30 +115,22 @@ Github地址：https://github.com/yangKJ
 
 #import "UIResponder+KJAdapt.h" /// 简单的比例适配
 
+//************************************* Foundation 相关扩展 *****************************************
+// 需要引入，请使用 pod 'KJExtensionHandler/Foundation'
+#if __has_include(<KJExtensionHandler/KJFoundartionHeader.h>)
+#import <KJExtensionHandler/KJFoundartionHeader.h>
+#elif __has_include("KJFoundartionHeader.h")
+#import "KJFoundartionHeader.h"
+#else
+#endif
+
 //************************************* Exception 异常处理 *****************************************
 // 需要引入，请使用 pod 'KJExtensionHandler/Exception'
 #if __has_include(<KJExtensionHandler/KJExceptionTool.h>)
 #import <KJExtensionHandler/KJExceptionTool.h>
 #elif __has_include("KJExceptionTool.h")
-#import "KJExceptionTool.h"/// 异常捕获处理
-#else
-@import KJExceptionTool;
-#endif
-
-//************************************* Foundation 相关扩展 *****************************************
-// 需要引入，请使用 pod 'KJExtensionHandler/Foundation'
-#if __has_include("NSObject+KJKVO.h")
-#import "NSObject+KJKVO.h"    /// 键值监听封装
-#import "NSObject+KJMath.h"   /// 数学方程式
-#import "NSObject+KJSignal.h" /// 信号方式解耦工具
-#import "NSObject+KJGeometry.h" /// 几何方程式
-#import "NSString+KJChinese.h"  /// 汉字相关处理
-#import "NSString+KJExtension.h"/// 扩展属性
-#import "NSString+KJPredicate.h"/// 谓词工具
-#import "NSArray+KJPredicate.h" /// 谓词工具
-#import "NSArray+ElementDeal.h" /// 对数组元素的处理 包括排序、查找、去重等等
+#import "KJExceptionTool.h"
 #else
 #endif
-
 
 #endif /* KJExtensionHeader_h */

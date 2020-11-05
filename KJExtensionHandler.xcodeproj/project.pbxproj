@@ -146,6 +146,7 @@
 		685F371C25525885001575DE /* UIImage+KJJoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KJJoint.m"; sourceTree = "<group>"; };
 		685F37242552A41D001575DE /* NSString+KJExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+KJExtension.h"; sourceTree = "<group>"; };
 		685F37252552A41D001575DE /* NSString+KJExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+KJExtension.m"; sourceTree = "<group>"; };
+		6868128A2553CF0800024BF6 /* KJFoundartionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJFoundartionHeader.h; sourceTree = "<group>"; };
 		686B01BD253156CC004A779D /* KJExceptionTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KJExceptionTool.h; sourceTree = "<group>"; };
 		686B01BE253156CC004A779D /* KJExceptionTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KJExceptionTool.m; sourceTree = "<group>"; };
 		686B01DB25318CE4004A779D /* NSMutableArray+KJException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+KJException.h"; sourceTree = "<group>"; };
@@ -476,6 +477,7 @@
 		68AD725E251D9BB8000C89C5 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				6868128A2553CF0800024BF6 /* KJFoundartionHeader.h */,
 				68F3A86D25393FE600BCD817 /* NSString */,
 				68AD725F251D9BB8000C89C5 /* NSDictionary */,
 				68AD7267251D9BB8000C89C5 /* NSArray */,
