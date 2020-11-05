@@ -94,9 +94,6 @@ pod 'KJWorkbox/CommonBox'
 */
 ```
 
-##### Issue
-如果您在使用中有好的需求及建议或者遇到BUG，欢迎随时留言，有空也会不断处理优化更新这些库
-
 #### <a id="Cocoapods安装"></a>Cocoapods安装
 ```
 pod 'KJExtensionHandler'

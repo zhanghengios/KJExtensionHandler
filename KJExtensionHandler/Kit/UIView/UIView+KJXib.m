@@ -111,13 +111,17 @@
     [self.layer setBorderWidth:borderWidth];
 }
 - (void)setCornerRadius:(CGFloat)cornerRadius {
+    if (cornerRadius <= 0) return;
     [self.layer setCornerRadius:cornerRadius];
-    self.layer.masksToBounds = cornerRadius > 0;
+    self.layer.masksToBounds = YES;
+    /// 设置光栅化，可以使离屏渲染的结果缓存到内存中存为位图，使用的时候直接使用缓存，节省了一直离屏渲染损耗的性能
+    self.layer.shouldRasterize = YES;
 }
 - (void)setShadowColor:(UIColor*)shadowColor{
     [self.layer setShadowColor:shadowColor.CGColor];
 }
 - (void)setShadowRadius:(CGFloat)shadowRadius{
+    if (shadowRadius <= 0) return;
     [self.layer setShadowRadius:shadowRadius];
 }
 - (void)setShadowOpacity:(CGFloat)shadowOpacity{
