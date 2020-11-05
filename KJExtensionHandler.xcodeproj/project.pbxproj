@@ -130,7 +130,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		681B8075254BC37000AE3968 /* KJFoundartionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KJFoundartionHeader.h; sourceTree = "<group>"; };
 		683FA3AB2542A6C50083D806 /* UIDevice+KJSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+KJSystem.h"; sourceTree = "<group>"; };
 		683FA3AC2542A6C50083D806 /* UIDevice+KJSystem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+KJSystem.m"; sourceTree = "<group>"; };
 		685EA0B925467C7200C2C33C /* UIResponder+KJChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIResponder+KJChain.h"; sourceTree = "<group>"; };
@@ -477,7 +476,6 @@
 		68AD725E251D9BB8000C89C5 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				681B8075254BC37000AE3968 /* KJFoundartionHeader.h */,
 				68F3A86D25393FE600BCD817 /* NSString */,
 				68AD725F251D9BB8000C89C5 /* NSDictionary */,
 				68AD7267251D9BB8000C89C5 /* NSArray */,

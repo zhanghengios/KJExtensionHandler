@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.subspec 'Kit' do |y|
     y.source_files = "KJExtensionHandler/Kit/**/*.{h,m}"
     y.public_header_files = 'KJExtensionHandler/Kit/*.h',"KJExtensionHandler/Kit/**/*.h"
-    y.frameworks = 'Foundation','UIKit','Accelerate'
+    y.frameworks = 'Accelerate'
   end
 
   s.subspec 'Foundation' do |fun|
