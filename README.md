@@ -1,5 +1,4 @@
 # KJExtensionHandler
-<!--![coverImage]()-->
 <p align="left">
 <img src="https://img.zcool.cn/community/0161da5541af81000001a64bc753a4.jpg@1280w_1l_2o_100sh.jpg" width="666" hspace="1px">
 </p>
@@ -104,6 +103,10 @@ pod 'KJExtensionHandler/Exception'
 #### <a id="更新日志"></a>更新日志
 ```
 ####版本更新日志:
+#### Add 0.0.6
+1. 新增 UITabBar+KJBadge 小红点处理
+2. 新增 _KJGCD 处理线程相关
+
 #### Add 0.0.5
 1. UIView+KJXib 新增判断是否有子视图在滚动 anySubViewScrolling
 2. UIView+KJFrame 新增移除所有子视图 kj_removeAllSubviews

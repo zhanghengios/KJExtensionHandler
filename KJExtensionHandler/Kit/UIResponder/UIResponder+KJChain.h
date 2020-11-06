@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong,readonly)NSString *kChainDescription;
 /// 第一响应者
 @property(nonatomic,strong,readonly)id kFirstResponder;
+
 @end
 
 NS_ASSUME_NONNULL_END

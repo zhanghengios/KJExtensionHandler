@@ -27,6 +27,8 @@
     [UIButton kj_openTimeExchangeMethod];
     
     _weakself;
+    weakself.Image1.image = [weakself.Image1.image kj_circleImage];
+    
     self.Button.kj_AcceptEventTime = 3;
     [self.Button kj_addAction:^(UIButton * _Nonnull kButton) {
         UIImage *image = [weakself.Image1.image kj_waterMark:weakself.Image2.image InRect:CGRectMake(0, 0, weakself.Image1.image.size.width/4., weakself.Image1.image.size.width/4.)];

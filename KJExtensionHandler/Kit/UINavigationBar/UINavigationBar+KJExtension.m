@@ -12,10 +12,7 @@
 @interface UINavigationBar ()
 @property(nonatomic,copy) UIView *kj_view;
 @end
-//static UIView * kk_view = nil;
 @implementation UINavigationBar (KJExtension)
-
-#pragma mark - associated
 - (UIColor*)kj_BackgroundColor{
     return objc_getAssociatedObject(self, @selector(kj_BackgroundColor));
 }

@@ -58,6 +58,7 @@ Github地址：https://github.com/yangKJ
 
 #import "_KJMacros.h" /// 宏
 #import "_KJINLINE.h" /// 简单的常用函数
+#import "_KJGCD.h"
 
 #import "UIButton+KJBlock.h" /// 点击事件ButtonBlock
 #import "UIButton+KJEnlargeTouchArea.h" /// 改变UIButton的响应区域

@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong,readonly)UIImage *image;
 /// 取出HTML
 @property(nonatomic,strong,readonly)NSString *HTMLString;
-/// 转换为Josn字段
+/// Josn字符串转字典
 @property(nonatomic,strong,readonly)NSDictionary *jsonDict;
 
 @end

@@ -268,21 +268,4 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; \
 //获得当前的秒
 #define kCurrentSec   [[NSCalendar currentCalendar] component:NSCalendarUnitSecond fromDate:[NSDate date]]
 
-#pragma mark ********** 11.线程 GCD   *********
-/* 使用方式  kGCD_MAIN_ASYNC(^{ NSLog(@"77"); }); */
-//GCD - 异步主线程
-#define kGCD_MAIN_ASYNC(main_queue_block) dispatch_async(dispatch_get_main_queue(), main_queue_block)
-//GCD - 异步子线程
-#define kGCD_QUEUE_ASYNC(global_queue_block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), global_queue_block)
-//GCD - 一次性执行
-#define kGCD_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&onceToken, onceBlock);
-//GCD - 异步并行队列
-#define kGCD_GROUP_ASYNC(group_async_block,group_notify_block) \
-dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);\
-dispatch_group_t group = dispatch_group_create();\
-dispatch_group_async(group, queue, group_async_block);\
-dispatch_group_notify(group, queue, ^{\
-dispatch_async(dispatch_get_main_queue(), group_notify_block);\
-})\
-
 #endif /* _KJMacros_h */

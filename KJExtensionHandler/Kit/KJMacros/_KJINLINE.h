@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
+#pragma mark - 简单函数
 NS_INLINE void kUncaughtExceptionHandler(NSException *exception) {
     NSLog(@"**************** 崩溃日志收集器 ****************");
     NSLog(@"%@",exception);
@@ -31,6 +32,12 @@ NS_INLINE void kUncaughtExceptionHandler(NSException *exception) {
 /// 简单崩溃日志收集，AppDelegate里注册函数
 NS_INLINE void kUncaughtException(void){
     NSSetUncaughtExceptionHandler(&kUncaughtExceptionHandler);
+}
+/// 强制让App直接退出（非闪退，非崩溃）
+NS_INLINE void kExitApplication(NSTimeInterval duration,void(^block)(void)) {
+    [UIView animateWithDuration:duration animations:block completion:^(BOOL finished) {
+        exit(0);
+    }];
 }
 /// 随机颜色
 NS_INLINE UIColor * kRandomColor(){
@@ -56,24 +63,8 @@ NS_INLINE bool kTransparentImage(UIImageView *imageView, CGPoint point){
     }
     return true;
 }
-/// 字符串是否为空
-NS_INLINE bool kEmptyString(NSString *string){
-    return ([string isKindOfClass:[NSNull class]] || string == nil || [string length] < 1 ? YES : NO);
-}
-/// 数组是否为空
-NS_INLINE bool kEmptyArray(NSArray *array){
-    return (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0);
-}
-/// 字典是否为空
-NS_INLINE bool kEmptyDictionary(NSDictionary *dic){
-    return (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0);
-}
-/// 是否是空对象
-NS_INLINE bool kEmptyObject(NSObject *object){
-    return (object == nil || [object isKindOfClass:[NSNull class]] || ([object respondsToSelector:@selector(length)] && [(NSData*)object length] == 0) || ([object respondsToSelector:@selector(count)] && [(NSArray*)object count] == 0));
-}
 
-#pragma mark -------------- UI处理 -------------
+#pragma mark - UI处理
 /// 自定提醒窗口
 NS_INLINE UIAlertView * kAlertView(NSString *title, NSString *message, id delegate, NSString *cancelTitle, NSString *otherTitle){
     __block UIAlertView *alerView;
@@ -131,81 +122,32 @@ NS_INLINE UITableViewCell * kCellSubviewTableview(UIView *subview, UITableView *
     NSIndexPath *indexPath = [tableview indexPathForRowAtPoint:subviewFrame.origin];
     return [tableview cellForRowAtIndexPath:indexPath];
 }
-/// 强制让App直接退出（非闪退，非崩溃）
-NS_INLINE void kExitApplication(NSTimeInterval duration,void(^block)(void)) {
-    [UIView animateWithDuration:duration animations:block completion:^(BOOL finished) {
-        exit(0);
-    }];
+
+#pragma mark - Json相关
+/// 字典转Json字符串
+NS_INLINE NSString * kDictionaryToJson(NSDictionary *dict){
+    NSString *jsonString = nil;
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    if (jsonData) jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return jsonString;
 }
-#pragma mark -------------- GCD 线程处理 -------------
-NS_INLINE dispatch_queue_t kGCD_queue(void) {
-    //    dispatch_queue_t queue = dispatch_queue_create("com.yangkejun.gcd", DISPATCH_QUEUE_CONCURRENT);
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    return queue;
+/// 数组转Json字符串
+NS_INLINE NSString * kArrayToJson(NSArray *array){
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:array options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *jsonTemp = [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    return jsonTemp;
 }
-/// 主线程
-NS_INLINE void kGCD_main(dispatch_block_t block) {
-    if ([[NSThread currentThread] isMainThread]) {
-        dispatch_async(dispatch_get_main_queue(), block);
-    }else {
-        dispatch_sync(dispatch_get_main_queue(), block);
-    }
-}
-/// 子线程
-NS_INLINE void kGCD_async(dispatch_block_t block) {
-    dispatch_async(kGCD_queue(), block);
-}
-/// 异步并行队列，携带可变参数（需要nil结尾）
-NS_INLINE void kGCD_group_notify(dispatch_block_t notify,dispatch_block_t block,...) {
-    dispatch_queue_t queue = kGCD_queue();
-    dispatch_group_t group = dispatch_group_create();
-    dispatch_group_async(group, queue, block);
-    va_list args;dispatch_block_t arg;
-    va_start(args, block);
-    while ((arg = va_arg(args, dispatch_block_t))) {
-        dispatch_group_async(group, queue, arg);
-    }
-    va_end(args);
-    dispatch_group_notify(group, queue, notify);
-}
-/// 栅栏
-NS_INLINE dispatch_queue_t kGCD_barrier(dispatch_block_t block,dispatch_block_t barrier) {
-    dispatch_queue_t queue = kGCD_queue();
-    dispatch_async(queue, block);
-    dispatch_barrier_async(queue, ^{ dispatch_async(dispatch_get_main_queue(), barrier); });
-    return queue;
-}
-/// 一次性
-NS_INLINE void kGCD_once(dispatch_block_t block) {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, block);
-}
-/// 延时执行
-NS_INLINE void kGCD_after(int64_t delayInSeconds, dispatch_block_t block) {
-    dispatch_queue_t queue = kGCD_queue();
-    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(time, queue, block);
-}
-/// 主线程当中延时执行
-NS_INLINE void kGCD_main_after(int64_t delayInSeconds, dispatch_block_t block) {
-    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(time, dispatch_get_main_queue(), block);
-}
-/// 快速迭代
-NS_INLINE void kGCD_apply(int iterations, void(^block)(size_t idx)) {
-    dispatch_queue_t queue = kGCD_queue();
-    dispatch_apply(iterations, queue, block);
-}
-/// 计时器
-static dispatch_source_t timer = nil;
-NS_INLINE dispatch_source_t kGCD_timer(int64_t delayInSeconds, dispatch_block_t block) {
-    if (timer) dispatch_source_cancel(timer);
-    dispatch_queue_t queue = kGCD_queue();
-    timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    dispatch_source_set_timer(timer, dispatch_walltime(nil, 0), delayInSeconds * NSEC_PER_SEC, 0);
-    dispatch_source_set_event_handler(timer, block);
-    dispatch_resume(timer);
-    return timer;
+/// Json字符串转字典
+NS_INLINE NSDictionary *kJsonToDictionary(NSString *string){
+    if (string == nil) return nil;
+    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error = nil;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+    if(error) return nil;
+    return dic;
 }
 
 #pragma clang diagnostic pop
