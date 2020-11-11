@@ -6,7 +6,7 @@
 //  https://github.com/yangKJ/KJExtensionHandler
 
 #import "UITabBar+KJBadge.h"
-
+#import <objc/runtime.h>
 @implementation UITabBar (KJBadge)
 + (NSInteger)tabBarCount{
     return [objc_getAssociatedObject(self, @selector(tabBarCount)) intValue];

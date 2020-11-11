@@ -7,7 +7,7 @@
 //  https://github.com/yangKJ/KJExtensionHandler
 
 #import "UINavigationItem+KJExtension.h"
-#import "UIButton+KJBlock.h"
+
 @implementation KJNavigationItemInfo
 - (instancetype)init{
     if (self==[super init]) {

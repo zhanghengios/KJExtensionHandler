@@ -8,7 +8,7 @@
 //  Item链式生成
 
 #import <UIKit/UIKit.h>
-
+#import "UIButton+KJBlock.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KJNavigationItemInfo : NSObject
