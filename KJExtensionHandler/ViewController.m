@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self test];
+//    [self test];
     
     KJHomeModel *model = [KJHomeModel new];
     KJHomeView *view = [[KJHomeView alloc]initWithFrame:self.view.bounds];

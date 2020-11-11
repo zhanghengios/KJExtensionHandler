@@ -1,19 +1,16 @@
 //
-//  UIButton+KJEnlargeTouchArea.m
+//  UIButton+KJEnlarge.m
 //  KJEmitterView
 //
 //  Created by 杨科军 on 2019/6/5.
 //  Copyright © 2019 杨科军. All rights reserved.
 //  https://github.com/yangKJ/KJExtensionHandler
 
-#import "UIButton+KJEnlargeTouchArea.h"
+#import "UIButton+KJEnlarge.h"
 #import <objc/runtime.h>
-@implementation UIButton (KJEnlargeTouchArea)
-static char topNameKey;
-static char rightNameKey;
-static char bottomNameKey;
-static char leftNameKey;
-
+@implementation UIButton (KJEnlarge)
+static char topNameKey,bottomNameKey;
+static char leftNameKey,rightNameKey;
 - (void)kj_EnlargeEdgeWithTop:(CGFloat)top right:(CGFloat)right bottom:(CGFloat)bottom left:(CGFloat)left{
     objc_setAssociatedObject(self, &topNameKey, [NSNumber numberWithFloat:top], OBJC_ASSOCIATION_COPY_NONATOMIC);
     objc_setAssociatedObject(self, &rightNameKey, [NSNumber numberWithFloat:right], OBJC_ASSOCIATION_COPY_NONATOMIC);

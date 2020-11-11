@@ -8,6 +8,8 @@
 #ifndef _KJGCD_h
 #define _KJGCD_h
 
+// 同步会阻塞主线程
+
 #pragma mark ********** 11.线程 GCD   *********
 /* 使用方式 kGCD_MAIN_ASYNC(^{ NSLog(@"77"); }); */
 //GCD - 异步主线程

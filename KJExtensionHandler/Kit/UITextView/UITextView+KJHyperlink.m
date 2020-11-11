@@ -28,11 +28,11 @@
 - (void)setURLTemps:(NSArray*)URLTemps{
     objc_setAssociatedObject(self, @selector(URLTemps), URLTemps, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-
+/// 识别超链接
 - (NSArray*)kj_clickTextViewURLCustom:(URLCustom)custom URLHyperlink:(KJTextViewURLHyperlinkBlock)block{
     self.xxblock  = block;
     self.delegate = self;
-    self.editable = NO; /// 关闭编辑
+    self.editable = NO;
     UIColor *color = custom.color?:UIColor.blueColor;
     UIFont  *font = custom.font?:self.font;
     NSString *str = self.text;
@@ -41,16 +41,15 @@
     NSMutableAttributedString *abs = [[NSMutableAttributedString alloc]initWithString:str];
     [abs beginEditing];
     self.linkTextAttributes = @{}; /// 解决设置NSLinkAttributeName字体颜色无效的处理
-    //字体大小
     [abs addAttribute:NSFontAttributeName value:self.font range:NSMakeRange(0,str.length)];
     for (int i=0; i<array.count; i++) {
         NSValue *customValue = array[i];
         struct kURLBody value;
         [customValue getValue:&value];
         [temp addObject:[NSString stringWithCString:value.charURLString encoding:NSUTF8StringEncoding]];
-        [abs addAttribute:NSLinkAttributeName value:[NSString stringWithFormat:@"%d",i] range:value.range];//点击传值
-        [abs addAttribute:NSForegroundColorAttributeName value:color range:value.range];//字体颜色
-        [abs addAttribute:NSFontAttributeName value:font range:value.range];//字体大小
+        [abs addAttribute:NSLinkAttributeName value:[NSString stringWithFormat:@"%d",i] range:value.range];
+        [abs addAttribute:NSForegroundColorAttributeName value:color range:value.range];
+        [abs addAttribute:NSFontAttributeName value:font range:value.range];
     }
     self.URLTemps = temp.copy;
     array = temp = nil;
@@ -63,9 +62,7 @@ struct kURLBody{char *charURLString; NSRange range;};
 static inline NSArray * getURLWithText(NSString *string) {
     NSError *error;
     NSString *regulaStr = @"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regulaStr
-                                                                           options:NSRegularExpressionCaseInsensitive
-                                                                             error:&error];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&error];
     NSArray *array = [regex matchesInString:string options:0 range:NSMakeRange(0, [string length])];
     NSMutableArray *temp = [NSMutableArray array];
     for (NSTextCheckingResult *match in array) {

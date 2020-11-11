@@ -61,14 +61,15 @@ Github地址：https://github.com/yangKJ
 #import "_KJGCD.h"
 
 #import "UIButton+KJBlock.h" /// 点击事件ButtonBlock
-#import "UIButton+KJEnlargeTouchArea.h" /// 改变UIButton的响应区域
+#import "UIButton+KJEnlarge.h" /// 改变UIButton的响应区域
 #import "UIButton+KJButtonContentLayout.h"  /// 图文混排
 #import "UIButton+KJCreate.h" /// 快速创建按钮
 //#import "UIButton+KJIndicator.h" /// 指示器
 //#import "UIButton+KJEmitter.h" /// 按钮粒子效果
 //#import "UIButton+KJCountDown.h" /// 倒计时
 
-#import "UILabel+KJCreate.h" /// 快速创建文本
+#import "UILabel+KJCreate.h" // 快速创建文本
+#import "UILabel+KJExtension.h" // 文本尺寸
 //#import "UILabel+KJAttributedString.h" // 富文本
 
 #import "UIView+KJXib.h"   /// Xib
@@ -82,11 +83,12 @@ Github地址：https://github.com/yangKJ
 //#import "CALayer+KJReflection.h" // 倒影处理
 
 //#import "UINavigationBar+KJExtension.h" // 设置NavigationBar背景
-//#import "UIBarButtonItem+KJExtension.h" // 设置BarButtonItem
+#import "UINavigationItem+KJExtension.h" // 链式设置NavigationItem
 
 //#import "UITextView+KJPlaceHolder.h"  // 输入框扩展
 //#import "UITextView+KJLimitCounter.h" // 限制字数
 //#import "UITextView+KJHyperlink.h" // 超链接处理
+//#import "UITextView+KJBackout.h" // 撤销输入
 
 #import "UIColor+KJExtension.h"/// 颜色相关扩展
 #import "UIColor+KJExtension2.h"
@@ -115,6 +117,7 @@ Github地址：https://github.com/yangKJ
 //#import "KJColorSlider.h" /// 渐变色滑块
 
 #import "UIResponder+KJAdapt.h" /// 简单的比例适配
+#import "UIResponder+KJChain.h" /// 响应链
 
 //************************************* Foundation 相关扩展 *****************************************
 // 需要引入，请使用 pod 'KJExtensionHandler/Foundation'

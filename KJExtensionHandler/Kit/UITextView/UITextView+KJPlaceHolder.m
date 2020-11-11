@@ -23,16 +23,15 @@
 }
 #pragma mark - swizzled
 - (void)kj_placeHolder_dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:self];
     [self kj_placeHolder_dealloc];
 }
 - (void)kj_placeHolder_layoutSubviews{
-    if (self.kj_placeHolder){
+    if (self.kj_placeHolder) {
         UIEdgeInsets textContainerInset = self.textContainerInset;
-        CGFloat lineFragmentPadding = self.textContainer.lineFragmentPadding;
-        CGFloat x = lineFragmentPadding + textContainerInset.left + self.layer.borderWidth;
+        CGFloat x = self.textContainer.lineFragmentPadding + textContainerInset.left + self.layer.borderWidth;
         CGFloat y = textContainerInset.top + self.layer.borderWidth;
-        CGFloat width = CGRectGetWidth(self.bounds)- x - textContainerInset.right - 2*self.layer.borderWidth;
+        CGFloat width = CGRectGetWidth(self.bounds) - x - textContainerInset.right - 2*self.layer.borderWidth;
         CGFloat height = [self.kj_placeHolderLabel sizeThatFits:CGSizeMake(width, 0)].height;
         self.kj_placeHolderLabel.frame = CGRectMake(x, y, width, height);
     }
@@ -46,7 +45,7 @@
 - (NSString*)kj_placeHolder{
     return objc_getAssociatedObject(self, @selector(kj_placeHolder));
 }
-- (void)setKj_placeHolder:(NSString *)kj_placeHolder{
+- (void)setKj_placeHolder:(NSString*)kj_placeHolder{
     objc_setAssociatedObject(self, @selector(kj_placeHolder), kj_placeHolder, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self updatePlaceHolder];
 }
@@ -64,12 +63,12 @@
 #pragma mark - lazzing
 - (UILabel*)kj_placeHolderLabel{
     UILabel *label = objc_getAssociatedObject(self, @selector(kj_placeHolderLabel));
-    if (label == nil){
+    if (label == nil) {
         label = [[UILabel alloc] init];
         label.numberOfLines = 0;
         label.textColor = [UIColor lightGrayColor];
         objc_setAssociatedObject(self, @selector(kj_placeHolderLabel), label, OBJC_ASSOCIATION_RETAIN);
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePlaceHolder)name:UITextViewTextDidChangeNotification object:self];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePlaceHolder) name:UITextViewTextDidChangeNotification object:self];
     }
     return label;
 }

@@ -11,12 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^KJTextViewURLHyperlinkBlock)(NSString *URLString);
 /// 定义网址结构体
 typedef struct kURLCustom {
     UIColor *color;/// 文字颜色
     UIFont  *font; /// 文字尺寸
 }URLCustom;
+typedef void (^KJTextViewURLHyperlinkBlock)(NSString *URLString);
 @interface UITextView (KJHyperlink)
 /* 识别点击TextView里面的超链接网址地址
  备注事项：

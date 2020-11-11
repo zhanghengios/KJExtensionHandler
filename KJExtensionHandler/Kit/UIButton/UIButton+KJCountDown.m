@@ -24,7 +24,7 @@
 - (void)setKButtonCountDownStop:(void(^)(void))kButtonCountDownStop {
     objc_setAssociatedObject(self, @selector(kButtonCountDownStop), kButtonCountDownStop, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-- (void(^)(void))kButtonCountDownStop {
+- (void(^)(void))kButtonCountDownStop{
     return objc_getAssociatedObject(self, @selector(kButtonCountDownStop));
 }
 - (NSInteger)timeOut{
@@ -44,7 +44,7 @@
 - (void)timerMethod:(NSTimer*)timer{
     NSDictionary *info = timer.userInfo;
     NSString *countDownFormat = info[@"countDownFormat"];
-    if(self.timeOut <= 0){ //倒计时结束，关闭
+    if(self.timeOut <= 0){ 
         [self kj_cancelTimer];
     }else{
         dispatch_async(dispatch_get_main_queue(), ^{

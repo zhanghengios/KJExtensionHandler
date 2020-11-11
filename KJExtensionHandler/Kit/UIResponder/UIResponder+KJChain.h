@@ -15,6 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong,readonly)NSString *kChainDescription;
 /// 第一响应者
 @property(nonatomic,strong,readonly)id kFirstResponder;
+///
+- (UIResponder*)kj_responderWithClass:(Class)clazz;
+///
+- (BOOL)kj_sendAction:(SEL)action Sender:(id)sender;
 
 @end
 

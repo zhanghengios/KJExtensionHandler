@@ -1,5 +1,5 @@
 //
-//  UIView+KJRectCorner.h
+//  UIButton+KJButtonContentLayout.h
 //  CategoryDemo
 //
 //  Created by 杨科军 on 2018/7/7.
@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, KJButtonContentLayoutStyle) {
     KJButtonContentLayoutStyleRightImageRight,  // 内容居右-图右文左
 };
 IB_DESIGNABLE /// Xib 动态刷新
-@interface UIButton (KJContentLayout)
+@interface UIButton (KJButtonContentLayout)
 /// 图文样式
 @property(nonatomic,assign) IBInspectable KJButtonContentLayoutStyle kj_ButtonContentLayoutType;
 /// 图文间距

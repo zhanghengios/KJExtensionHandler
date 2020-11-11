@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-#import "UIBarButtonItem+KJExtension.h" // 设置BarButtonItem
+//#import "UIBarButtonItem+KJExtension.h" // 设置BarButtonItem
 @interface BaseViewController ()
 
 @end
@@ -19,12 +19,17 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = UIColorFromHEXA(0xf5f5f5, 1);
-    /// 去掉返回文字
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem kj_ItemWithImage:@"Arrow" HighImage:@"" Title:@"" TitleColor:UIColor.clearColor Target:self Action:@selector(back)];
-}
 
-- (void)back{
-    [self.navigationController popViewControllerAnimated:YES];
+    _weakself;
+    [self.navigationItem kj_makeNavigationItem:^(UINavigationItem * _Nonnull make) {
+        make.kAddBarButtonItemInfo(^KJNavigationItemInfo * _Nonnull(KJNavigationItemInfo * _Nonnull info) {
+            info.imageName = @"Arrow";
+            info.tintColor = UIColor.whiteColor;
+            return info;
+        }, ^(UIButton * _Nonnull kButton) {
+            [weakself.navigationController popViewControllerAnimated:YES];
+        });
+    }];
 }
 
 - (void)dealloc{

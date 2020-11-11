@@ -37,30 +37,29 @@
     [self.view addSubview:self.submitButton];
     [self createSegmented];
 }
-// 重写SET传值，需要在图文元素确定后才能设置布局，之后参数即可动态调整
-- (void)clicksegmented:(UISegmentedControl *)sender{    // 两排控制布局的选择器
+- (void)clicksegmented:(UISegmentedControl *)sender{
     NSInteger tag = sender.tag - 100;
     NSArray *arr = self.segmentedTitleArray[tag];
     switch (tag) {
         case 0:
             self.button.kj_ButtonContentLayoutType = sender.selectedSegmentIndex;
             [self.button setTitle:arr[sender.selectedSegmentIndex] forState:UIControlStateNormal];
-        break;
+            break;
         case 1:
             self.button.kj_ButtonContentLayoutType = sender.selectedSegmentIndex + 4;
             [self.button setTitle:arr[sender.selectedSegmentIndex] forState:UIControlStateNormal];
-        break;
+            break;
         default: break;
     }
 }
 - (void)slidingSlider:(UISlider *)sender{
     NSInteger tag = sender.tag - 100;
     switch (tag) {
-            case 2:
+        case 2:
             self.button.kj_Padding = sender.value;
             [self.labelArray objectAtIndex:0].text = [NSString stringWithFormat: @"%@：\t%.0f",self.NameArray[tag], sender.value];
             break;
-            case 3:
+        case 3:
             self.button.kj_PaddingInset = sender.value;
             [self.labelArray objectAtIndex:1].text = [NSString stringWithFormat: @"%@：\t%.0f",self.NameArray[tag], sender.value];
             break;
@@ -93,8 +92,7 @@
             [self.labelArray addObject:label];
             
             UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(width + 30,Y+30, kScreenW - (width + 40), 30)];
-            [slider addTarget:self action:@selector(slidingSlider:)
-             forControlEvents:UIControlEventValueChanged];
+            [slider addTarget:self action:@selector(slidingSlider:) forControlEvents:UIControlEventValueChanged];
             slider.minimumValue = 0;
             slider.maximumValue = 30;
             slider.value = [defaultParameters[i] floatValue];
@@ -116,11 +114,11 @@
         _button.layer.masksToBounds = YES;
         _button.layer.cornerRadius = 5;
         _button.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_button setTitle:@"居中-图左文右" forState:UIControlStateNormal];
         [_button setTitleColor:UIColor.blueColor forState:UIControlStateNormal];
         [_button setImage:[UIImage imageNamed:@"wode_nor"] forState:UIControlStateNormal];
-        // 设置初始参数
+        
         _button.kj_ButtonContentLayoutType = KJButtonContentLayoutStyleNormal;
-        [_button setTitle:@"居中-图左文右" forState:UIControlStateNormal];
     }
     return _button;
 }
@@ -138,9 +136,8 @@
         _emitterButton.centerY = label.centerY;
         [_emitterButton setImage:kGetImage(@"button_like_norm") forState:(UIControlStateNormal)];
         [_emitterButton setImage:kGetImage(@"button_like_sele") forState:(UIControlStateSelected)];
-//        _emitterButton.kj_buttonEmitterImage = [UIImage imageNamed:@"button_like_norm"];
         /// 开启点赞粒子效果
-        _emitterButton.kj_openButtonEmitter = YES;
+        [_emitterButton kj_buttonSetEmitterImage:nil OpenEmitter:true];
         [_emitterButton kj_addAction:^(UIButton * _Nonnull kButton) {
             kButton.selected = !kButton.selected;
         }];
@@ -168,14 +165,11 @@
         [_countDownButton setTitleColor:UIColor.blueColor forState:(UIControlStateNormal)];
         [_countDownButton setTitle:@"倒计时" forState:(UIControlStateNormal)];
         [_countDownButton kj_addAction:^(UIButton * _Nonnull kButton) {
-            [kButton kj_startTime:10 CountDownFormat:@"计时%zd秒"];
+            [kButton kj_startTime:5 CountDownFormat:@"计时%zd秒"];
         }];
         _countDownButton.kButtonCountDownStop = ^{
             NSLog(@"计时结束!!!");
         };
-//        [_button kj_addAction:^(UIButton * _Nonnull kButton) {
-//            [_countDownButton kj_cancelTimer];
-//        }];
     }
     return _countDownButton;
 }
@@ -199,9 +193,36 @@
         button.titleLabel.font = [UIFont systemFontOfSize:14];
         [button setTitleColor:UIColor.blueColor forState:(UIControlStateNormal)];
         [button setTitle:@"提交" forState:(UIControlStateNormal)];
+        button.indicatorSpace = 1;
+        button.indicatorType = UIActivityIndicatorViewStyleGray;
         [button kj_addAction:^(UIButton * _Nonnull kButton) {
-            [kButton kj_beginSubmitting:@"提交ing"];
+            [kButton kj_beginSubmitting:@"测试ing"];
         }];
+        
+        {
+            UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
+            button.frame = CGRectMake(180+110, Y, 80, 25);
+            button.centerY = label.centerY;
+            button.backgroundColor = [UIColor.blueColor colorWithAlphaComponent:0.3];
+            button.layer.cornerRadius = 5;
+            button.layer.borderWidth = 1;
+            button.layer.borderColor = UIColor.blueColor.CGColor;
+            button.layer.masksToBounds = YES;
+            button.titleLabel.font = [UIFont systemFontOfSize:14];
+            [button setTitleColor:UIColor.blueColor forState:(UIControlStateNormal)];
+            [button setTitle:@"显示指示器" forState:(UIControlStateNormal)];
+            [button setTitle:@"隐藏指示器" forState:(UIControlStateSelected)];
+            [self.view addSubview:button];
+            _weakself;
+            [button kj_addAction:^(UIButton * _Nonnull kButton) {
+                kButton.selected = !kButton.selected;
+                if (kButton.selected) {
+                    [weakself.submitButton kj_hideIndicator];
+                }else{
+                    [weakself.submitButton kj_showIndicator];
+                }
+            }];
+        }
         _submitButton = button;
     }
     return _submitButton;

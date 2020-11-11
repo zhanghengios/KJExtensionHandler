@@ -9,101 +9,100 @@
 #import "UIButton+KJIndicator.h"
 #import <objc/runtime.h>
 
-static NSString *const kIndicatorViewKey = @"indicatorView";
-static NSString *const kButtonTextObjectKey = @"buttonTextObject";
-@interface UIButton ()
-@property(nonatomic, strong) UIView *modalView;
-@property(nonatomic, strong) UIActivityIndicatorView *spinnerView;
-@property(nonatomic, strong) UILabel *spinnerTitleLabel;
-
-@end
-
 @implementation UIButton (KJIndicator)
-
-- (void)kj_showIndicator {
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    indicator.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
-    [indicator startAnimating];
-    
-    NSString *currentButtonText = self.titleLabel.text;
-    
-    objc_setAssociatedObject(self, &kButtonTextObjectKey, currentButtonText, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    objc_setAssociatedObject(self, &kIndicatorViewKey, indicator, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
-    [self setTitle:@"" forState:UIControlStateNormal];
-    self.enabled = NO;
-    [self addSubview:indicator];
-}
-
-- (void)kj_hideIndicator {
-    NSString *currentButtonText = (NSString *)objc_getAssociatedObject(self, &kButtonTextObjectKey);
-    UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)objc_getAssociatedObject(self, &kIndicatorViewKey);
-    [indicator removeFromSuperview];
-    [self setTitle:currentButtonText forState:UIControlStateNormal];
-    self.enabled = YES;
-}
-
+static NSString *kIndicatorLastTitle = nil;
 - (void)kj_beginSubmitting:(NSString*)title{
     [self kj_endSubmitting];
-    self.submitting = @YES;
-    self.hidden = YES;
-    self.modalView = [[UIView alloc] initWithFrame:self.frame];
-    self.modalView.backgroundColor = [self.backgroundColor colorWithAlphaComponent:0.6];
-    self.modalView.layer.cornerRadius = self.layer.cornerRadius;
-    self.modalView.layer.borderWidth = self.layer.borderWidth;
-    self.modalView.layer.borderColor = self.layer.borderColor;
+    kSubmitting = true;
+    kIndicatorLastTitle = self.titleLabel.text;
+    self.enabled = NO;
+    [self setTitle:@"" forState:UIControlStateNormal];
     
-    CGRect viewBounds = self.modalView.bounds;
-    self.spinnerView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    self.spinnerView.tintColor = self.titleLabel.textColor;
-    CGRect spinnerViewBounds = self.spinnerView.bounds;
-    self.spinnerView.frame = CGRectMake(self.frame.size.width *.5 - spinnerViewBounds.size.width - 10, viewBounds.size.height / 2 - spinnerViewBounds.size.height / 2, spinnerViewBounds.size.width, spinnerViewBounds.size.height);
-    CGFloat x = CGRectGetMaxX(self.spinnerView.frame) + 5;
-    CGRect labelBounds = CGRectMake(x, 0, self.frame.size.width - x - 2, self.frame.size.height);
-    self.spinnerTitleLabel = [[UILabel alloc] initWithFrame:labelBounds];
-    self.spinnerTitleLabel.text = title;
-    self.spinnerTitleLabel.font = self.titleLabel.font;
-    self.spinnerTitleLabel.textColor = self.titleLabel.textColor;
-    [self.modalView addSubview:self.spinnerView];
-    [self.modalView addSubview:self.spinnerTitleLabel];
-    [self.superview addSubview:self.modalView];
-    [self.spinnerView startAnimating];
+    self.indicatorType = self.indicatorType?:UIActivityIndicatorViewStyleWhite;
+    self.indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.indicatorType];
+    [self addSubview:self.indicatorView];
+    
+    self.indicatorSpace = self.indicatorSpace?:5;
+    CGFloat w = self.bounds.size.width;
+    CGFloat h = self.bounds.size.height;
+    CGFloat sp = w / 2.;
+    if (![title isEqualToString:@""]) {
+        self.indicatorLabel = [[UILabel alloc] init];
+        self.indicatorLabel.text = title;
+        self.indicatorLabel.font = self.titleLabel.font;
+        self.indicatorLabel.textColor = self.titleLabel.textColor;
+        [self addSubview:self.indicatorLabel];
+        
+        CGSize size = [title boundingRectWithSize:CGSizeMake(MAXFLOAT,0.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.titleLabel.font} context:nil].size;
+        sp = ((w-self.indicatorSpace-size.width)*.5)?:0.0;
+        self.indicatorLabel.frame = CGRectMake(sp+self.indicatorSpace+self.indicatorView.frame.size.width/2, 0, size.width, h);
+    }
+    
+    self.indicatorView.center = CGPointMake(sp, h/2);
+    [self.indicatorView startAnimating];
 }
 
 - (void)kj_endSubmitting {
-    if (!self.isSubmitting.boolValue) return;
-    self.submitting = @NO;
-    self.hidden = NO;
-    
-    [self.modalView removeFromSuperview];
-    self.modalView = nil;
-    self.spinnerView = nil;
-    self.spinnerTitleLabel = nil;
+    [self kj_hideIndicator];
+    self.indicatorView = nil;
+    self.indicatorLabel = nil;
 }
 
-- (NSNumber*)isSubmitting {
-    return objc_getAssociatedObject(self, @selector(setSubmitting:));
+- (void)kj_showIndicator {
+    if (self.indicatorView && self.indicatorView.superview == nil) {
+        [self addSubview:self.indicatorView];
+        [self.indicatorView startAnimating];
+    }
+    if (self.indicatorLabel && self.indicatorLabel.superview == nil) {
+        [self addSubview:self.indicatorLabel];
+        [self setTitle:@"" forState:UIControlStateNormal];
+    }
 }
-- (void)setSubmitting:(NSNumber*)submitting {
-    objc_setAssociatedObject(self, @selector(setSubmitting:), submitting, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+- (void)kj_hideIndicator {
+    kSubmitting = false;
+    self.enabled = YES;
+    
+    [self.indicatorView removeFromSuperview];
+    [self.indicatorLabel removeFromSuperview];
+    
+    if (self.indicatorLabel) {
+        [self setTitle:kIndicatorLastTitle forState:UIControlStateNormal];
+    }
+    if (self.indicatorView) {
+        [self.indicatorView stopAnimating];
+        [self setTitle:kIndicatorLastTitle forState:UIControlStateNormal];
+    }
 }
-- (UIActivityIndicatorView*)spinnerView {
-    return objc_getAssociatedObject(self, @selector(setSpinnerView:));
+
+#pragma mark - getter/setter
+static bool kSubmitting = false;
+- (bool)submitting{
+    return kSubmitting;
 }
-- (void)setSpinnerView:(UIActivityIndicatorView*)spinnerView {
-    objc_setAssociatedObject(self, @selector(setSpinnerView:), spinnerView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (CGFloat)indicatorSpace{
+    return [objc_getAssociatedObject(self, @selector(indicatorSpace)) floatValue];
 }
-- (UIView*)modalView {
-    return objc_getAssociatedObject(self, @selector(setModalView:));
+- (void)setIndicatorSpace:(CGFloat)indicatorSpace{
+    objc_setAssociatedObject(self, @selector(indicatorSpace), @(indicatorSpace), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-- (void)setModalView:(UIView*)modalView {
-    objc_setAssociatedObject(self, @selector(setModalView:), modalView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (UIActivityIndicatorViewStyle)indicatorType{
+    return (UIActivityIndicatorViewStyle)[objc_getAssociatedObject(self, @selector(indicatorType)) intValue];
 }
-- (UILabel*)spinnerTitleLabel {
-    return objc_getAssociatedObject(self, @selector(setSpinnerTitleLabel:));
+- (void)setIndicatorType:(UIActivityIndicatorViewStyle)indicatorType{
+    objc_setAssociatedObject(self, @selector(indicatorType), @(indicatorType), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-- (void)setSpinnerTitleLabel:(UILabel*)spinnerTitleLabel {
-    objc_setAssociatedObject(self, @selector(setSpinnerTitleLabel:), spinnerTitleLabel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (UIActivityIndicatorView*)indicatorView{
+    return objc_getAssociatedObject(self, @selector(indicatorView));
+}
+- (void)setIndicatorView:(UIActivityIndicatorView*)indicatorView{
+    objc_setAssociatedObject(self, @selector(indicatorView), indicatorView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (UILabel*)indicatorLabel{
+    return objc_getAssociatedObject(self, @selector(indicatorLabel));
+}
+- (void)setIndicatorLabel:(UILabel*)indicatorLabel{
+    objc_setAssociatedObject(self, @selector(indicatorLabel), indicatorLabel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

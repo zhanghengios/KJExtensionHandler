@@ -11,20 +11,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString * const kButtonContentLayoutTypeKey = @"kj_buttonContentLayoutTypeKey";
-static NSString * const kPaddingKey = @"kj_paddingKey";
-static NSString * const kPaddingInsetKey = @"kj_paddingInsetKey";
-
-@implementation UIButton (KJContentLayout)
-
-- (void)setupButtonLayout{
+@implementation UIButton (KJButtonContentLayout)
+/// 设置图文混排
+- (void)kj_setButtonContentLayout{
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     CGFloat imageWith = self.imageView.image.size.width;
     CGFloat imageHeight = self.imageView.image.size.height;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    CGFloat labelWidth  = [self.titleLabel.text sizeWithFont:self.titleLabel.font].width;
-    CGFloat labelHeight = [self.titleLabel.text sizeWithFont:self.titleLabel.font].height;
+    CGSize size = [self.titleLabel.text sizeWithFont:self.titleLabel.font];
+    CGFloat labelWidth  = size.width;
+    CGFloat labelHeight = size.height;
 #pragma clang diagnostic pop
     UIEdgeInsets imageEdge = UIEdgeInsetsZero;
     UIEdgeInsets titleEdge = UIEdgeInsetsZero;
@@ -86,39 +83,31 @@ static NSString * const kPaddingInsetKey = @"kj_paddingInsetKey";
 }
 
 #pragma mark - SET
-- (void)setKj_ButtonContentLayoutType:(KJButtonContentLayoutStyle)kj_buttonContentLayoutType{
-    [self willChangeValueForKey:kButtonContentLayoutTypeKey];
-    objc_setAssociatedObject(self, &kButtonContentLayoutTypeKey, @(kj_buttonContentLayoutType), OBJC_ASSOCIATION_ASSIGN);
-    [self didChangeValueForKey:kButtonContentLayoutTypeKey];
-    [self setupButtonLayout];
-}
-
 - (KJButtonContentLayoutStyle)kj_ButtonContentLayoutType{
-    return [objc_getAssociatedObject(self, &kButtonContentLayoutTypeKey) integerValue];
+    return (KJButtonContentLayoutStyle)[objc_getAssociatedObject(self, @selector(kj_ButtonContentLayoutType)) integerValue];
 }
-
-- (void)setKj_Padding:(CGFloat)kj_padding{
-    [self willChangeValueForKey:kPaddingKey];
-    objc_setAssociatedObject(self, &kPaddingKey, @(kj_padding), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [self didChangeValueForKey:kPaddingKey];
-    [self setupButtonLayout];
+- (void)setKj_ButtonContentLayoutType:(KJButtonContentLayoutStyle)kj_ButtonContentLayoutType{
+    objc_setAssociatedObject(self, @selector(kj_ButtonContentLayoutType), @(kj_ButtonContentLayoutType), OBJC_ASSOCIATION_ASSIGN);
+    [self kj_setButtonContentLayout];
 }
 
 - (CGFloat)kj_Padding{
-    return [objc_getAssociatedObject(self, &kPaddingKey) floatValue];
+    return [objc_getAssociatedObject(self, @selector(kj_Padding)) floatValue];
 }
-
-- (void)setKj_PaddingInset:(CGFloat)kj_paddingInset{
-    [self willChangeValueForKey:kPaddingInsetKey];
-    objc_setAssociatedObject(self, &kPaddingInsetKey, @(kj_paddingInset), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [self didChangeValueForKey:kPaddingInsetKey];
-    [self setupButtonLayout];
+- (void)setKj_Padding:(CGFloat)kj_Padding{
+    objc_setAssociatedObject(self, @selector(kj_Padding), @(kj_Padding), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self kj_setButtonContentLayout];
 }
 
 - (CGFloat)kj_PaddingInset{
-    return [objc_getAssociatedObject(self, &kPaddingInsetKey) floatValue];
+    return [objc_getAssociatedObject(self, @selector(kj_PaddingInset)) floatValue];
+}
+- (void)setKj_PaddingInset:(CGFloat)kj_PaddingInset{
+    objc_setAssociatedObject(self, @selector(kj_PaddingInset), @(kj_PaddingInset), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self kj_setButtonContentLayout];
 }
 
 @end
+
 NS_ASSUME_NONNULL_END
 

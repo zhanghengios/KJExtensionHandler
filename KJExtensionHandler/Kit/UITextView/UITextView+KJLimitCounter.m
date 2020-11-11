@@ -19,11 +19,11 @@
 }
 #pragma mark - swizzled
 - (void)kj_limit_dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:self];
     @try {
         [self removeObserver:self forKeyPath:@"layer.borderWidth"];
         [self removeObserver:self forKeyPath:@"text"];
-    }@catch (NSException *exception){
+    }@catch (NSException *exception) {
     }@finally {
         [self kj_limit_dealloc];
     }
@@ -52,7 +52,7 @@
     [self updateLimitCount];
 }
 - (CGFloat)kj_limitMargin{
-    return [objc_getAssociatedObject(self, @selector(kj_limitMargin))floatValue];
+    return [objc_getAssociatedObject(self, @selector(kj_limitMargin)) floatValue];
 }
 - (void)setKj_limitMargin:(CGFloat)kj_labMargin{
     objc_setAssociatedObject(self, @selector(kj_limitMargin), @(kj_labMargin), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -73,8 +73,7 @@
 #pragma mark - update
 - (void)updateLimitCount{
     if (self.text.length > self.kj_limitCount){
-        UITextRange *markedRange = [self markedTextRange];
-        if (markedRange) return;
+        if (self.markedTextRange) return;
         NSRange range = [self.text rangeOfComposedCharacterSequenceAtIndex:self.kj_limitCount];
         self.text = [self.text substringToIndex:range.location];
     }
@@ -95,7 +94,7 @@
     }
 }
 #pragma mark - lazzing
-- (UILabel *)kj_limitLabel{
+- (UILabel*)kj_limitLabel{
     UILabel *label = objc_getAssociatedObject(self, @selector(kj_limitLabel));
     if (label == nil){
         label = [[UILabel alloc] init];

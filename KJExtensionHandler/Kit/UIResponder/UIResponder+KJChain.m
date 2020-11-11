@@ -40,4 +40,22 @@ static __weak id currentFirstResponder;
 - (void)findCurrentFirstResponder:(id)sender{
     currentFirstResponder = self;
 }
+- (UIResponder *)kj_responderWithClass:(Class)clazz {
+    UIResponder *responder = self;
+    while ((responder = [responder nextResponder])) {
+        if ([responder isKindOfClass:clazz]) {
+            return responder;
+        }
+    }return nil;
+}
+
+- (BOOL)kj_sendAction:(SEL)action Sender:(id)sender {
+    id target = sender;
+    while (target && ![target canPerformAction:action withSender:sender]) {
+        target = [target nextResponder];
+    }
+    if (!target) return NO;
+    return [[UIApplication sharedApplication] sendAction:action to:target from:sender forEvent:nil];
+}
+
 @end
