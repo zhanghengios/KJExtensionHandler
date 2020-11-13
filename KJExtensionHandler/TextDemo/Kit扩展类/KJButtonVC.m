@@ -117,8 +117,10 @@
         [_button setTitle:@"居中-图左文右" forState:UIControlStateNormal];
         [_button setTitleColor:UIColor.blueColor forState:UIControlStateNormal];
         [_button setImage:[UIImage imageNamed:@"wode_nor"] forState:UIControlStateNormal];
-        
         _button.kj_ButtonContentLayoutType = KJButtonContentLayoutStyleNormal;
+        [_button kj_addAction:^(UIButton * _Nonnull kButton) {
+                    
+        }];
     }
     return _button;
 }

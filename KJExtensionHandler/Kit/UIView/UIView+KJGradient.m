@@ -38,11 +38,11 @@
 }
 
 //虚线边框
-- (void)kj_DashedLineColor:(UIColor *)lineColor lineWidth:(CGFloat)lineWidth spaceAry:(NSArray<NSNumber *> *)spaceAry {
+- (void)kj_DashedLineColor:(UIColor*)lineColor lineWidth:(CGFloat)lineWidth spaceAry:(NSArray<NSNumber*>*)spaceAry {
     CAShapeLayer *borderLayer = [CAShapeLayer layer];
     borderLayer.bounds = CGRectMake(0, 0, self.frame.size.width , self.frame.size.height);
     borderLayer.position = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
-    if (self.layer.cornerRadius>0) {/// 带圆角
+    if (self.layer.cornerRadius > 0) {
         borderLayer.path = [UIBezierPath bezierPathWithRoundedRect:borderLayer.bounds cornerRadius:self.layer.cornerRadius].CGPath;
     }else{
         borderLayer.path = [UIBezierPath bezierPathWithRect:borderLayer.bounds].CGPath;
@@ -56,7 +56,7 @@
 
 #pragma mark - 指定图形
 // 画直线
-- (void)kj_DrawLineWithPoint:(CGPoint)fPoint toPoint:(CGPoint)tPoint lineColor:(UIColor *)color lineWidth:(CGFloat)width{
+- (void)kj_DrawLineWithPoint:(CGPoint)fPoint toPoint:(CGPoint)tPoint lineColor:(UIColor*)color lineWidth:(CGFloat)width{
     CAShapeLayer* shapeLayer = [CAShapeLayer layer];
     shapeLayer.strokeColor = [UIColor lightGrayColor].CGColor;
     if (color) shapeLayer.strokeColor = color.CGColor;

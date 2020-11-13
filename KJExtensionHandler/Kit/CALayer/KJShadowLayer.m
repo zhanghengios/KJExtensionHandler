@@ -191,5 +191,6 @@
     _kj_shadowDiffuse = kj_shadowDiffuse;
     [self kj_changeShadowLayerValue];
 }
+
 @end
 

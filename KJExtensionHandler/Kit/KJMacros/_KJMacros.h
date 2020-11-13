@@ -79,10 +79,12 @@
 #endif
 
 #pragma mark ********** 5.iPhoneX系列尺寸布局   *********
-// 判断是否为iPhone X 系列  这样写消除了在Xcode10上的警告
+// 判断是否为iPhone X 系列 这样写消除了在Xcode10上的警告
 #define iPhoneX \
 ({BOOL isPhoneX = NO;\
-if (@available(iOS 11.0, *)) {\
+if (@available(iOS 13.0, *)) {\
+isPhoneX = [UIApplication sharedApplication].windows.firstObject.safeAreaInsets.bottom > 0.0;\
+}else if (@available(iOS 11.0, *)) {\
 isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
 }\
 (isPhoneX);})

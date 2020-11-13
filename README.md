@@ -103,6 +103,11 @@ pod 'KJExtensionHandler/Exception'
 #### <a id="更新日志"></a>更新日志
 ```
 ####版本更新日志:
+#### Add 0.0.7
+1. 重写 UIView+KJGestureBlock 解决手势共存问题
+2. UIView+KJRectCorner 完善处理
+3. 新增 CALayer+KJExtension 增加标签属性
+
 #### Add 0.0.6
 1. 新增 UITabBar+KJBadge 小红点处理
 2. 新增 _KJGCD 处理线程相关

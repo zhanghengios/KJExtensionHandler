@@ -8,6 +8,8 @@
 //  进阶版圆角和边框扩展
 
 #import <UIKit/UIKit.h>
+#import "CALayer+KJExtension.h"
+
 NS_ASSUME_NONNULL_BEGIN
 typedef NS_OPTIONS(NSInteger, KJBorderOrientationType) {
     KJBorderOrientationTypeUnknown= 1 << 0,/// 未知边
@@ -26,7 +28,7 @@ typedef NS_OPTIONS(NSInteger, KJBorderOrientationType) {
 @property(nonatomic,strong)UIColor *kj_borderColor;
 /// 边框宽度，默认1px
 @property(nonatomic,assign)CGFloat kj_borderWidth;
-/// 边框方位，在颜色和宽度之后执行
+/// 边框方位，必设参数
 @property(nonatomic,assign)KJBorderOrientationType kj_borderOrientation;
 
 @end

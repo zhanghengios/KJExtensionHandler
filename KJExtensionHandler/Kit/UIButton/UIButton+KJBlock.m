@@ -12,17 +12,17 @@
 @implementation UIButton (KJBlock)
 static char ActionTag;
 /// button 添加点击事件 默认点击方式UIControlEventTouchUpInside
-- (void)kj_addAction:(KJButtonBlock)block {
+- (void)kj_addAction:(KJButtonBlock)block{
     objc_setAssociatedObject(self, &ActionTag, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
     [self addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
 }
 /// button 添加事件 controlEvents 点击的方式
-- (void)kj_addAction:(KJButtonBlock)block forControlEvents:(UIControlEvents)controlEvents {
+- (void)kj_addAction:(KJButtonBlock)block forControlEvents:(UIControlEvents)controlEvents{
     objc_setAssociatedObject(self, &ActionTag, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
     [self addTarget:self action:@selector(action:) forControlEvents:controlEvents];
 }
 /// button 事件的响应方法
-- (void)action:(UIButton*)sender {
+- (void)action:(UIButton*)sender{
     KJButtonBlock blockAction = (KJButtonBlock)objc_getAssociatedObject(self, &ActionTag);
     if (blockAction) blockAction(self);
 }

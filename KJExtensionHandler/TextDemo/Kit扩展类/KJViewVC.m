@@ -22,9 +22,17 @@
     _RectCornerArr = [NSMutableArray array];
     [self.view addSubview:self.testView];
 
-    
+    [self.testView kj_AddTapGestureRecognizerBlock:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull gesture) {
+        NSLog(@"单击");
+    }];
     [self.testView kj_AddGestureRecognizer:(KJGestureTypeDouble) block:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull gesture) {
-        NSLog(@"2222");
+        NSLog(@"双击");
+    }];
+    [self.testView kj_AddGestureRecognizer:(KJGestureTypeLongPress) block:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull gesture) {
+        NSLog(@"长按");
+    }];
+    [self.testView kj_AddGestureRecognizer:(KJGestureTypePinch) block:^(UIView * _Nonnull view, UIGestureRecognizer * _Nonnull gesture) {
+        NSLog(@"缩放");
     }];
     [self createSwitch];
 }

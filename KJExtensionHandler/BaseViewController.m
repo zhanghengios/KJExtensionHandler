@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 //#import "UIBarButtonItem+KJExtension.h" // 设置BarButtonItem
+#import "UIDevice+KJSystem.h"
 @interface BaseViewController ()
 
 @end
@@ -28,6 +29,23 @@
             return info;
         }, ^(UIButton * _Nonnull kButton) {
             [weakself.navigationController popViewControllerAnimated:YES];
+        }).kAddBarButtonItemInfo(^KJNavigationItemInfo * _Nonnull(KJNavigationItemInfo * _Nonnull info) {
+            info.imageName = @"wode_nor";
+            info.isLeft = NO;
+            info.tintColor = UIColor.redColor;
+            return info;
+        }, ^(UIButton * _Nonnull kButton) {
+            [weakself.navigationController popViewControllerAnimated:YES];
+        });
+        make.kAddBarButtonItemInfo(^KJNavigationItemInfo * _Nonnull(KJNavigationItemInfo * _Nonnull info) {
+            info.title = @"分享";
+            info.isLeft = NO;
+            return info;
+        }, ^(UIButton * _Nonnull kButton) {
+            UIImage *image = [UIImage kj_captureScreen:weakself.view Rect:CGRectMake(0, kSTATUSBAR_NAVIGATION_HEIGHT, kScreenW, kScreenH-kSTATUSBAR_NAVIGATION_HEIGHT)];
+            [UIDevice kj_shareActivityWithItems:@[UIImagePNGRepresentation(image)] ViewController:weakself Complete:^(BOOL success) {
+                [weakself.navigationController.view makeToast:success?@"分享成功":@"分享失败"];
+            }];
         });
     }];
 }

@@ -43,12 +43,14 @@
 }
 - (void)setKj_borderColor:(UIColor*)kj_borderColor{
     objc_setAssociatedObject(self, @selector(kj_borderColor), kj_borderColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self kj_setBorderWithWidth:self.kj_borderWidth BorderColor:kj_borderColor BorderOrientation:self.kj_borderOrientation];
 }
 - (CGFloat)kj_borderWidth{
     return [objc_getAssociatedObject(self, @selector(kj_borderWidth)) floatValue];
 }
 - (void)setKj_borderWidth:(CGFloat)kj_borderWidth{
     objc_setAssociatedObject(self, @selector(kj_borderWidth), @(kj_borderWidth), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self kj_setBorderWithWidth:kj_borderWidth BorderColor:self.kj_borderColor BorderOrientation:self.kj_borderOrientation];
 }
 - (KJBorderOrientationType)kj_borderOrientation{
     return (KJBorderOrientationType)objc_getAssociatedObject(self, @selector(kj_borderOrientation));
@@ -63,26 +65,32 @@
     if (width == 0) width = 1.;
     if (color == nil) color = UIColor.blackColor;
     if (orientation == 1 || (orientation & KJBorderOrientationTypeTop)) {
-        CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(0, 0, self.frame.size.width, width);
-        layer.backgroundColor = color.CGColor;
-        [self.layer addSublayer:layer];
-    }
-    if (orientation == 3 || (orientation & KJBorderOrientationTypeLeft)) {
-        CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(0, 0, width, self.frame.size.height);
-        layer.backgroundColor = color.CGColor;
-        [self.layer addSublayer:layer];
+        [self kj_setTag:520001 BorderColor:color Rect:CGRectMake(0, 0, self.frame.size.width, width)];
     }
     if (orientation == 2 || (orientation & KJBorderOrientationTypeBottom)) {
-        CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(0, self.frame.size.height - width, self.frame.size.width, width);
-        layer.backgroundColor = color.CGColor;
-        [self.layer addSublayer:layer];
+        [self kj_setTag:520002 BorderColor:color Rect:CGRectMake(0, self.frame.size.height-width, self.frame.size.width, width)];
+    }
+    if (orientation == 3 || (orientation & KJBorderOrientationTypeLeft)) {
+        [self kj_setTag:520003 BorderColor:color Rect:CGRectMake(0, 0, width, self.frame.size.height)];
     }
     if (orientation == 4 || (orientation & KJBorderOrientationTypeRight)) {
+        [self kj_setTag:520004 BorderColor:color Rect:CGRectMake(self.frame.size.width-width, 0, width, self.frame.size.height)];
+    }
+}
+- (void)kj_setTag:(NSInteger)tag BorderColor:(UIColor*)color Rect:(CGRect)rect{
+    __block BOOL boo = NO;
+    [self.layer.sublayers enumerateObjectsUsingBlock:^(__kindof CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.kTag == tag) {
+            boo = YES;
+            obj.frame = rect;
+            obj.backgroundColor = color.CGColor;
+            *stop = YES;
+        }
+    }];
+    if (boo == NO) {
         CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(self.frame.size.width - width, 0, width, self.frame.size.height);
+        layer.kTag = tag;
+        layer.frame = rect;
         layer.backgroundColor = color.CGColor;
         [self.layer addSublayer:layer];
     }

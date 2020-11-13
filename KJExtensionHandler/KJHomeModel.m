@@ -21,13 +21,12 @@
         [temp1 addObject:@{@"VCName":@"KJButtonVC",@"describeName":@"Button图文布局点赞粒子"}];
         [temp1 addObject:@{@"VCName":@"KJLabelVC",@"describeName":@"Label文本位置管理"}];
         [temp1 addObject:@{@"VCName":@"KJViewVC",@"describeName":@"View快速切圆角边框"}];
+        [temp1 addObject:@{@"VCName":@"KJGestureVC",@"describeName":@"Gesture手势相关处理"}];
         [temp1 addObject:@{@"VCName":@"KJSliderVC",@"describeName":@"Slider渐变色滑块"}];
         [temp1 addObject:@{@"VCName":@"KJTextViewVC",@"describeName":@"TextView设置限制字数"}];
         [temp1 addObject:@{@"VCName":@"KJCollectionVC",@"describeName":@"CollectView滚动处理"}];
         [temp1 addObject:@{@"VCName":@"KJToastVC",@"describeName":@"Toast处理"}];
-        [temp1 addObject:@{@"VCName":@"KJNavigationItemVC",@"describeName":@"Item链式生成"}];
-        [temp1 addObject:@{@"VCName":@"KJSystemVC",@"describeName":@"系统相关操作"}];
-        
+                                                                                                                             
         NSMutableArray *temp0 = [NSMutableArray array];
         [temp0 addObject:@{@"VCName":@"KJFloodImageVC",@"describeName":@"Image填充同颜色区域"}];
         [temp0 addObject:@{@"VCName":@"KJImageVC",@"describeName":@"Image加水印和拼接"}];
